@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 function Card1(props) {
   var w = window.innerWidth;
   var x = 30;
-  if (w > 860) x = (w - 800) / 2;
+  if (w > 1060) x = (w - 1000) / 2;
   var str = "/#/" + props.date;
   return (
     <Container
