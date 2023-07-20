@@ -59,8 +59,10 @@ function Card1(props) {
                 {parse(text1)}
               </span>
               <br></br>
+              <br></br>
               <p style={{ fontFamily: "'Ubuntu',sans serif" }}>
-                ❤️️Like{props.like}
+                ❤️ ️Like {""}
+                {props.like}
               </p>
             </Card.Text>
           </Card.Body>

@@ -49,6 +49,7 @@ function Card1(props) {
           </Card.Body>
         </Card>
       </Container>
+      <br></br>
     </Container>
   );
 }
