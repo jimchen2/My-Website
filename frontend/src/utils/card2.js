@@ -17,7 +17,6 @@ function Card1(props) {
       style={{
         paddingLeft: x + "px",
         paddingRight: x + "px",
-        fontFamily: "'Ubuntu Mono',monospace",
         minHeight: "150px",
       }}
     >
@@ -25,13 +24,21 @@ function Card1(props) {
         <Card>
           <Card.Body>
             <Card.Title>
-              <span style={{ fontSize: "14px" }}>{props.date}</span>
+              <span
+                style={{
+                  fontSize: "14px",
+                  fontFamily: "'Ubuntu Mono',monospace",
+                }}
+              >
+                {props.date}
+              </span>
               <br />
               <span
                 style={{
                   fontSize: "25px",
                   position: "relative",
                   top: "10px",
+                  fontFamily: "font-family: 'Roboto', sans-serif",
                 }}
               >
                 {" "}
@@ -60,4 +67,3 @@ function Card1(props) {
 }
 
 export default Card1;
-
