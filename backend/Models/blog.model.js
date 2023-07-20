@@ -17,8 +17,8 @@ const blogSchema = new Schema(
       default: "",
     },
     like: {
-      type: Int,
-      default: "",
+      type: Number,
+      default: 0,
     },
   },
   { versionKey: false }
