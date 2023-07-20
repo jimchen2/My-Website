@@ -29,21 +29,24 @@ function update() {
             date: res.data[j].date,
             body: res.data[j].body,
             title: res.data[j].title,
+            like: res.data[j].like,
           };
         }
         var path = [],
           title = [],
           text = [],
-          date = [];
+          date = [],
+          like = [];
 
         for (var i = 0; i < x.length; i++) {
           title[i] = x[i].title;
           text[i] = x[i].body;
           date[i] = x[i].date;
+          like[i] = x[i].like;
           path[i] = (
             <Route
               path={date[i]}
-              element={BlogUtil(title[i], text[i], date[i])}
+              element={BlogUtil(title[i], text[i], date[i], like[i])}
             />
           );
         }
