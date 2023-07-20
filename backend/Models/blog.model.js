@@ -16,6 +16,10 @@ const blogSchema = new Schema(
       type: String,
       default: "",
     },
+    like: {
+      type: Int,
+      default: "",
+    },
   },
   { versionKey: false }
 );
