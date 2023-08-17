@@ -1,17 +1,16 @@
 import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
+import { GetPaddingWidth } from "../utils/adjustelementwidth";
 
-function Card1(props) {
-  var w = window.innerWidth;
-  var x = 30;
-  if (w > 1060) x = (w - 1000) / 2;
-  var str = "/#/" + props.date;
+function PreviewCard(props) {
+  var x = GetPaddingWidth(1000);
+  var str = "/" + props.date;
   return (
     <Container
       style={{
         paddingLeft: x + "px",
         paddingRight: x + "px",
-        fontFamily: "'Ubuntu Mono',monospace",
+        fontFamily: "'Ubuntu',sans-serif",
         minHeight: "150px",
       }}
     >
@@ -19,25 +18,24 @@ function Card1(props) {
         <Card>
           <Card.Body>
             <Card.Title>
-              <span style={{ fontSize: "14px" }}>{props.date}</span>
+              <span style={{ fontSize: "12px" }}>{props.date}</span>
               <br />
               <span
                 style={{
                   fontSize: "25px",
                   position: "relative",
                   top: "10px",
+                  fontFamily: "'Ubuntu Light',sans-serif",
                 }}
               >
-                {" "}
                 <a href={str}>
-                  <b>{props.title}</b>{" "}
-                </a>{" "}
+                  <b>{props.title}</b>
+                </a>
               </span>
             </Card.Title>
             <Card.Text>
               <span
                 style={{
-                  fontFamily: "'Ubuntu',sans serif",
                   fontSize: "12px",
                   position: "relative",
                   top: "10px",
@@ -49,9 +47,9 @@ function Card1(props) {
           </Card.Body>
         </Card>
       </Container>
-      <br></br>
+      <br></br> <br></br>
     </Container>
   );
 }
 
-export default Card1;
+export default PreviewCard;

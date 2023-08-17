@@ -1,12 +1,19 @@
+import { GetPaddingWidth } from "../../utils/adjustelementwidth";
+
 function BIO() {
-  var w = window.innerWidth;
-  var x = 30;
-  if (w > 860) x = (w - 800) / 2;
+  var paddwidth = GetPaddingWidth();
+
   return (
-    <div style={{ paddingLeft: x + "px", paddingRight: x + "px" }}>
+    <div
+      style={{
+        paddingLeft: paddwidth + "px",
+        paddingRight: paddwidth + "px",
+        fontFamily: "'Ubuntu',sans serif",
+      }}
+    >
       <br />
       <br />
-      <h2 id="identity">Identity</h2>
+      <h3 id="identity">Identity</h3>
       <p>
         I am an individualist and I believe in freedom. I think from my own
         perspective.
@@ -16,19 +23,16 @@ function BIO() {
         things than necessary, and I try to be simple and direct in both
         speaking and writing.
       </p>
-      <h2 id="preferences">Preferences</h2>
+      <h3 id="preferences">Preferences</h3>
       <p>
         I am a devoted Linux user. I won&#39;t use Windows and mouse anymore.
       </p>
+      <p>I have erratic sleep schedule.</p>
       <p>
-        I have noctural habits recently, and sometimes I go to bed after the sun
-        rises.
+        {/* I love traveling, and there are many places yet to go. I want to go to
+        North Pole, Russia, Norway, Iceland, Italy, Kenya, and Australia. */}
       </p>
-      <p>
-        I love traveling, and there are many places yet to go. I want to go to
-        North Pole, Russia, Norway, Iceland, Italy, Kenya, and Australia.
-      </p>
-      <h2 id="hobbies">Hobbies</h2>
+      <h3 id="hobbies">Hobbies</h3>
       <p>
         I live on the Internet and I would go browse all kinds of stuff for
         hours every day. I love watching YouTube, but I think Bilibili is more
@@ -52,19 +56,18 @@ function BIO() {
       </p>
       <p>
         I also love watching{" "}
-        <a href="https://ww8.0123movie.net/">movies and tvs</a>, but do not have
+        <a href="https://smotrim.ru/live/63250">movies and tvs</a>, but do not have
         specific preferences.
       </p>
       <p>
         I used to really enjoy reading, but in the last 5 years I haven&#39;t
-        read much. I wasted too much time.
+        read much.
       </p>
       <p>
         I love running and I usually run at 4-5 min/kilometer pace at evenings.
-        I am planning to run a marathon.
       </p>
       <p>I love hiking and I usually go out in weekends.</p>
-      <h2 id="previous-websites">Previous Websites</h2>
+      <h3 id="previous-websites">Previous Websites</h3>
       <p>
         <a href="https://jimchen4214.wixsite.com/12345">My previous website</a>{" "}
         is build using <a href="https://wix.com">Wix</a>. Wix is easy and slow,
