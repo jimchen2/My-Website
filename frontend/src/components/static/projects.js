@@ -12,14 +12,14 @@ function Projects() {
   const projectCards = [
     {
       image: "graficon (1).jpg",
-      link: "https://jimchen.me",
+      link: "https://www.jimchen.me/Thu%20Aug%2017%202023%2013:11:49",
       title: "My Website",
       date: "June 2023",
       description: "Build personal website with Html, CSS, Javascript, React, React-Bootstrap Library."
     },
     {
       image: "proj2.jpg",
-      link: "https://mygame4214.github.io",
+      link: "https://www.jimchen.me/2048.html",
       title: "Some Apps",
       date: "ToDo",
       description: "Build some practical apps and games to practice my skills"
