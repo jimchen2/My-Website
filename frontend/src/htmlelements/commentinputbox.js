@@ -38,7 +38,7 @@ function Commentinputbox({ id, blog }) {
 
   return (
     <div>
-      <div style={{ position: "relative", top: "10px", fontSize: "16px" }}>
+      <div style={{ position: "relative", top: "10px", fontSize: "16px" ,fontFamily: "'Courier New', monospace"}}>
         <Form onSubmit={handleSubmitReply}>
           <Form.Group>
             <Form.Label>Name(Optional)</Form.Label>
@@ -50,7 +50,7 @@ function Commentinputbox({ id, blog }) {
               placeholder="Guest"
             />
           </Form.Group>
-          <div style={{ position: "relative", top: "10px" }}>
+          <div style={{ position: "relative", top: "10px", fontFamily: "'Courier New', monospace"}}>
             <Form.Group>
               <Form.Label>Message</Form.Label>
               <Form.Control
