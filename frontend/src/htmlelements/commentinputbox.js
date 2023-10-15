@@ -27,6 +27,7 @@ function Commentinputbox({ id, blog }) {
     borderColor: "black",
     padding: "3px 9px",
     transition: "background-color 0.3s",
+        fontFamily: "'Courier New', monospace",
   };
 
   const windowWidth = GetWindowWidth();
