@@ -13,7 +13,7 @@ function CommentBox({ embed = 0, user, date, comment, like, id, blog }) {
 
   const containerStyle = {
     fontSize: `${BASE_FONT_SIZE}px`,
-    fontFamily: "'Ubuntu', sans-serif",
+    fontFamily: "'Courier New', monospace",
     paddingLeft: `${paddingLeft}px`,
     paddingRight: `${paddingRight}px`,
     position: "relative",
