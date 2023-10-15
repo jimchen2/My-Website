@@ -10,7 +10,7 @@ function PreviewCard(props) {
       style={{
         paddingLeft: x + "px",
         paddingRight: x + "px",
-        fontFamily: "'Ubuntu',sans-serif",
+    fontFamily: "'Courier New', monospace",
         minHeight: "150px",
       }}
     >
@@ -25,7 +25,7 @@ function PreviewCard(props) {
                   fontSize: "25px",
                   position: "relative",
                   top: "10px",
-                  fontFamily: "'Ubuntu Light',sans-serif",
+                  fontFamily: "'Courier New', monospace",
                 }}
               >
                 <a href={str}>
