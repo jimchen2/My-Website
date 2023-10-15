@@ -47,14 +47,14 @@ const containerStyle = (padding) => ({
   paddingLeft: padding + "px",
   paddingRight: padding + "px",
   minHeight: "150px",
-  fontFamily: "'Ubuntu',sans-serif",
+  fontFamily: "'Courier New', monospace",
 });
 
 const titleStyle = {
   fontSize: "25px",
   position: "relative",
   top: "10px",
-  fontFamily: "'Ubuntu Light',sans-serif",
+  fontFamily: "'Courier New', monospace",
 };
 
 const textContainerStyle = {
