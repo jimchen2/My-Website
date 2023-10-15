@@ -8,7 +8,7 @@ function BIO() {
       style={{
         paddingLeft: paddwidth + "px",
         paddingRight: paddwidth + "px",
-        fontFamily: "'Ubuntu',sans serif",
+    fontFamily: "'Courier New', monospace",
       }}
     >
       <br />
