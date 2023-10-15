@@ -1,3 +1,3 @@
-const backendurl="http://localhost:5000"
+const backendurl="https://jimchen.uk"
 
 export default backendurl
