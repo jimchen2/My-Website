@@ -6,7 +6,7 @@ function Projects() {
   const padding = GetPaddingWidth();
   const cardStyle = {
     maxWidth: '300px',
-    fontFamily: "'Ubuntu',sans serif",
+    fontFamily: "'Courier New', monospace",
   };
 
   const projectCards = [
