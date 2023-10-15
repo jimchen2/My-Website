@@ -41,14 +41,14 @@ function Page404() {
       style={{
         paddingLeft: `${paddwidth}px`,
         paddingRight: `${paddwidth}px`,
-        fontFamily: "'Ubuntu Mono', monospace",
+        fontFamily: "'Courier New', monospace",
         whiteSpace: "pre-wrap",
       }}
     >
       <br />
       <br />
       <p>
-        username:~$ cat {displayLocation}
+        username:~$ wget https://jimchen.me/{displayLocation}
         <pre>{s}</pre>
         <br />
         Click and press Space to start the game, use any key to jump your T-Rex
@@ -69,7 +69,7 @@ function Page404() {
             border: "none",
             outline: "none",
             backgroundColor: "transparent",
-            fontFamily: "'Ubuntu Mono', monospace",
+            fontFamily: "'Courier New', monospace",
           }}
           autoFocus
         />
