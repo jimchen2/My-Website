@@ -7,7 +7,7 @@ import { GetPaddingWidth } from "../../utils/adjustelementwidth";
 function NavBar() {
   const paddingWidth = GetPaddingWidth(900);
   const commonStyles = {
-    fontFamily: "'Ubuntu', sans-serif",
+    fontFamily: "'Courier New', monospace",
     paddingLeft: `${paddingWidth}px`,
     paddingRight: `${paddingWidth}px`,
   };
