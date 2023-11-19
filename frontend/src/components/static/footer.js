@@ -57,7 +57,6 @@ function Footer() {
       <Container
         style={{
           paddingLeft: `${windowWidth / 10}px`,
-          fontFamily: "'Courier New', monospace",
         }}
       >
         <CopyrightSection year={year} />

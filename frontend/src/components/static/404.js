@@ -69,7 +69,6 @@ function Page404() {
             border: "none",
             outline: "none",
             backgroundColor: "transparent",
-            fontFamily: "'Courier New', monospace",
           }}
           autoFocus
         />

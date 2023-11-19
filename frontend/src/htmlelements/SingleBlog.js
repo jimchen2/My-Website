@@ -50,14 +50,12 @@ const containerStyle = (padding) => ({
   paddingLeft: Math.max(padding, 200) + "px",
   paddingRight: padding + "px",
   minHeight: "150px",
-  fontFamily: "'Courier New', monospace",
 });
 
 const titleStyle = {
   fontSize: "25px",
   position: "relative",
   top: "10px",
-  fontFamily: "'Courier New', monospace",
 };
 
 const textContainerStyle = {

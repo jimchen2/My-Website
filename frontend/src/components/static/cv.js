@@ -3,7 +3,7 @@ function CV() {
     <>
       <br />
       <br />
-      <div style={{ textAlign: "center", fontSize: "25px", fontFamily: "'Courier New', monospace",}}>
+      <div style={{ textAlign: "center", fontSize: "25px", }}>
         My Curriculum Vitae 2023.6
       </div>
       <br />

@@ -27,7 +27,6 @@ function Commentinputbox({ id, blog }) {
     borderColor: "black",
     padding: "3px 9px",
     transition: "background-color 0.3s",
-        fontFamily: "'Courier New', monospace",
   };
 
   // const windowWidth = GetWindowWidth();
@@ -39,11 +38,18 @@ function Commentinputbox({ id, blog }) {
   // let left_padding=0;
   // if (GetWindowWidth() < 1024) {
   //   left_padding = 150;
-  // } 
-  
+  // }
+
   return (
     <div>
-      <div style={{ position: "relative", top: "10px", fontSize: "16px" ,fontFamily: "'Courier New', monospace"}}>
+      <div
+        style={{
+          position: "relative",
+          top: "10px",
+          fontSize: "16px",
+          fontFamily: "'Roboto', sans-serif",
+        }}
+      >
         <Form onSubmit={handleSubmitReply}>
           <Form.Group>
             <Form.Label>Name(Optional)</Form.Label>
@@ -55,7 +61,12 @@ function Commentinputbox({ id, blog }) {
               placeholder="Guest"
             />
           </Form.Group>
-          <div style={{ position: "relative", top: "10px", fontFamily: "'Courier New', monospace"}}>
+          <div
+            style={{
+              position: "relative",
+              top: "10px",
+            }}
+          >
             <Form.Group>
               <Form.Label>Message</Form.Label>
               <Form.Control
