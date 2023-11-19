@@ -1,43 +1,48 @@
-import React, { useState, useEffect } from "react";
+import Card1 from "../utils/card";
 import axios from "axios";
-import PreviewCard from "../htmlelements/PreviewCard";
-import backendurl from "../config/config";
+
+var a = [],
+  b = [],
+  c = [],
+  arr = [];
 
 function Blog() {
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${backendurl}/blog`);
-        setData(response.data);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-
+  var get1 = () => {
+    axios
+      .get("http://10.142.79.170:5000/blog/get")
+      .then(function (res) {
+        console.log("get blog successful from blog.js");
+        for (var i = 0; i < res.data.length; i++) {
+          a[i] = JSON.stringify(res.data[i].title).split('"')[1];
+          b[i] = JSON.stringify(res.data[i].body).substring(1, 10000);
+          c[i] = JSON.stringify(res.data[i].date).split('"')[1];
+          var b1 = "";
+          var state = 0;
+          for (var j = 0; j < b[i].length; j++) {
+            if (b[i][j] === "<") state = 1;
+            if (state === 0) b1 = b1 + b[i][j];
+            if (b[i][j] === ">") state = 0;
+          }
+          arr[i] = (
+            <Card1 title={a[i]} text={b1.substring(0, 150)} date={c[i]} />
+          );
+        }
+      })
+      .catch((err) => {
+        console.log("did not get blog from blog.js" + err);
+      });
+  };
+  get1();
   return (
-    <div style={{ padding: "2rem 0" }}>
-      {data.map((post, index) => (
-        <PreviewCard
-          key={index}
-          title={post.title}
-          text={post.body.substring(0, 150)}
-          date={post.date}
-        />
-      ))}
-    </div>
+    <>
+      <br />
+      <br />
+      <br />
+      <div>{arr}</div>
+      <br />
+      <br />
+      <br />
+    </>
   );
 }
-
 export default Blog;

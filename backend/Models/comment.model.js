@@ -16,20 +16,6 @@ const commentSchema = new Schema(
       type: String,
       default: "",
     },
-    //pointer to the new replies
-    pointer: {
-      type: Array,
-      default: [],
-    },
-    //blog unique identifier
-    blog: {
-      type: String,
-      default: " ",
-    },
-    like: {
-      type: Array,
-      default: [],
-    },
   },
   { versionKey: false }
 );

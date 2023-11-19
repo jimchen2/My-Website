@@ -1,29 +1,33 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+
 require("dotenv").config();
+
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
+
 app.use(cors());
 app.use(express.json());
-const uri = process.env.URI;
 
+const uri = process.env.URI;
 mongoose.connect(uri, {});
 const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
 });
 
-app.use("/visitinfo", require("./Routes/visitinfo"));
+const userRouter = require("./Routes/example");
+app.use("/example", userRouter);
 
-app.use("/comment", require("./Routes/comment"));
-app.use("/blog", require("./Routes/blog"));
+const commentRouter = require("./Routes/comment");
+app.use("/comment", commentRouter);
 
-app.use("/addlike", require("./Routes/addlike"));
-app.use("/addliketoblog", require("./Routes/addliketoblog"));
-app.use("/getvisitinfo", require("./Routes/getvisitinfo"));
-app.use("/changechildid", require("./Routes/changechildid"));
+
+const blogRouter = require("./Routes/blog.js");
+app.use("/blog", blogRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
+

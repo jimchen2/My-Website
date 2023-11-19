@@ -1,108 +1,75 @@
-import React, { useState, useEffect } from "react";
-import { createRoot } from "react-dom/client";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Routes, Route } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import axios from "axios";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-// Static
-import CV from "./components/static/cv";
-import BIO from "./components/static/unofficialbio";
-import Projects from "./components/static/projects";
-import Page404 from "./components/static/404";
-import backendurl from "./config/config";
-
-// HTML Elements
-import SingleBlog from "./htmlelements/SingleBlog";
-import Blog from "./components/blog";
-import SingleBlogEmbed from "./htmlelements/SingleBlogEmbed";
+import reportWebVitals from "./reportWebVitals";
+import NavBar from "./components/navbar";
+import CV from "./components/cv";
+import BIO from "./components/unofficialbio";
+import Projects from "./components/projects";
 import Msg from "./components/leaveamessage";
+import VisitInfo from "./components/visitinfo";
+import Blog from "./components/blog";
+import BlogUtil from "./components/blogutil.js";
+import Footer from "./components/footer";
 
-// Components
-import { GetVisitInfo, PostVisitInfo } from "./components/visitinfo";
-
-import Footer from "./components/static/footer";
-import NavBar from "./components/static/navbar";
-
-const AppRoutes = ({ blogs }) => (
-  <Routes>
-    <Route path="/" element={<Blog />} />
-    <Route path="/cv" element={<CV />} />
-    <Route path="/unofficialbio" element={<BIO />} />
-    <Route path="/projects" element={<Projects />} />
-    <Route path="/leaveamessage" element={<Msg />} />
-    <Route path="/visitinfo" element={<GetVisitInfo />} />
-    <Route path="/blog/" element={<Blog />} />
-    <Route path="*" element={<Page404 />} />
-    {blogs.map((blog) => (
-      <Route
-        key={blog.date}
-        path={blog.date}
-        element={
-          <div>
-            <SingleBlog
-              title={blog.title}
-              text={blog.body}
-              date={blog.date}
-              like={blog.like}
-              id={blog._id}
-            />
-            <Msg blog={blog.date} blogcomment="true" />
-          </div>
+const root = ReactDOM.createRoot(document.getElementById("root"));
+function update() {
+  const Example = () => {
+    axios
+      .get("http://10.142.79.170:5000/blog/get")
+      .then((res) => {
+        console.log("get blog successful from index.js");
+        var x = [];
+        for (var j = 0; j < res.data.length; j++) {
+          x[j] = {
+            date: res.data[j].date,
+            body: res.data[j].body,
+            title: res.data[j].title,
+          };
         }
-      />
-    ))}
-    {blogs.map((blog) => (
-      <Route
-        key={blog.date}
-        path={"embed/" + blog.date}
-        element={
-          <div>
-            <SingleBlogEmbed
-              title={blog.title}
-              text={blog.body}
-              date={blog.date}
+        var path = [],
+          title = [],
+          text = [],
+          date = [];
+
+        for (var i = 0; i < x.length; i++) {
+          title[i] = x[i].title;
+          text[i] = x[i].body;
+          date[i] = x[i].date;
+          path[i] = (
+            <Route
+              path={date[i]}
+              element={BlogUtil(title[i], text[i], date[i])}
             />
-          </div>
+          );
         }
-      />
-    ))}
-  </Routes>
-);
+        root.render(
+          <HashRouter>
+            <NavBar />
+            <Routes>
+              <Route path="*" element={<CV />} />
+              <Route path="/cv" element={<CV />} />
+              <Route path="/unofficialbio" element={<BIO />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/leaveamessage" element={<Msg />} />
+              <Route path="/visitinfo" element={<VisitInfo />} />
+              <Route path="/blog/" element={<Blog />} />
+              {path}
+            </Routes>
+            <Footer />
+          </HashRouter>
+        );
+      })
+      .catch((error) => {
+        console.log("did not get blog from index.js");
+      });
+  };
+  Example();
+}
+setInterval(update, 1000);
 
-const App = () => {
-  const [blogs, setBlogs] = useState([]);
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    PostVisitInfo();
-  }, []);
-
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const response = await axios.get(`${backendurl}/blog`);
-        setBlogs(response.data);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchBlogs();
-  }, []);
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading blogs: {error.message}</div>;
-
-  return (
-    <BrowserRouter>
-      {window.location.pathname.substring(0, 6) !== "/embed" && <NavBar />}
-      <AppRoutes blogs={blogs} />
-      {window.location.pathname.substring(0, 6) !== "/embed" && <Footer />}
-    </BrowserRouter>
-  );
-};
-
-createRoot(document.getElementById("root")).render(<App />);
+reportWebVitals();

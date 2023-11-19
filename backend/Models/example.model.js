@@ -6,7 +6,6 @@ const exampleSchema = new Schema(
   {
     date: {
       type: String,
-      default: "",
     },
     country: {
       type: String,
@@ -20,6 +19,7 @@ const exampleSchema = new Schema(
       type: String,
       default: "",
     },
+
     ip: {
       type: String,
       default: "",
@@ -35,6 +35,6 @@ const exampleSchema = new Schema(
   { versionKey: false }
 );
 
-const example = mongoose.model("visitinfo", exampleSchema);
+const example = mongoose.model("example", exampleSchema);
 
 module.exports = example;

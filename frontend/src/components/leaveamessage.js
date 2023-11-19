@@ -1,35 +1,40 @@
-import GetComments from "./../utils/getcomments";
-import Commentinputbox from "../htmlelements/commentinputbox";
-import { GetPaddingWidth } from "../utils/adjustelementwidth";
+import Box from "../utils/box";
+import axios from "axios";
+import InputSizesExample from "../utils/form";
 
-var Msg = ({ blog = "00000000", blogcomment = false }) => {
-  const x = GetPaddingWidth(600);
-
+var a = [],
+  b = [],
+  c = [],
+  arr = [];
+var Msg = () => {
+  var get1 = () => {
+    axios
+      .get("http://10.142.79.170:5000/comment/get")
+      .then(function (res) {
+        console.log("get comment successful");
+        for (var i = 0; i < res.data.length; i++) {
+          a[i] = JSON.stringify(res.data[i].user).split('"')[1];
+          b[i] = JSON.stringify(res.data[i].text).split('"')[1];
+          c[i] = JSON.stringify(res.data[i].date).split('"')[1];
+          arr[i] = <Box user={a[i]} comment={b[i]} date={c[i]} />;
+        }
+      })
+      .catch((err) => {
+        console.log("did not get comment" + err);
+      });
+  };
+  get1();
   return (
-    <div style={{ overflowX: "hidden" }}>
+    <>
+      <div> {InputSizesExample()}</div>
       <br />
-      {blogcomment ? (
-        <>
-          <GetComments blog={blog} />
-          <div style={{ paddingLeft: x, paddingRight: x }}>
-            <Commentinputbox id="-1" blog={blog} />
-          </div>{" "}
-        </>
-      ) : (
-        <>
-          <div style={{ paddingLeft: x, paddingRight: x }}>
-            <Commentinputbox id="-1" blog={blog} />
-          </div>
 
-          <GetComments blog={blog} />
-        </>
-      )}
+      <div>{arr}</div>
       <br />
       <br />
       <br />
       <br />
-    </div>
+    </>
   );
 };
-
 export default Msg;
