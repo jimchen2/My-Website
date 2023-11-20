@@ -29,7 +29,7 @@ const SideNav = () => {
         overflowY: "auto",
         padding: "10px",
         boxSizing: "border-box",
-        backgroundColor: "#f8f9fa",
+        // backgroundColor: "#f8f9fa",
         paddingBottom: "150px", // Add bottom padding here
       }}
     >

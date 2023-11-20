@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import { Container, Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap';
 
 function NavBar() {
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -10,7 +12,9 @@ function NavBar() {
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
-    console.log(`Searching for: ${searchTerm}`);
+    if (searchTerm.trim()) {
+      navigate(`/search/${searchTerm}`); // Redirect to the search page with the term
+    }
   };
 
   return (

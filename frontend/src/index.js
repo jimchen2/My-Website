@@ -17,6 +17,7 @@ import SingleBlog from "./htmlelements/SingleBlog";
 import Blog from "./components/blog";
 import SingleBlogEmbed from "./htmlelements/SingleBlogEmbed";
 import Msg from "./components/leaveamessage";
+import Seearch from "./components/seearch";
 
 // Components
 import { GetVisitInfo, PostVisitInfo } from "./components/visitinfo";
@@ -35,6 +36,7 @@ const AppRoutes = ({ blogs }) => (
     <Route path="/leaveamessage" element={<Msg />} />
     <Route path="/visitinfo" element={<GetVisitInfo />} />
     <Route path="/blog/" element={<Blog />} />
+    <Route path="/search/:term" element={<Seearch />} />
     <Route path="*" element={<Page404 />} />
     {blogs.map((blog) => (
       <Route
