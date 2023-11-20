@@ -4,6 +4,7 @@ import LikeButton from "./likebutton";
 import { SideNav } from "../components/static/sidebar.js";
 import { paddingtop } from "../config/global.js";
 import { customHtml } from "../config/global.js";
+import { MathJax, MathJaxContext } from "better-react-mathjax";
 
 function SingleBlog({ date, text, title, like, id, type }) {
   text = text + customHtml;
@@ -60,7 +61,11 @@ function SingleBlog({ date, text, title, like, id, type }) {
                   {title}
                 </a>
               </h2>
-              <div dangerouslySetInnerHTML={{ __html: text }} />
+
+              <MathJaxContext>
+                <div dangerouslySetInnerHTML={{ __html: text }} />
+              </MathJaxContext>
+
               <LikeButton like={like} id={id} blog={true} />
             </div>
           </div>
