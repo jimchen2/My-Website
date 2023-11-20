@@ -12,18 +12,6 @@ function LikeButton({ id, like, blog = false }) {
   const [likes, setLikes] = useState(like.length);
   const [liked, setLiked] = useState(false);
 
-  // useEffect(() => {
-  //   const fetchUserIP = async () => {
-  //     try {
-  //       const response = await axios.get(`${backendurl}/getvisitinfo`);
-  //       setUserIP(response.data.ip);
-  //     } catch (error) {
-  //       console.error("Error fetching user IP:", error);
-  //     }
-  //   };
-
-  //   fetchUserIP();
-  // }, []);
 
   useEffect(() => {
     setLiked(like.includes(userIP));

@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import { GetPaddingWidth } from "../../utils/adjustelementwidth";
 
 function Page404() {
-  const paddwidth = GetPaddingWidth();
   const location = useLocation().pathname;
 
   const displayLocation = location === "/" ? " 404 Page" : location.slice(1);
@@ -39,8 +37,6 @@ function Page404() {
   return (
     <div
       style={{
-        paddingLeft: `${paddwidth}px`,
-        paddingRight: `${paddwidth}px`,
         fontFamily: "'Courier New', monospace",
         whiteSpace: "pre-wrap",
       }}

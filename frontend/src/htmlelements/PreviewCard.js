@@ -1,62 +1,52 @@
-import { Container } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
-import { GetPaddingWidth } from "../utils/adjustelementwidth";
+import React from "react";
+import { Container, Card, Row, Col } from "react-bootstrap";
 
 function PreviewCard(props) {
-  var x = GetPaddingWidth(1000);
-  var str = "/" + props.date;
+  const str = `/${props.date}`;
+
   return (
-    <Container
-      style={{
-        paddingLeft: x + "px",
-        paddingRight: x + "px",
-        minHeight: "150px",
-      }}
-    >
-      <Container>
-        <Card>
-          <Card.Body>
-            <Card.Title>
-              <span style={{ fontSize: "12px" }}>{props.date}</span>
-              <span
-                style={{
-                  fontSize: "12px",
-                  position: "absolute",
-                  right: "30px",
-                  top: "30px",
-                  fontStyle:"italic"
-                }}
-              >
-                {props.type}
-              </span>
-              <br />
-              <span
-                style={{
-                  fontSize: "25px",
-                  position: "relative",
-                  top: "10px",
-                }}
-              >
-                <a href={str}>
-                  <b>{props.title}</b>
+    <Container fluid>
+      <Row className="justify-content-center">
+        <Col md={8} lg={6}>
+          <Card className="mb-4">
+            <Card.Body>
+              <Card.Title>
+                <div className="d-flex justify-content-between">
+                  {/* Smaller text for date and type */}
+                  <span className="text-muted" style={{ fontSize: "0.75rem" }}>
+                    {props.date}
+                  </span>
+                  <span
+                    className="text-muted"
+                    style={{ fontStyle: "italic", fontSize: "0.75rem" }}
+                  >
+                    {props.type}
+                  </span>
+                </div>
+                <a
+                  href={str}
+                  className="text-dark"
+                  style={{ textDecoration: "none" }}
+                >
+                  <h4
+                    className="mt-2"
+                    style={{
+                      color: "blue",
+                      textDecoration: "underline",
+                      fontFamily: "'Ubuntu', sans-serif",
+                    }}
+                  >
+                    {props.title}
+                  </h4>
                 </a>
-              </span>
-            </Card.Title>
-            <Card.Text>
-              <span
-                style={{
-                  fontSize: "12px",
-                  position: "relative",
-                  top: "10px",
-                }}
-              >
+              </Card.Title>
+              <Card.Text className="small" style={{ marginTop: "10px" }}>
                 {props.text}
-              </span>
-            </Card.Text>
-          </Card.Body>
-        </Card>
-      </Container>
-      <br></br> <br></br>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
     </Container>
   );
 }

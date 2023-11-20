@@ -1,43 +1,57 @@
-import React from "react";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import { GetPaddingWidth } from "../../utils/adjustelementwidth";
+import React, { useState } from 'react';
+import { Container, Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap';
 
 function NavBar() {
-  const paddingWidth = GetPaddingWidth(900);
-  const commonStyles = {
-    fontFamily: "'Ubuntu', sans-serif",
-    paddingLeft: `${paddingWidth}px`,
-    paddingRight: `${paddingWidth}px`,
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    console.log(`Searching for: ${searchTerm}`);
   };
 
   return (
-    <Navbar
-      expand="md"
-      fixed="top"
-      className="bg-body-tertiary"
-      style={commonStyles}
-    >
-      <Container className="me-auto">
-        <Nav className="justify-content-start">
-          <Nav.Link>
-            <img alt="" src="/graficon.jpg" style={{ maxHeight: "30px" }} />
-          </Nav.Link>
-          <Navbar.Brand href="/" style={{ paddingTop: "10px" }}>
-            Jim Chen's Website
-          </Navbar.Brand>
-        </Nav>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Nav className="justify-content-end">
-          <Nav.Link href="/cv">CV</Nav.Link>
-          <Nav.Link href="/unofficialbio">Unofficial-Bio</Nav.Link>
-          <Nav.Link href="/projects">Projects</Nav.Link>
-          <Nav.Link href="/blog">Blog</Nav.Link>
-          <Nav.Link href="/leaveamessage">Leave a Message</Nav.Link>
-        </Nav>
-      </Container>
-    </Navbar>
+    <>
+      <style type="text/css">
+        {`
+          @media (min-width: 992px) { 
+            .navbar-brand-spacing {
+              margin-right: 10rem; /* Adjust this value for desired spacing */
+            }
+          }
+        `}
+      </style>
+      <Navbar bg="light" expand="lg" fixed="top">
+        <Container>
+          <Navbar.Brand href="/" className="navbar-brand-spacing">Jim Chen's Website</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="/cv">CV</Nav.Link>
+              <Nav.Link href="/unofficialbio">Unofficial-Bio</Nav.Link>
+              <Nav.Link href="/projects">Projects</Nav.Link>
+              <Nav.Link href="/blog">Blog</Nav.Link>
+              <Nav.Link href="/leaveamessage">Leave a Message</Nav.Link>
+            </Nav>
+            <Form className="d-flex" onSubmit={handleSearchSubmit}>
+              <FormControl
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                value={searchTerm}
+                onChange={handleSearchChange}
+                className="me-2"
+                style={{ borderColor: 'blue' }}
+              />
+              <Button variant="outline-primary" type="submit">Search</Button>
+            </Form>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </>
   );
 }
 

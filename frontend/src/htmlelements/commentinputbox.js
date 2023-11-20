@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-// import { GetWindowWidth } from "../utils/adjustelementwidth";
 import SubmitComment from "../utils/submitcomment";
-
+import { paddingtop } from "../config/global";
 function Commentinputbox({ id, blog }) {
   const [username, setUsername] = useState("");
   const [message, setMessage] = useState("");
 
   const handleSubmitReply = (e) => {
     e.preventDefault();
-    // Additional code for submitting the reply can be added here
     SubmitComment({
       parentid: id,
       username: username,
@@ -29,24 +27,10 @@ function Commentinputbox({ id, blog }) {
     transition: "background-color 0.3s",
   };
 
-  // const windowWidth = GetWindowWidth();
-  // const inputWidth = windowWidth < 750 ? windowWidth / 1.5 : 500;
-  // const inputStyle = {
-  //   width: inputWidth + "px",
-  // };
-
-  // let left_padding=0;
-  // if (GetWindowWidth() < 1024) {
-  //   left_padding = 150;
-  // }
-
   return (
-    <div>
+    <div style={{ marginTop: blog === "00000000" ? `${paddingtop}px` : "0" }}>
       <div
         style={{
-          position: "relative",
-          top: "10px",
-          fontSize: "16px",
           fontFamily: "'Roboto', sans-serif",
         }}
       >

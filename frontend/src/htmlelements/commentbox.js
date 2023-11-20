@@ -1,4 +1,3 @@
-import { GetPaddingWidth } from "../utils/adjustelementwidth";
 import LikeButton from "./likebutton";
 import ReplyButton from "./replybutton";
 
@@ -8,15 +7,11 @@ function CommentBox({ embed = 0, user, date, comment, like, id, blog }) {
   const BASE_FONT_SIZE = 16;
 
   const adjustedEmbed = embed > MAX_EMBED ? MAX_EMBED - 1 : embed - 1;
-  const paddingLeft = Math.max(GetPaddingWidth(800), 200) - 200;
 
-  const paddingRight = paddingLeft + adjustedEmbed * ADJUST_FACTOR;
 
   const containerStyle = {
     fontSize: `${BASE_FONT_SIZE}px`,
     fontFamily: "'Roboto', sans-serif",
-    paddingLeft: `${paddingLeft}px`,
-    paddingRight: `${paddingRight}px`,
     position: "relative",
     left: `${adjustedEmbed * ADJUST_FACTOR}px`,
     whiteSpace: "pre-wrap",

@@ -24,7 +24,7 @@ import { GetVisitInfo, PostVisitInfo } from "./components/visitinfo";
 import Footer from "./components/static/footer";
 import NavBar from "./components/static/navbar";
 
-import { useHeaderPadding } from "./utils/adjustelementwidth";
+import { paddingtop } from "./config/global";
 
 const AppRoutes = ({ blogs }) => (
   <Routes>
@@ -78,7 +78,6 @@ const App = () => {
   const [blogs, setBlogs] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const padd = useHeaderPadding();
 
   useEffect(() => {
     PostVisitInfo();
@@ -104,7 +103,7 @@ const App = () => {
   return (
     <BrowserRouter>
       {window.location.pathname.substring(0, 6) !== "/embed" && <NavBar />}
-      <div style={{ paddingTop: `${padd}px` }}>
+      <div >
         <AppRoutes blogs={blogs} />
       </div>
 

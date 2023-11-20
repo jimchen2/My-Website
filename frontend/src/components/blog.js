@@ -4,8 +4,7 @@ import PreviewCard from "../htmlelements/PreviewCard";
 import backendurl from "../config/config";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
-import { GetPaddingWidth } from "../utils/adjustelementwidth";
-
+import { paddingtop } from "../config/global";
 function Blog() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -13,7 +12,6 @@ function Blog() {
   const [error, setError] = useState(null);
   const [postTypes, setPostTypes] = useState([]);
   const [selectedTypes, setSelectedTypes] = useState([]);
-  const paddingWidth = GetPaddingWidth(1000);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -82,13 +80,16 @@ function Blog() {
   };
 
   return (
-    <div style={{ padding: "2rem 0" }}>
+    <div style={{ paddingBottom: "2rem" }}>
+      {" "}
+      {/* Updated padding */}
       <ToggleButtonGroup
         style={{
           display: "flex",
           flexWrap: "wrap",
-          paddingLeft: `${paddingWidth}px`,
-          paddingRight: `${paddingWidth}px`,
+          marginBottom: "1rem", // Add some bottom margin if needed
+          paddingRight: "20%",
+          paddingLeft: "20%",
         }}
         type="checkbox"
         value={selectedTypes}
@@ -99,8 +100,9 @@ function Blog() {
           id={`tbg-btn-${"all"}`}
           value={"all"}
           style={{
-            backgroundColor: selectedTypes.includes("all") ? "black" : "white",
-            color: selectedTypes.includes("all") ? "white" : "black",
+            backgroundColor: selectedTypes.includes("all") ? "blue" : "white",
+            color: selectedTypes.includes("all") ? "white" : "blue",
+            top: `${paddingtop}px`, // Correctly updated top padding
           }}
         >
           {`all (${data.length})`}
@@ -112,10 +114,11 @@ function Blog() {
             id={`tbg-btn-${type}`}
             value={type}
             style={{
-              backgroundColor: selectedTypes.includes(type) ? "black" : "white",
-              color: selectedTypes.includes(type) ? "white" : "black",
+              backgroundColor: selectedTypes.includes(type) ? "blue" : "white",
+              color: selectedTypes.includes(type) ? "white" : "blue",
               flexShrink: 0,
               flexGrow: 0,
+              top: `${paddingtop}px`, // Correctly updated top padding
             }}
           >
             {type} ({count})
@@ -124,15 +127,19 @@ function Blog() {
       </ToggleButtonGroup>
       <br />
       <br />
+      <div style={{ marginTop: "2rem" }}></div>
       {filteredData.map((post, index) => (
-        <PreviewCard
-          key={index}
-          title={post.title}
-          text={post.body.substring(0, 150)}
-          date={post.date}
-          type={post.type}
-        />
+        <div>
+          <PreviewCard
+            key={index}
+            title={post.title}
+            text={post.body.substring(0, 150)}
+            date={post.date}
+            type={post.type}
+          />
+        </div>
       ))}
+      <div style={{ marginBottom: "2rem" }}></div>
     </div>
   );
 }

@@ -1,36 +1,41 @@
+import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
 import GetComments from "./../utils/getcomments";
-import Commentinputbox from "../htmlelements/commentinputbox";
-import { GetPaddingWidth } from "../utils/adjustelementwidth";
-
-var Msg = ({ blog = "00000000", blogcomment = false }) => {
-  const x1=GetPaddingWidth(600);
-  const x = GetPaddingWidth(800);
-  const y = GetPaddingWidth(1000);
-
-  
+import CommentInputBox from "../htmlelements/commentinputbox";
+import { paddingtop } from "../config/global";
+const Msg = ({ blog = "00000000", blogcomment = false }) => {
   return (
-    <div style={{ overflowX: "hidden" }}>
-      <br />
-      {blogcomment ? (
-        <>
-          <GetComments blog={blog} paddl={200} paddr={x} />
-          <div style={{ paddingLeft: Math.max(200, x1), paddingRight: x1 }}>
-            <Commentinputbox id="-1" blog={blog} />
-          </div>{" "}
-        </>
-      ) : (
-        <>
-          <div style={{ paddingLeft: x1, paddingRight: x1 }}>
-            <Commentinputbox id="-1" blog={blog} />
-          </div>
-          <GetComments blog={blog} paddl={y} paddr={y}/>
-        </>
-      )}
-      <br />
-      <br />
-      <br />
-      <br />
-    </div>
+    <Container fluid style={{ overflowX: "hidden", overflowY: "hidden" }}>
+      <Row className="my-4">
+        {blogcomment ? (
+          <>
+            <Col md={{ span: 6, offset: 3 }}>
+              <GetComments blog={blog} />
+            </Col>
+            <Col
+              md={{ span: 8, offset: 2 }}
+              style={{ paddingLeft: "15%", paddingRight: "15%" }}
+            >
+              <CommentInputBox id="-1" blog={blog} />
+            </Col>
+            <div style={{ marginBottom: `${paddingtop}px` }}></div>
+          </>
+        ) : (
+          <>
+            <Col
+              md={{ span: 8, offset: 2 }}
+              style={{ paddingLeft: "15%", paddingRight: "15%" }}
+            >
+              <CommentInputBox id="-1" blog={blog} />
+            </Col>
+            <Col md={{ span: 6, offset: 3 }}>
+              <GetComments blog={blog} />
+            </Col>
+            <div style={{ marginBottom: `${paddingtop}px` }}></div>
+          </>
+        )}
+      </Row>
+    </Container>
   );
 };
 
