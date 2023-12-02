@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import Commentinputbox from "./commentinputbox";
+import Commentinputbox from "../commentsubmit/commentinputbox";
+import { useGlobalColorScheme } from "../config/global.js";
 
 function ReplyButton({ id, blog }) {
+  const { colors } = useGlobalColorScheme();
+
   const [showReply, setShowReply] = useState(false);
 
   const handleReply = () => {
@@ -11,9 +14,9 @@ function ReplyButton({ id, blog }) {
 
   const buttonStyle = {
     fontSize: "0.75rem",
-    color: "black",
-    backgroundColor: "white",
-    borderColor: "black",
+    color: colors.color_blue_2,
+    backgroundColor: colors.color_white,
+    borderColor: colors.color_blue_2,
     padding: "2px 6px",
     margin: "5px",
     transition: "background-color 0.3s",

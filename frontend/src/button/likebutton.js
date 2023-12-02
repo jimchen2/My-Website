@@ -3,9 +3,10 @@ import { Button } from "react-bootstrap";
 import axios from "axios";
 import backendurl from "../config/config";
 import { getIpAddress } from "../config/global";
+import { useGlobalColorScheme } from "../config/global.js";
 
 function LikeButton({ id, like, blog = false }) {
-  // const [userIP, setUserIP] = useState("");
+  const { colors } = useGlobalColorScheme();
 
   const userIP = getIpAddress();
   console.log(userIP);
@@ -45,9 +46,9 @@ function LikeButton({ id, like, blog = false }) {
 
   const baseStyle = {
     fontSize: "0.75rem",
-    color: "black",
-    backgroundColor: "white",
-    borderColor: "black",
+    color: colors.color_blue_2,
+    backgroundColor: colors.color_white,
+    borderColor: colors.color_blue_2,
     padding: "2px 6px",
     margin: "5px",
     transition: "background-color 0.3s, color 0.3s",
@@ -55,8 +56,8 @@ function LikeButton({ id, like, blog = false }) {
 
   const likedButtonStyle = {
     ...baseStyle,
-    backgroundColor: "black",
-    color: "white",
+    backgroundColor: colors.color_blue_2,
+    color: colors.color_white,
   };
 
   return (

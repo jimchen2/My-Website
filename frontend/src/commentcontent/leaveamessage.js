@@ -1,8 +1,10 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import GetComments from "./../utils/getcomments";
-import CommentInputBox from "../htmlelements/commentinputbox";
+import GetComments from "./getcomments";
+import CommentInputBox from "../commentsubmit/commentinputbox";
 import { paddingtop } from "../config/global";
+
+
 const Msg = ({ blog = "00000000", blogcomment = false }) => {
   return (
     <Container fluid style={{ overflowX: "hidden", overflowY: "hidden" }}>

@@ -1,7 +1,9 @@
-import LikeButton from "./likebutton";
-import ReplyButton from "./replybutton";
+import LikeButton from "../button/likebutton";
+import ReplyButton from "../button/replybutton";
+import { useGlobalColorScheme } from "../config/global.js";
 
 function CommentBox({ embed = 0, user, date, comment, like, id, blog }) {
+  const { colors } = useGlobalColorScheme();
   const MAX_EMBED = 6;
   const ADJUST_FACTOR = 40;
   const BASE_FONT_SIZE = 16;
@@ -18,7 +20,7 @@ function CommentBox({ embed = 0, user, date, comment, like, id, blog }) {
   };
 
   const userStyle = {
-    color: "blue",
+    color: colors.color_black,
   };
 
   const dateStyle = {

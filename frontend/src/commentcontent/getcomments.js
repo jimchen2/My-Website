@@ -1,4 +1,4 @@
-import CommentBox from "../htmlelements/commentbox";
+import CommentBox from "./commentbox";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import backendurl from "../config/config";

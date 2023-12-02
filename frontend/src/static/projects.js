@@ -1,7 +1,14 @@
 import React from "react";
 import { CardGroup, Card } from "react-bootstrap";
+import { useGlobalColorScheme } from "../config/global.js";
 
 function Projects() {
+  const { colors } = useGlobalColorScheme();
+
+  const containerStyle = {
+    minHeight: "100vh", // This will make sure the container has a minimum height of 100% of the viewport height
+  };
+
   const cardStyle = {
     maxWidth: "300px",
   };
@@ -25,24 +32,30 @@ function Projects() {
   ];
 
   return (
-    <div>
+    <div style={containerStyle}>
       <br />
       <CardGroup>
         {projectCards.map((card, index) => (
           <Card
             key={index}
-            style={{ ...cardStyle, marginLeft: index > 0 ? "20px" : "0px" }}
+            style={{
+              ...cardStyle,
+              marginLeft: index > 0 ? "20px" : "0px",
+              filter: colors.grayscale ? "grayscale(100%)" : "none", // Conditional grayscale filter
+            }}
           >
             <Card.Img
               variant="top"
               src={card.image}
               style={{ maxWidth: "300px" }}
             />
-            <Card.Body>
+            <Card.Body style={{ backgroundColor: colors.color_white }}>
               <Card.Title>
-                <a href={card.link}>{card.title}</a>
+                <a href={card.link} style={{ color: colors.color_blue_2 }}>
+                  {card.title}
+                </a>
               </Card.Title>
-              <Card.Text>
+              <Card.Text style={{ color: colors.color_black }}>
                 {card.date}
                 <span
                   style={{

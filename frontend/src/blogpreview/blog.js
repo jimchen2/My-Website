@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import PreviewCard from "../htmlelements/PreviewCard";
+import PreviewCard from "./PreviewCard";
 import backendurl from "../config/config";
 import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import { paddingtop } from "../config/global";
+import { useGlobalColorScheme } from "../config/global.js";
+
 function Blog() {
+  const containerStyle = {
+    minHeight: "100vh", // This will make sure the container has a minimum height of 100% of the viewport height
+  };
+
+  const { colors } = useGlobalColorScheme();
+
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [error, setError] = useState(null);
   const [postTypes, setPostTypes] = useState([]);
   const [selectedTypes, setSelectedTypes] = useState([]);
 
@@ -32,9 +40,9 @@ function Blog() {
         setPostTypes(typesWithCount);
         setSelectedTypes([]);
       } catch (err) {
-        setError(err);
+        // setError(err);
       } finally {
-        setIsLoading(false);
+        // setIsLoading(false);
       }
     };
 
@@ -80,66 +88,76 @@ function Blog() {
   };
 
   return (
-    <div style={{ paddingBottom: "2rem" }}>
-      {" "}
-      {/* Updated padding */}
-      <ToggleButtonGroup
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          marginBottom: "1rem", // Add some bottom margin if needed
-          paddingRight: "20%",
-          paddingLeft: "20%",
-        }}
-        type="checkbox"
-        value={selectedTypes}
-        onChange={handleSelectionChange}
-      >
-        <ToggleButton
-          key={"all"}
-          id={`tbg-btn-${"all"}`}
-          value={"all"}
+    <div style={containerStyle}>
+      <div style={{ paddingBottom: "2rem" }}>
+        {" "}
+        <ToggleButtonGroup
           style={{
-            backgroundColor: selectedTypes.includes("all") ? "blue" : "white",
-            color: selectedTypes.includes("all") ? "white" : "blue",
-            top: `${paddingtop}px`, // Correctly updated top padding
+            display: "flex",
+            flexWrap: "wrap",
+            marginBottom: "1rem", // Add some bottom margin if needed
+            paddingRight: "20%",
+            paddingLeft: "20%",
           }}
+          type="checkbox"
+          value={selectedTypes}
+          onChange={handleSelectionChange}
         >
-          {`all (${data.length})`}
-        </ToggleButton>
-
-        {postTypes.map(({ type, count }, index) => (
           <ToggleButton
-            key={type}
-            id={`tbg-btn-${type}`}
-            value={type}
+            key={"all"}
+            id={`tbg-btn-${"all"}`}
+            value={"all"}
             style={{
-              backgroundColor: selectedTypes.includes(type) ? "blue" : "white",
-              color: selectedTypes.includes(type) ? "white" : "blue",
-              flexShrink: 0,
-              flexGrow: 0,
+              backgroundColor: selectedTypes.includes("all")
+                ? colors.color_blue_2
+                : colors.color_white,
+              borderColor: colors.color_blue_2,
+
+              color: selectedTypes.includes("all") ? colors.color_white : colors.color_blue_2,
               top: `${paddingtop}px`, // Correctly updated top padding
             }}
           >
-            {type} ({count})
+            {`all (${data.length})`}
           </ToggleButton>
+
+          {postTypes.map(({ type, count }, index) => (
+            <ToggleButton
+              key={type}
+              id={`tbg-btn-${type}`}
+              value={type}
+              style={{
+                backgroundColor: selectedTypes.includes(type)
+                  ? colors.color_blue_2
+                  : colors.color_white,
+                color: selectedTypes.includes(type)
+                  ? colors.color_white
+                  : colors.color_blue_2,
+                borderColor: colors.color_blue_2,
+                flexShrink: 0,
+                flexGrow: 0,
+                top: `${paddingtop}px`, // Correctly updated top padding
+              }}
+            >
+              {type} ({count})
+            </ToggleButton>
+          ))}
+        </ToggleButtonGroup>
+        <br />
+        <br />
+        <div style={{ marginTop: "2rem" }}></div>
+        {filteredData.map((post, index) => (
+          <div>
+            <PreviewCard
+              key={index}
+              title={post.title}
+              text={post.body.substring(0, 150)}
+              date={post.date}
+              type={post.type}
+            />
+          </div>
         ))}
-      </ToggleButtonGroup>
-      <br />
-      <br />
-      <div style={{ marginTop: "2rem" }}></div>
-      {filteredData.map((post, index) => (
-        <div>
-          <PreviewCard
-            key={index}
-            title={post.title}
-            text={post.body.substring(0, 150)}
-            date={post.date}
-            type={post.type}
-          />
-        </div>
-      ))}
-      <div style={{ marginBottom: "2rem" }}></div>
+        <div style={{ marginBottom: "2rem" }}></div>
+      </div>
     </div>
   );
 }

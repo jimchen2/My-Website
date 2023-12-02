@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Accordion, Card, Col } from "react-bootstrap";
-import { paddingtop } from "../../config/global";
-import { addItemToNavbar } from "./sidenavhelper";
+import { paddingtop, useGlobalColorScheme } from "../config/global";
+import { useAddItemToNavbar } from "./sidebaritem";
 
 const SideNav = () => {
-  const [tocItems, setTocItems] = useState([]);
-  const [activeKey, setActiveKey] = useState(null);
+  const [activeKey, setActiveKey] = React.useState(null);
+  const { colors } = useGlobalColorScheme();
 
-  useEffect(() => {
-    addItemToNavbar(setTocItems, setActiveKey);
-  }, []);
+  // Use the custom hook here and pass setActiveKey
+  const tocItems = useAddItemToNavbar(setActiveKey);
 
   const cardHeaderStyle = {
     wordWrap: "break-word",
@@ -29,13 +28,12 @@ const SideNav = () => {
         overflowY: "auto",
         padding: "10px",
         boxSizing: "border-box",
-        // backgroundColor: "#f8f9fa",
         paddingBottom: "150px", // Add bottom padding here
       }}
     >
       <Accordion activeKey={activeKey}>
         {tocItems.map((item, index) => (
-          <Card key={item.key}>
+          <Card key={item.key} style={{backgroundColor:colors.color_white}}>
             {React.cloneElement(item.content, {
               hasChildren: item.hasChildren,
               setActiveKey: setActiveKey,

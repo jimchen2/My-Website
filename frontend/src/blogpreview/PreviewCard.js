@@ -1,12 +1,14 @@
 import React from "react";
 import { Container, Card, Row, Col } from "react-bootstrap";
+import { useGlobalColorScheme } from "../config/global.js";
 
 function PreviewCard(props) {
   const str = `/${props.date}`;
+  const { colors } = useGlobalColorScheme();
 
   // Function to remove HTML tags
   const removeHtmlTags = (text) => {
-    return text.replace(/<[^>]*>/g, '');
+    return text.replace(/<[^>]*>/g, "");
   };
 
   const getHighlightedText = (text, highlight) => {
@@ -28,43 +30,53 @@ function PreviewCard(props) {
     const cleanSnippet = removeHtmlTags(snippet);
 
     // Highlight the term in the snippet
-    const parts = cleanSnippet.split(new RegExp(`(${highlight})`, 'gi'));
+    const parts = cleanSnippet.split(new RegExp(`(${highlight})`, "gi"));
     return parts.map((part, i) =>
       part.toLowerCase() === highlight.toLowerCase() ? (
-        <span key={i} style={{ backgroundColor: 'blue' }}>{part}</span>
+        <span key={i} style={{ backgroundColor: colors.color_gray }}>
+          {part}
+        </span>
       ) : (
         part
       )
     );
   };
-
   return (
     <Container fluid>
       <Row className="justify-content-center">
         <Col md={8} lg={6}>
-          <Card className="mb-4">
+          <Card
+            className="mb-4"
+            style={{
+              backgroundColor: colors.color_white,
+              border: "1px solid " + colors.color_black, // Adds a black border
+            }}
+          >
             <Card.Body>
               <Card.Title>
                 <div className="d-flex justify-content-between">
-                  <span className="text-muted" style={{ fontSize: "0.75rem" }}>
+                  <span
+                    style={{ fontSize: "0.75rem", color: colors.color_black }}
+                  >
                     {props.date}
                   </span>
                   <span
-                    className="text-muted"
-                    style={{ fontStyle: "italic", fontSize: "0.75rem" }}
+                    style={{
+                      fontStyle: "italic",
+                      fontSize: "0.75rem",
+                      color: colors.color_black,
+                    }}
                   >
                     {props.type}
                   </span>
                 </div>
                 <a
                   href={str}
-                  className="text-dark"
-                  style={{ textDecoration: "none" }}
+                  style={{ textDecoration: "none", color: colors.color_blue_2 }}
                 >
                   <h4
                     className="mt-2"
                     style={{
-                      color: "blue",
                       textDecoration: "underline",
                       fontFamily: "'Ubuntu', sans-serif",
                     }}
@@ -73,7 +85,10 @@ function PreviewCard(props) {
                   </h4>
                 </a>
               </Card.Title>
-              <Card.Text className="small" style={{ marginTop: "10px" }}>
+              <Card.Text
+                className="small"
+                style={{ marginTop: "10px", color: colors.color_black }}
+              >
                 {getHighlightedText(props.text, props.searchTerm)}
               </Card.Text>
             </Card.Body>

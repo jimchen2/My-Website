@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import PreviewCard from '../htmlelements/PreviewCard';
-import backendurl from '../config/config';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import PreviewCard from "./PreviewCard";
+import backendurl from "../config/config";
+import { useParams } from "react-router-dom";
+import { useGlobalColorScheme } from "../config/global.js";
 
 function Search() {
+  const { colors } = useGlobalColorScheme();
+
   const [data, setData] = useState([]); // Holds the original data
   const [filteredData, setFilteredData] = useState([]); // Holds the filtered data for display
   const { term } = useParams(); // Extracts the search term from the URL
@@ -26,7 +29,7 @@ function Search() {
 
   // Function to remove HTML tags
   const removeHtmlTags = (text) => {
-    return text.replace(/<[^>]*>/g, '');
+    return text.replace(/<[^>]*>/g, "");
   };
 
   useEffect(() => {
@@ -34,18 +37,29 @@ function Search() {
     const searchTerm = term || "";
 
     // Filter the data based on the search term
-    const filtered = data.filter(post =>
-      (post.title && post.title.toLowerCase().includes(searchTerm.toLowerCase())) ||
-      (post.body && removeHtmlTags(post.body).toLowerCase().includes(searchTerm.toLowerCase()))
+    const filtered = data.filter(
+      (post) =>
+        (post.title &&
+          post.title.toLowerCase().includes(searchTerm.toLowerCase())) ||
+        (post.body &&
+          removeHtmlTags(post.body)
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase()))
     );
     setFilteredData(filtered);
   }, [term, data]);
 
+  const containerStyle = {
+    backgroundColor: colors.color_white, // White background
+    color: colors.color_black, // Black text
+    paddingBottom: "2rem",
+    marginTop: "2rem",
+    minHeight: "100vh", // This will make sure the container has a minimum height of 100% of the viewport height
+  };
+
   return (
-    <div style={{ paddingBottom: '2rem' }}>
+    <div style={containerStyle}>
       <br />
-      <br />
-      <div style={{ marginTop: '2rem' }}></div>
       {filteredData.map((post, index) => (
         <PreviewCard
           key={index}
@@ -56,7 +70,7 @@ function Search() {
           searchTerm={term} // Pass the search term here
         />
       ))}
-      <div style={{ marginBottom: '2rem' }}></div>
+      <div style={{ marginBottom: "2rem" }}></div>
     </div>
   );
 }
