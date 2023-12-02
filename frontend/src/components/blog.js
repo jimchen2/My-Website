@@ -9,7 +9,11 @@ var a = [],
 function Blog() {
   var get1 = () => {
     axios
+<<<<<<< HEAD
       .get("http://10.142.79.170:5000/blog/get")
+=======
+      .get("https://jimchen.uk/blog")
+>>>>>>> bc76ca3 (fixed bugs)
       .then(function (res) {
         console.log("get blog successful from blog.js");
         for (var i = 0; i < res.data.length; i++) {

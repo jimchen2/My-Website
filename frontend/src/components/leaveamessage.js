@@ -9,7 +9,11 @@ var a = [],
 var Msg = () => {
   var get1 = () => {
     axios
+<<<<<<< HEAD
       .get("http://10.142.79.170:5000/comment/get")
+=======
+      .get("https://jimchen.uk/comment")
+>>>>>>> bc76ca3 (fixed bugs)
       .then(function (res) {
         console.log("get comment successful");
         for (var i = 0; i < res.data.length; i++) {

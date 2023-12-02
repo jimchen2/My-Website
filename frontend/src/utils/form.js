@@ -25,7 +25,11 @@ function InputSizesExample() {
     var specdate = d.toString();
     specdate = specdate.split("GMT")[0];
     axios
+<<<<<<< HEAD
       .post("http://10.142.79.170:5000/comment/post", {
+=======
+      .post("https://jimchen.uk/comment", {
+>>>>>>> bc76ca3 (fixed bugs)
         user: name,
         comment: enteredComment,
         date: specdate,

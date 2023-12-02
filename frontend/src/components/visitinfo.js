@@ -10,7 +10,11 @@ axios
     re = res.data.region;
     ci = res.data.city;
     var post = 1;
+<<<<<<< HEAD
     axios.get("http://10.142.79.170:5000/example/get").then(function (res1) {
+=======
+    axios.get("https://jimchen.uk/visitinfo").then(function (res1) {
+>>>>>>> bc76ca3 (fixed bugs)
       var index = -1;
       for (var i = res1.data.length - 1; i >= 0; i--) {
         if (res1.data[i].ip === ip) index = i;
@@ -21,7 +25,11 @@ axios
       if (post === 1) {
         var d = Date();
         axios
+<<<<<<< HEAD
           .post("http://10.142.79.170:5000/example/post", {
+=======
+          .post("https://jimchen.uk/visitinfo", {
+>>>>>>> bc76ca3 (fixed bugs)
             ip: ip,
             country: co,
             region: re,
