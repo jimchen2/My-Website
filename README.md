@@ -1,3 +1,5 @@
 # My-Website
 
-Added Different color modes, changed blog layout, added css, changed blog image css
+Added Different color modes
+Changed blog layout, added css for headers and paragraph, changed blog image css
+Enabled javascript execution in blogs
