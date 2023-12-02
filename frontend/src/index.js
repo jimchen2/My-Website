@@ -20,11 +20,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 function update() {
   const Example = () => {
     axios
-<<<<<<< HEAD
-      .get("http://10.142.79.170:5000/blog/get")
-=======
       .get("https://jimchen.uk/blog")
->>>>>>> bc76ca3 (fixed bugs)
       .then((res) => {
         console.log("get blog successful from index.js");
         var x = [];
