@@ -1,5 +1,3 @@
 # My-Website
 
-Added search function, changed blog images storage
-
-changed blog preview, add latex
+Added Different color modes, changed blog layout, added css, changed blog image css
