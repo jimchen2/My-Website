@@ -1,7 +1,5 @@
 # My-Website
 
-Added Different color modes
+Added Personal Logs and Fixed bugs in themes
 
-Changed blog layout, added css for headers and paragraph, changed blog image css
-
-Enabled javascript execution in blogs
+20231216
