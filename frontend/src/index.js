@@ -17,7 +17,7 @@ import NavBar from "./static/navbar";
 
 // Config
 import backendurl from "./config/config";
-import {useGlobalColorScheme } from "./config/global.js";
+import { useGlobalColorScheme } from "./config/global.js";
 
 // Blog
 import SingleBlog from "./blogcontent/SingleBlog";
@@ -28,8 +28,12 @@ import Seearch from "./blogpreview/seearch";
 // Comment
 import Msg from "./commentcontent/leaveamessage";
 
+// Annoucement
+import LogSecure from "./log/logsecure.js";
+
 const AppRoutes = ({ blogs }) => (
   <Routes>
+    {/* public */}
     <Route path="/" element={<Blog />} />
     <Route path="/cv" element={<CV />} />
     <Route path="/projects" element={<Projects />} />
@@ -37,6 +41,9 @@ const AppRoutes = ({ blogs }) => (
     <Route path="/visitinfo" element={<GetVisitInfo />} />
     <Route path="/blog/" element={<Blog />} />
     <Route path="/search/:term" element={<Seearch />} />
+    {/* private */}
+    <Route path="/embed/annoucement/" element={<LogSecure />} />
+
     <Route path="*" element={<Page404 />} />
     {blogs.map((blog) => (
       <Route
@@ -105,6 +112,10 @@ const App = () => {
     };
     fetchBlogs();
   }, []);
+
+  useEffect(() => {
+    document.body.style.backgroundColor = colors.color_white;
+  }, [colors.color_white]);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading blogs: {error.message}</div>;

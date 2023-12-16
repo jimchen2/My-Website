@@ -31,7 +31,7 @@ function NavBar() {
   };
 
   const toggleTheme = () => {
-    if (colors.dark == false && colors.grayscale == false) {
+    if (colors.dark === false && colors.grayscale === false) {
       updateColor("color_white", "#000000");
       updateColor("color_black", "#ffffff");
       updateColor("color_blue_1", "#000000");
@@ -40,7 +40,7 @@ function NavBar() {
       updateColor("color_gray", "#000000");
       updateColor("grayscale", false);
       updateColor("dark", true);
-    } else if (colors.dark == true) {
+    } else if (colors.dark === true) {
       updateColor("color_white", "#ffffff");
       updateColor("color_black", "#000000");
       updateColor("color_blue_1", "#ffffff");
@@ -105,7 +105,7 @@ function NavBar() {
                 href="/leaveamessage"
                 style={{ color: colors.color_black }}
               >
-                Askbox
+                Message
               </Nav.Link>
               <Nav.Link
                 onClick={toggleTheme}

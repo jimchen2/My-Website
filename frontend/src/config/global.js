@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect, useCallback } from "react";
 import Cookies from "js-cookie";
 
 let globalIpAddress = "unknown"; // Default IP address
@@ -13,23 +13,23 @@ export function getIpAddress() {
 
 export let paddingtop = 80;
 
+const defaultColors = {
+  color_white: "#ffffff",
+  color_black: "#000000",
+  color_blue_1: "#0000ff", // Light blue
+  color_blue_2: "#0000ff", // Dark blue
+  color_light_gray: "#fffcfc", // Light gray
+  color_gray: "#d0d4dc", // Dark gray
+  grayscale: false,
+  dark: false,
+};
 
 export const useColorScheme = () => {
-  const getColorSchemeFromCookies = () => {
+
+  const getColorSchemeFromCookies = useCallback(() => {
     const savedColors = Cookies.get("colorScheme");
     return savedColors ? JSON.parse(savedColors) : defaultColors;
-  };
-
-  const defaultColors = {
-    color_white: "#ffffff",
-    color_black: "#000000",
-    color_blue_1: "#0000ff", // Light blue
-    color_blue_2: "#0000ff", // Dark blue
-    color_light_gray: "#fffcfc", // Light gray
-    color_gray: "#d0d4dc", // Dark gray
-    grayscale: false,
-    dark: false,
-  };
+  }, []);
 
   const [colors, setColors] = useState(getColorSchemeFromCookies);
 
@@ -39,14 +39,15 @@ export const useColorScheme = () => {
         ...prevColors,
         [colorName]: colorValue,
       };
-      Cookies.set("colorScheme", JSON.stringify(newColors), { expires: 1000 }); // Set cookie to expire in 7 days
+      Cookies.set("colorScheme", JSON.stringify(newColors), { expires: 1000 }); // Set cookie to expire in 1000 days
 
       return newColors;
     });
   };
+
   useEffect(() => {
     setColors(getColorSchemeFromCookies());
-  }, []);
+  }, [getColorSchemeFromCookies]);
 
   return { colors, updateColor };
 };
