@@ -6,30 +6,23 @@ function CV() {
   const { colors } = useGlobalColorScheme();
 
   const containerStyle = {
-    minHeight: "100vh", // This will make sure the container has a minimum height of 100% of the viewport height
+    minHeight: "100vh", // This ensures the container has a minimum height of 100% of the viewport height
+    display: "flex", // Enables flexbox for this container
+    flexDirection: "column", // Sets the direction of main axis to column
+    justifyContent: "center", // Centers content along the main axis (vertically)
   };
 
   return (
     <Container fluid className="p-3" style={containerStyle}>
-      <Row
-        className="justify-content-center"
-        style={{
-          filter: colors.grayscale ? "grayscale(100%)" : "none", // Conditional grayscale filter
-        }}
-      >
-        <Col xs={12}>
-          <div className="text-center mb-4">My Curriculum Vitae 2023.6</div>
-          <div
-            style={{ overflow: "auto", minHeight: "500px", maxWidth: "800px" }}
-          >
-            <object
-              data="/CV.pdf"
-              type="application/pdf"
-              width="100%"
-              style={{ minHeight: "500px" }}
-            >
-            </object>
-          </div>
+      <Row className="justify-content-center" style={{ filter: colors.grayscale ? "grayscale(100%)" : "none" }}>
+        <Col xs={12} md={6}> {/* Adjust the column size as needed for medium and larger screens */}
+          <iframe
+            src="https://drive.google.com/file/d/1qTuJPde4FJmLOh7R9pF22H1SP4Ooj0UP/preview"
+            width="640"
+            height="480"
+            style={{ display: "block", marginLeft: "auto", marginRight: "auto" }} // Center the iframe horizontally
+            allow="autoplay"
+          ></iframe>
         </Col>
       </Row>
     </Container>
