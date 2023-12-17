@@ -35,7 +35,7 @@ const projectData = [
     Using cryptographic methods to secure user data by encrypting it with keys derived from username and password. 
     Functions include user storing, retrieving, appending files, sharing and revoking invitations`,
     // sourceCode: "https://github.com/jimchen2/My-Website",
-    docs: "http://localhost/Sat%20Jul%2022%202023%2022:04:05",
+    docs: "http://jimchen.me/Sat%20Jul%2022%202023%2022:04:05",
     // demo: "https://www.mywebsite.com"
   },
   {
