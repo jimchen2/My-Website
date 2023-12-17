@@ -5,15 +5,9 @@ import { useGlobalColorScheme } from "../config/global.js";
 
 function Projects() {
   const { colors } = useGlobalColorScheme();
-
-  const containerStyle = {
-    minHeight: "100vh",
-  };
-
-
   const cardStyle = {
     minWidth: "30%",
-    maxWidth: "30%",
+    maxWidth: `max(30%, 300px)`,
   };
 
   const imageWrapperStyle = {
@@ -36,7 +30,7 @@ function Projects() {
   };
 
   return (
-    <div style={containerStyle}>
+    <div>
       <br />
       <br />
       <br />
