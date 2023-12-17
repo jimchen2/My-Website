@@ -11,7 +11,6 @@ function Projects() {
   };
 
   const cardGroupStyle = {
-    maxWidth: "80%",
     margin: "auto",
   };
 
