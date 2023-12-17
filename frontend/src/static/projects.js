@@ -10,9 +10,6 @@ function Projects() {
     minHeight: "100vh",
   };
 
-  const cardGroupStyle = {
-    margin: "auto",
-  };
 
   const cardStyle = {
     minWidth: "30%",
@@ -43,7 +40,7 @@ function Projects() {
       <br />
       <br />
       <br />
-      <CardGroup style={cardGroupStyle}>
+      <CardGroup>
         {projectData.map((project, index) => (
           <Card
             key={index}
