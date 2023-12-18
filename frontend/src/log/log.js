@@ -22,12 +22,21 @@ const Log = () => {
   const [currentLog, setCurrentLog] = useState(null);
 
   const sortAndFilterLogs = useCallback((newLogs) => {
-    const sortedLogs = newLogs.sort((a, b) => b.pin - a.pin);
+    // First, sort by pin status (pinned first), then by date (most recent first)
+    const sortedLogs = newLogs.sort((a, b) => {
+      // Compare by pin status
+      if (b.pin && !a.pin) return 1;
+      if (a.pin && !b.pin) return -1;
+  
+      // If pin status is the same, compare by date
+      return new Date(b.date) - new Date(a.date);
+    });
+  
     setFilteredLogs(
       logType ? sortedLogs.filter((log) => log.type === logType) : sortedLogs
     );
   }, [logType]); // Dependency array includes logType
-
+  
   const fetchLogs = useCallback(async () => {
     try {
       const response = await axios.get(`${backendurl}/log`);
@@ -36,7 +45,7 @@ const Log = () => {
     } catch (error) {
       console.error("Error fetching logs:", error);
     }
-  }, [sortAndFilterLogs]); // Include sortAndFilterLogs in the dependency array
+  }, [sortAndFilterLogs]);
 
   useEffect(() => {
     fetchLogs();
