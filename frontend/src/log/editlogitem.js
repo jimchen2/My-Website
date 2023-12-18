@@ -12,15 +12,17 @@ const EditLogModal = ({ show, handleClose, log, updateLog }) => {
     try {
       const updatedLog = { ...log, body: editedBody, pin: editedPin };
       const response = await axios.put(`${backendurl}/log/${log._id}`, updatedLog);
-      updateLog(response.data);
-      handleClose();
+      updateLog(response.data); // This function should update the parent component's state
+      handleClose(); // This will close the modal
+      window.location.reload(); // This will reload the page
     } catch (error) {
       console.error('Error updating log:', error);
+      // Optionally, add user feedback here, e.g., an error message
     }
   };
 
   return (
-    <Modal show={show} onHide={handleClose} size="lg"> {/* Adjusted size to 'lg' for larger modal */}
+    <Modal show={show} onHide={handleClose} size="lg">
       <Modal.Header closeButton>
         <Modal.Title>Edit Log</Modal.Title>
       </Modal.Header>
@@ -30,10 +32,10 @@ const EditLogModal = ({ show, handleClose, log, updateLog }) => {
             <Form.Label>Log Content</Form.Label>
             <Form.Control 
               as="textarea" 
-              rows={10} /* Increased number of rows for more vertical space */
-              style={{ minHeight: '200px' }} /* Or set a minimum height directly */
+              rows={10}
+              style={{ minHeight: '200px' }}
               value={editedBody} 
-              onChange={(e) => setEditedBody(e.target.value)} 
+              onChange={(e) => setEditedBody(e.target.value)}
             />
           </Form.Group>
           <Form.Group>

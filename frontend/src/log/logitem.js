@@ -88,7 +88,6 @@ const LogItem = ({ log, onDelete, onEdit }) => {
           ))}
         </div>
         <br />
-        <br />
 
         <Button variant="primary" size="sm" onClick={() => onEdit(log)}>
           Edit
