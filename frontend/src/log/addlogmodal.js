@@ -1,11 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form, DropdownButton, Dropdown, FormCheck } from 'react-bootstrap';
 import axios from 'axios';
 import backendurl from "../config/config";
+import Cookies from "js-cookie";
 
 const AddLogModal = ({ show, handleClose, addNewLog }) => {
-  const [newLog, setNewLog] = useState({ body: '', type: 'Studying', pin: false });
-  const logTypes = ['Studying', 'Rules', 'Entertainment', 'Journal'];
+  const [logTypes, setLogTypes] = useState(['Studying', 'Rules', 'Entertainment', 'Journal']); // Default types
+  const getInitialLogType = () => Cookies.get("logType") || 'Studying'; // Fetch the initial log type from cookies or default to 'Studying'
+  
+  const [newLog, setNewLog] = useState({ body: '', type: getInitialLogType(), pin: false });
+
+  useEffect(() => {
+    const storedLogTypes = Cookies.get("logTypes"); // Fetch log types from cookies
+    if (storedLogTypes) {
+      try {
+        const parsedLogTypes = JSON.parse(storedLogTypes); // Parse the JSON string
+        if (Array.isArray(parsedLogTypes)) {
+          setLogTypes(parsedLogTypes); // Update log types if parsing is successful
+          // No need to update newLog.type here as it's handled by getInitialLogType()
+        }
+      } catch (error) {
+        console.error("Error parsing log types from cookies", error);
+      }
+    }
+  }, []); // Empty dependency array means this effect runs once on mount
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +37,6 @@ const AddLogModal = ({ show, handleClose, addNewLog }) => {
       console.error('Error adding new log:', error);
     }
   };
-  
 
   return (
     <Modal show={show} onHide={handleClose}>

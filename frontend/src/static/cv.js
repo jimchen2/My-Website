@@ -17,6 +17,7 @@ function CV() {
       <Row className="justify-content-center" style={{ filter: colors.grayscale ? "grayscale(100%)" : "none" }}>
         <Col xs={12} md={6}> {/* Adjust the column size as needed for medium and larger screens */}
           <iframe
+            title="cv"
             src="https://drive.google.com/file/d/1qTuJPde4FJmLOh7R9pF22H1SP4Ooj0UP/preview"
             width="640"
             height="480"

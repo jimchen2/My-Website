@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form, FormCheck } from 'react-bootstrap';
 import axios from 'axios';
 import backendurl from "../config/config";
@@ -7,6 +7,13 @@ const EditLogModal = ({ show, handleClose, log, updateLog }) => {
   const [editedBody, setEditedBody] = useState(log.body);
   const [editedPin, setEditedPin] = useState(log.pin);
 
+  useEffect(() => {
+    // When the modal is closed, reload the page
+    if (!show) {
+      window.location.reload();
+    }
+  }, [show]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -14,7 +21,6 @@ const EditLogModal = ({ show, handleClose, log, updateLog }) => {
       const response = await axios.put(`${backendurl}/log/${log._id}`, updatedLog);
       updateLog(response.data); // This function should update the parent component's state
       handleClose(); // This will close the modal
-      window.location.reload(); // This will reload the page
     } catch (error) {
       console.error('Error updating log:', error);
       // Optionally, add user feedback here, e.g., an error message

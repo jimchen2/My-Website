@@ -85,7 +85,7 @@ const Log = () => {
   };
 
   return (
-    <Container style={{ maxWidth: "700px", fontFamily: "Open Sans" }}>
+    <Container style={{ maxWidth: "700px" }}>
       <br />
       <Row className="justify-content-md-center mb-3">
         <Button

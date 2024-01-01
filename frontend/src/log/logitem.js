@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Card, Button } from "react-bootstrap";
-import ReactMarkdown from "react-markdown";
-import DOMPurify from "dompurify"; // Ensure dompurify is installed
+import parse from "html-react-parser";
 
 const LogItem = ({ log, onDelete, onEdit }) => {
   const formattedDate = new Date(log.date).toLocaleDateString("en-US", {
@@ -11,45 +10,26 @@ const LogItem = ({ log, onDelete, onEdit }) => {
     weekday: "long",
   });
 
-  const extractElements = (markdown) => {
-    const iframeRegex = /<iframe[^>]*src=["'](.*?)["'][^>]*><\/iframe>/g;
-    const brRegex = /<br\s*\/?>/g;
-    let match;
-    let cleanMarkdown = markdown;
-    let iframes = [];
-    let brs = [];
+  const contentRef = useRef(null); // Create a ref for the div containing the parsed HTML
 
-    while ((match = iframeRegex.exec(markdown))) {
-      const sanitizedSrc = DOMPurify.sanitize(match[1]);
-      const sanitizedIframe = `<iframe src="${sanitizedSrc}" allowfullscreen></iframe>`;
-      iframes.push(sanitizedIframe);
-      cleanMarkdown = cleanMarkdown.replace(match[0], "");
+  useEffect(() => {
+    // After the component mounts, apply styles to img and iframe elements
+    if (contentRef.current) {
+      const imgs = contentRef.current.getElementsByTagName('img');
+      for (const img of imgs) {
+        img.style.maxWidth = '60%';
+      }
+
+      const iframes = contentRef.current.getElementsByTagName('iframe');
+      for (const iframe of iframes) {
+        iframe.style.width = '60%';
+        const aspectRatio = 9 / 16;
+        const width = iframe.offsetWidth;
+        const calculatedHeight = width * aspectRatio;
+        iframe.style.height = `${calculatedHeight}px`;
+      }
     }
-
-    cleanMarkdown = cleanMarkdown.replace(brRegex, () => {
-      brs.push('<br/>');
-      return '{br}';
-    });
-
-    return { cleanMarkdown, iframes, brs };
-  };
-
-  const { cleanMarkdown, iframes, brs } = extractElements(log.body);
-
-  const renderContent = (text) => (
-    text.split('{br}').map((part, index) => (
-      <React.Fragment key={index}>
-        <ReactMarkdown components={{
-          img: ({ node, ...props }) => (
-            <img style={{ maxWidth: "60%" }} {...props} />
-          ),
-        }}>
-          {part}
-        </ReactMarkdown>
-        {index < brs.length && <div dangerouslySetInnerHTML={{ __html: brs[index] }} />}
-      </React.Fragment>
-    ))
-  );
+  }, []); // Empty dependency array ensures this runs once after initial render
 
   return (
     <Card className="mb-3">
@@ -66,29 +46,9 @@ const LogItem = ({ log, onDelete, onEdit }) => {
             {log.pin && <span style={{ fontWeight: "bold" }}> Pin</span>}
           </span>
         </Card.Title>
-        {renderContent(cleanMarkdown)}
-        <div>
-          {iframes.map((iframeHTML, index) => (
-            <div
-              key={index}
-              dangerouslySetInnerHTML={{ __html: iframeHTML }}
-              ref={(node) => {
-                if (node) {
-                  const iframe = node.querySelector("iframe");
-                  if (iframe) {
-                    iframe.style.width = "60%";
-                    const aspectRatio = 9 / 16;
-                    const width = iframe.offsetWidth;
-                    const calculatedHeight = width * aspectRatio;
-                    iframe.style.height = `${calculatedHeight}px`;
-                  }
-                }
-              }}
-            />
-          ))}
-        </div>
+        {/* Attach ref to div where HTML will be parsed */}
+        <div ref={contentRef}>{parse(log.body)}</div>
         <br />
-
         <Button variant="primary" size="sm" onClick={() => onEdit(log)}>
           Edit
         </Button>
