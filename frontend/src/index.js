@@ -24,8 +24,8 @@ const SingleBlogEmbed = lazy(() => import("./blogcontent/SingleBlogEmbed"));
 const Blog = lazy(() => import("./blogpreview/blog"));
 const Seearch = lazy(() => import("./blogpreview/seearch"));
 const Msg = lazy(() => import("./commentcontent/leaveamessage"));
-const LogSecure = lazy(() => import("./log/logsecure.js"));
-const PublicLogPage = lazy(() => import("./log/public.js"));
+const LogSecure = lazy(() => import("./log(deprecated)/logsecure.js"));
+const PublicLogPage = lazy(() => import("./log(deprecated)/public.js"));
 
 const AppRoutes = ({ blogs }) => (
   <Suspense fallback={<div>Loading...</div>}>

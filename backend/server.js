@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-mongoose.connect(process.env.URI);
+mongoose.connect("mongodb://127.0.0.1:27017");
 const app = express();
 app.use([require("cors")(), express.json()]);
 [
@@ -16,4 +16,4 @@ app.use([require("cors")(), express.json()]);
   "/changechildid",
   "/log",
 ].forEach((route) => app.use(route, require(`./Routes${route}`)));
-app.listen(80);
+app.listen(5000);

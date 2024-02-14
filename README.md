@@ -1,5 +1,14 @@
 # My-Website
 
-Added Personal Logs(also changed backend) and Fixed bugs in themes
+Backend
+```
+cd backend 
+npm i
+node server.js
+```
 
-20231216
+Frontend
+```
+cd frontend
+sudo npm start
+```
