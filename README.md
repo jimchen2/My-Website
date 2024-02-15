@@ -31,6 +31,7 @@ yay -S mongodb-bin --noconfirm
 ```
 sudo systemctl enable --now mongodb
 mongorestore --dir=./dump
+mongoimport --db test --file ./dump/test/blogs.json
 ```
 
 ### Configure Nginx
