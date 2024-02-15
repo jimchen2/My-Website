@@ -1,4 +1,4 @@
-const backendurl="https://jimchen.uk"
-// const backendurl="http://172.20.10.5:5000"
+const backendUrl = "/api";
 
-export default backendurl
+export default backendUrl;
+
