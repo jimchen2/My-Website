@@ -6,6 +6,7 @@ Run on Linode instances
 ```
 sudo pacman -Syu
 sudo pacman -S git base-devel
+cd /root & git clone https://github.com/jimchen2/My-Website
 sudo useradd -m builduser
 sudo passwd -d builduser
 echo 'builduser ALL=(ALL) NOPASSWD: ALL' | sudo tee /etc/sudoers.d/builduser
@@ -35,32 +36,25 @@ mongorestore --dir=./dump
 ### Configure Nginx
 ```
 # Move the nginx.conf to /etc/nginx/nginx.conf
-sudo setfacl -m u:nginx:rx /root
-sudo setfacl -R -m u:nginx:rX /root/My-Website/frontend/build
+cp /root/My-Website/nginx.conf  /etc/nginx/nginx.conf
 sudo systemctl start nginx
 ```
 
-
-### Backend(starting on port 5000)
+### Backend (starting on port 5000)
 ```
-cd /root/My-Website/backend;
-cd backend 
+cd /root/My-Website/backend
 npm i
-node server.js &
+node server.js 
 ```
 
-### 
+### Frontend
 
-
-Frontend
 ```
-cd frontend
+cd /root/My-Website/frontend
 npm i
-sudo npm start
+sudo chmod o+x /root /root/My-Website /root/My-Website/frontend /root/My-Website/frontend/build
+sudo chmod -R o+r /root/My-Website/frontend/build
+npm install -g serve
+sudo npm run build
+sudo systemctl restart nginx
 ```
-
-
-[user ~/Downloads/My-Website/frontend]$ sudo chmod o+x /home /home/user /home/user/Downloads /home/user/Downloads/My-Website /home/user/Downloads/My-Website/frontend
-[user ~/Downloads/My-Website/frontend]$ sudo chmod -R 755 /home/user/Downloads/My-Website/frontend/build
-[user ~/Downloads/My-Website/frontend]$ 
-
