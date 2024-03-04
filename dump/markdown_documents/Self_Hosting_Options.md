@@ -1,5 +1,5 @@
 ---
-title: "Misconcepts in Web Development"
+title: "Self Hosting Options"
 date: Sun Mar 03 2024 08:02:43
 id: 20240303
 likes: 0
