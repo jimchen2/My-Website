@@ -1,42 +1,53 @@
-// SingleBlogPaddingHelper.js
-
-/**
- * Calculates the padding for the blog container based on the window width.
- * Ensures the total width never goes below 600px by adjusting the padding.
- * 
- * @returns {Object} An object containing the paddingTop, paddingLeft, and paddingRight values.
- */
 export function calculateBlogPadding() {
     const basePaddingTop = 30; // Example paddingTop value, adjust as needed
-    let paddingLeft = "10%";
-    let paddingRight = "30%";
+    let paddingLeftPercentage = 10;
+    let paddingRightPercentage = 30;
   
     const windowWidth = window.innerWidth;
     const minWidth = 600; // Minimum width threshold
-  
-    // No padding if window width is less than 600px
-    if (windowWidth < minWidth) {
-      paddingLeft = "0";
-      paddingRight = "0";
+    let effectiveWidth = windowWidth;
+
+    // Adjust padding percentages based on window width
+    if (windowWidth >= 600) {
+        paddingLeftPercentage = 10;
+        paddingRightPercentage = windowWidth < 1200 ? 10 : 30;
     } else {
-      // Calculate total padding in pixels for 10% and 30%
-      const totalPadding = windowWidth * 0.4; // 10% left + 30% right
-      const contentWidth = windowWidth - totalPadding;
+        paddingLeftPercentage = 5;
+        paddingRightPercentage = 5;
+    }
+
+    // Calculate padding in pixels
+    let paddingLeft = windowWidth * paddingLeftPercentage / 100;
+    let paddingRight = windowWidth * paddingRightPercentage / 100;
   
-      if (contentWidth < minWidth) {
-        // Calculate the maximum padding percentage while ensuring contentWidth >= minWidth
-        const maxPaddingPercentage = (windowWidth - minWidth) / windowWidth * 100;
-        const sidePadding = maxPaddingPercentage / 4; // Distribute evenly to both sides, prioritizing less padding on the right
+    effectiveWidth = windowWidth - paddingLeft - paddingRight;
   
-        paddingLeft = `${sidePadding}%`;
-        paddingRight = `${maxPaddingPercentage - sidePadding}%`; // Allocate the remainder to the right
-      }
+    // Adjust paddings to ensure content width is at least 600px
+    while (effectiveWidth < minWidth) {
+        if (paddingRightPercentage > 10) {
+            paddingRightPercentage -= 1;
+            paddingRight = windowWidth * paddingRightPercentage / 100;
+        } else if (paddingLeftPercentage > 5) {
+            paddingLeftPercentage -= 1;
+            paddingLeft = windowWidth * paddingLeftPercentage / 100;
+        } else {
+            break; // Prevents an infinite loop if adjustments can't meet the criteria
+        }
+
+        effectiveWidth = windowWidth - paddingLeft - paddingRight;
+
+        // When both sides reach their minimum but width is still below 600, reduce both equally
+        if (effectiveWidth < minWidth && paddingLeftPercentage === 5 && paddingRightPercentage === 10) {
+            paddingLeftPercentage = paddingRightPercentage = Math.max(5, paddingLeftPercentage - 1);
+            paddingLeft = windowWidth * paddingLeftPercentage / 100;
+            paddingRight = windowWidth * paddingRightPercentage / 100;
+            effectiveWidth = windowWidth - paddingLeft - paddingRight;
+        }
     }
   
     return {
-      paddingTop: `${basePaddingTop}px`,
-      paddingLeft,
-      paddingRight,
+        paddingTop: `${basePaddingTop}px`,
+        paddingLeft: `${paddingLeftPercentage}%`,
+        paddingRight: `${paddingRightPercentage}%`,
     };
-  }
-  
+}
