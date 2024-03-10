@@ -194,12 +194,5 @@ University of Alaska Anchorage\
 ![](https://lh7-us.googleusercontent.com/flcIzTSKFrtdfGwueNaOU_z9zPbQKolzyV1ZARrNuIX7I788MxQzZuPdXKmaG19yg_zNOGAubQZ3IrcUFKWK6uruzTvfxWGSlquQ6t9I7ulP_YvA0qRq1prnvC3n_OS7tgkQZqyaY7_cE6dz0FsxpTo=s800){style="width:80.0%"}\
 \
 
-::: iframe
-::: {.document-root .loading}
-::: request-storage-access
-<div>
 
-![Google](//ssl.gstatic.com/docs/common/product/google_app_icon1.png){.icon}
-
-</div>
 
