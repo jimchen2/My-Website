@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import { SideNav } from '../sidebar/sidebar.js';
-import { paddingtop, useGlobalColorScheme } from '../config/global.js';
-import { MathJaxContext } from 'better-react-mathjax';
-import { NavLink } from 'react-router-dom';
-import { calculateBlogPadding } from './SingleBlogPaddingHelper'; // Make sure the path is correct based on your project structure
+import React, { useEffect, useRef, useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import { SideNav } from "../sidebar/sidebar.js";
+import { paddingtop, useGlobalColorScheme } from "../config/global.js";
+import { MathJaxContext } from "better-react-mathjax";
+import { NavLink } from "react-router-dom";
+import { calculateBlogPadding } from "./SingleBlogPaddingHelper"; // Make sure the path is correct based on your project structure
+import BlogLikeButtonHelper from "./bloglikebuttonhelper.js";
 
 function SingleBlog({ date, text, title, like, id }) {
   const { colors } = useGlobalColorScheme();
@@ -16,13 +17,13 @@ function SingleBlog({ date, text, title, like, id }) {
       setPaddingStyles(calculateBlogPadding());
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
     if (contentRef.current) {
-      const scripts = contentRef.current.getElementsByTagName('script');
+      const scripts = contentRef.current.getElementsByTagName("script");
       for (const script of scripts) {
         eval(script.innerText);
       }
@@ -36,8 +37,8 @@ function SingleBlog({ date, text, title, like, id }) {
   p, code { font-size: 16px; }
 
   details {
-    background-color: ${colors.dark ? '#333' : '#f9f9f9'};
-    border: 1px solid ${colors.dark ? '#666' : '#ddd'};
+    background-color: ${colors.dark ? "#333" : "#f9f9f9"};
+    border: 1px solid ${colors.dark ? "#666" : "#ddd"};
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -46,17 +47,17 @@ function SingleBlog({ date, text, title, like, id }) {
   summary {
     font-weight: bold;
     cursor: pointer;
-    color: ${colors.dark ? '#fff' : '#000'};
+    color: ${colors.dark ? "#fff" : "#000"};
   }
 
   details[open] summary::after, details:not([open]) summary::after {
     float: right;
-    color: ${colors.dark ? '#fff' : '#000'};
+    color: ${colors.dark ? "#fff" : "#000"};
   }
   `;
 
   const themeStyles = `
-    code, pre { background-color: ${colors.dark ? '#3C3F41' : '#D3D3D3'}; }
+    code, pre { background-color: ${colors.dark ? "#3C3F41" : "#D3D3D3"}; }
     code { font-family: monospace; }
   `;
 
@@ -64,9 +65,9 @@ function SingleBlog({ date, text, title, like, id }) {
   text += customHtml;
 
   return (
-    <Container fluid style={{ paddingBottom: '1rem' }}>
-      <br/>
-      <br/>
+    <Container fluid style={{ paddingBottom: "1rem" }}>
+      <br />
+      <br />
       <Row>
         <Col lg={3} xl={2} className="d-none d-lg-block">
           <SideNav />
@@ -87,9 +88,9 @@ function SingleBlog({ date, text, title, like, id }) {
               <div
                 className="blog-header"
                 style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
                 }}
               >
                 <small className="text" style={{ color: colors.color_black }}>
@@ -101,7 +102,7 @@ function SingleBlog({ date, text, title, like, id }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    textDecoration: 'underline',
+                    textDecoration: "underline",
                     color: colors.color_blue_2,
                   }}
                 >
@@ -113,9 +114,9 @@ function SingleBlog({ date, text, title, like, id }) {
                   to={`/blog/${date}`}
                   className="text"
                   style={{
-                    textDecoration: 'underline',
+                    textDecoration: "underline",
                     color: colors.color_blue_2,
-                    fontSize: '28px',
+                    fontSize: "28px",
                   }}
                 >
                   {title}
@@ -125,7 +126,15 @@ function SingleBlog({ date, text, title, like, id }) {
               <MathJaxContext>
                 <style
                   dangerouslySetInnerHTML={{
-                    __html: `.blog-content img { max-width: 500px; width: 100%; height: auto; } .blog-content a { color: ${colors.color_blue_2}; text-decoration: underline; } .blog-content p { color: ${colors.color_black}; } ${colors.grayscale ? '.blog-content { filter: grayscale(100%); }' : ''}`,
+                    __html: `.blog-content img { max-width: 500px; width: 100%; height: auto; } .blog-content a { color: ${
+                      colors.color_blue_2
+                    }; text-decoration: underline; } .blog-content p { color: ${
+                      colors.color_black
+                    }; } ${
+                      colors.grayscale
+                        ? ".blog-content { filter: grayscale(100%); }"
+                        : ""
+                    }`,
                   }}
                 />
                 <div
@@ -134,7 +143,7 @@ function SingleBlog({ date, text, title, like, id }) {
                   dangerouslySetInnerHTML={{ __html: text }}
                 />
               </MathJaxContext>
-              {/* You might have a LikeButton component here */}
+              <BlogLikeButtonHelper blogdate={date}/>
             </div>
           </div>
         </Col>

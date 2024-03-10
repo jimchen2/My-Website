@@ -8,7 +8,7 @@ Run on Linode instances
 get
 /blogpreview
 get
-/getbloglikes?blogdate="string"
+/getbloglikes?blogdate="string"&isarray=bool
 get
 /comment?blogdate="string"
 get/post
@@ -16,10 +16,10 @@ get/post
 get/post
 /changechildid
 patch
-/addliketoblog?blogdate="string"
+/addliketoblog?blogdate="string"&isliked
 patch
-/addliketocomment?dateString=yourDateStringHere
-/addliketocomment?commentid=yourCommentIdHere
+/addliketocomment?dateString=yourDateStringHere&isliked
+/addliketocomment?commentid=yourCommentIdHere&isliked
 patch
 /search?query="string"
 get
