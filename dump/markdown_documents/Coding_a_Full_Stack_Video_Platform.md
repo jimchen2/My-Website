@@ -2,7 +2,7 @@
 title: "Coding a Full Stack Video Platform"
 date: Mon Mar 18 2024 07:36:43
 type: web
-_oid: "6d3b733dd1289ecd137dab36"
+_oid: "6d3b2a3dd1289ecd137da236"
 ---
 
 Recently, the idea of self-hosting was so intriguing that I decided to code a full-stack video platform.
