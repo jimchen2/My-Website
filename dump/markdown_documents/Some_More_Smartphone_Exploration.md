@@ -19,7 +19,7 @@ problems myself, which adds a layer of frustration to the process.
 
 ## Exploring Pinephone
 
-In a post (<https://www.jimchen.me/Thu%20Sep%2028%202023%2000:38:25>) I
+In a post (<https://www.jimchen.me/blog/Thu%20Sep%2028%202023%2000:38:25>) I
 wrote last September, I shared my journey with the PinePhone. Following
 that, the PinePhone could no longer read the microSD card and
 encountered a gnupg error that I couldn't resolve.

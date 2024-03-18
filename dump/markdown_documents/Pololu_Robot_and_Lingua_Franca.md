@@ -206,3 +206,26 @@ of modifying array
 ## Robot Going in a Square
 
 So after a while I wrote a program to make the robot go in a square.
+
+Here is the video
+
+::: iframe
+::: {style="display:none"}
+::: {#one-google-bar .ndfHFb-c4YZDc-Woal0c-jcJzye-ZMv3u .ndfHFb-c4YZDc-n1UuX-Bz112c}
+::: {#gb .gb_Pa .gb_ld .gb_gb .gb_i .gb_Oc style="background-color:transparent"}
+::: {.gb_Bd .gb_eb .gb_qd ng-non-bindable="" ogsr-up="" style="padding:0"}
+::: {.gb_Ud style="display:block"}
+::: gb_6c
+:::
+
+[[登入]{.gb_Kd}](https://accounts.google.com/ServiceLogin?service=wise&passive=1209600&osid=1&continue=https://drive.google.com/file/d/1AE_GnrjhE2oOE9Sab5sMXK-66zHhmCt1/preview&followup=https://drive.google.com/file/d/1AE_GnrjhE2oOE9Sab5sMXK-66zHhmCt1/preview&ec=GAZAGQ){.gb_Ba
+.gb_md .gb_Od .gb_i .gb_me aria-label="登入" target="_top"}
+:::
+:::
+:::
+:::
+:::
+
+::: {ng-non-bindable=""}
+:::
+:::

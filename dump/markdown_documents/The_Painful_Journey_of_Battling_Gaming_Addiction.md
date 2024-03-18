@@ -195,7 +195,7 @@ However, I must also acknowledge painfully that pros of gaming exists
 
 ## The essay I wrote before {#whats-next}
 
-https://www.jimchen.me/Thu%20Oct%2013%202022%2014:10:02
+https://www.jimchen.me/blog/Thu%20Oct%2013%202022%2014:10:02
 
 ## What\'s next? {#whats-nedfdxt}
 

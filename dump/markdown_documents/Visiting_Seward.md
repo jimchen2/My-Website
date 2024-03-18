@@ -581,3 +581,24 @@ Waterfall Switchback Trail\
 Summit Lake\
 ![](https://lh7-us.googleusercontent.com/qgvIiDNdy3J_sQPzCcLYkNzAHCpdmCM0f8YZgSnE3EvTMgxVZGwSiEMbkKM_s_e2Wqe3J8DXH9vOH3BvFkovolaU7CzdB4RL53lKTbTlntqehbh8EtyCkNg52d2H--tYL81hNNYgVoULv-Fc1PMttgIutEWzaP_Ba-B24PVCWGXJQanX1MKjRLSGYhZleA=s800){style="width:80.0%"}\
 \
+
+::: iframe
+::: {style="display:none"}
+::: {#one-google-bar .ndfHFb-c4YZDc-Woal0c-jcJzye-ZMv3u .ndfHFb-c4YZDc-n1UuX-Bz112c}
+::: {#gb .gb_Pa .gb_ld .gb_gb .gb_i .gb_Oc style="background-color:transparent"}
+::: {.gb_Bd .gb_eb .gb_qd ng-non-bindable="" ogsr-up="" style="padding:0"}
+::: {.gb_Ud style="display:block"}
+::: gb_6c
+:::
+
+[[登入]{.gb_Kd}](https://accounts.google.com/ServiceLogin?service=wise&passive=1209600&osid=1&continue=https://drive.google.com/file/d/1mHZSJdZu0gxC5B8ePxPGXzTMt8TMywgE/preview&followup=https://drive.google.com/file/d/1mHZSJdZu0gxC5B8ePxPGXzTMt8TMywgE/preview&ec=GAZAGQ){.gb_Ba
+.gb_md .gb_Od .gb_i .gb_me aria-label="登入" target="_top"}
+:::
+:::
+:::
+:::
+:::
+
+::: {ng-non-bindable=""}
+:::
+:::

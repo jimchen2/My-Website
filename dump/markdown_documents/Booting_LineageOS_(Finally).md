@@ -11,7 +11,7 @@ I hadn't realized, but I documented three unsuccessful journeys with mobile OS.
 
 ### Some More Smartphone Exploration
 
-[https://www.jimchen.me/Fri%20Jan%2026%202024%2002:38:01](https://www.jimchen.me/Fri%20Jan%2026%202024%2002:38:01) - the most recent one.
+[https://www.jimchen.me/blog/Fri%20Jan%2026%202024%2002:38:01](https://www.jimchen.me/Fri%20Jan%2026%202024%2002:38:01) - the most recent one.
 
 I tried to boot LineageOS for Redmi Note 10 Pro (it's different, lol) on my old Redmi Note 10 5G. My device is called "Camellia," which is kind of stupid. Anyways, I didn't succeed.
 
@@ -21,13 +21,13 @@ So last time, I gave up.
 
 ### The Unsuccessful and Frustrating Journey of Exploring PinePhone
 
-[https://www.jimchen.me/Thu%20Sep%2028%202023%2000:38:25](https://www.jimchen.me/Thu%20Sep%2028%202023%2000:38:25)
+[https://www.jimchen.me/blog/Thu%20Sep%2028%202023%2000:38:25](https://www.jimchen.me/Thu%20Sep%2028%202023%2000:38:25)
 
 Last year, I tried PinePhone after deciding to switch to open source software. After that, I became fanatic and obsessed with everything FOSS related and ArchLinux. Anyway, the PinePhone quickly stopped functioning and couldn't read the MicroSD card. I still haven't fixed it. Trying PinePhone cost me a lot of time.
 
 ### Trying adb, Failed, and Recovering My Computer
 
-[https://www.jimchen.me/Sun%20Sep%2017%202023%2015:29:34](https://www.jimchen.me/Sun%20Sep%2017%202023%2015:29:34)
+[https://www.jimchen.me/blog/Sun%20Sep%2017%202023%2015:29:34](https://www.jimchen.me/Sun%20Sep%2017%202023%2015:29:34)
 
 This is my first attempt, dating as early as mid-September last year. The adb wouldn't run on Ubuntu for no reason, and after asking ChatGPT, it returned a command which I ran and broke my laptop. I tried adb with the Redmi Note 10 the first time, and didn't successfully unlock it.
 

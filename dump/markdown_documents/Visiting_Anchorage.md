@@ -194,5 +194,73 @@ University of Alaska Anchorage\
 ![](https://lh7-us.googleusercontent.com/flcIzTSKFrtdfGwueNaOU_z9zPbQKolzyV1ZARrNuIX7I788MxQzZuPdXKmaG19yg_zNOGAubQZ3IrcUFKWK6uruzTvfxWGSlquQ6t9I7ulP_YvA0qRq1prnvC3n_OS7tgkQZqyaY7_cE6dz0FsxpTo=s800){style="width:80.0%"}\
 \
 
+::: iframe
+::: {.document-root .loading}
+::: request-storage-access
+<div>
 
+![Google](//ssl.gstatic.com/docs/common/product/google_app_icon1.png){.icon}
 
+</div>
+
+::: title-text
+允許「Google」存取你必要的 Cookie
+:::
+
+::: subtitle-text
+如關閉必要的 Cookie，你將無法存取此內容
+:::
+
+::: button-container
+[瞭解更多資訊](https://support.google.com/drive?p=enable_storage_access){.button
+target="cookieAccessHelp"}
+
+允許 Cookie
+:::
+:::
+
+::: login
+<div>
+
+![Google
+標誌](https://www.gstatic.com/images/branding/googleg/1x/googleg_standard_color_48dp.png){.icon}
+
+</div>
+
+::: title-text
+登入您的 Google 帳戶
+:::
+
+::: subtitle-text
+你必須登入才能存取此內容
+:::
+
+::: button-container
+登入
+:::
+:::
+
+::: error
+<div>
+
+![Google
+標誌](https://www.gstatic.com/images/branding/googleg/1x/googleg_standard_color_48dp.png){.icon}
+
+</div>
+
+::: title-text
+無法存取你的 Google 帳戶
+:::
+
+::: subtitle-text
+目前無法存取此內容。如要繼續操作，請嘗試登入你的 Google 帳戶或允許使用
+Cookie。
+:::
+
+::: button-container
+[瞭解更多資訊](https://support.google.com/drive?p=enable_storage_access){.primary-button
+.button target="cookieAccessHelp"}
+:::
+:::
+:::
+:::
