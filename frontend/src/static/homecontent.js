@@ -14,6 +14,8 @@ const htmlContent = {
 <ul>
   <li><strong>Invidious Instance</strong>: Access YouTube content. <a href="https://nexttube.org">nexttube.org</a> <a href="https://invidious.jimchen.me">Alternative
   url</a></li>
+  <li><strong>AnonyTube</strong>: AnonyTube is a beta-stage, free, ad-free video platform focusing on openness with automatic subtitles, video translations. <a href="https://tubeapp.org/">AnonyTube</a> <a href="https://anonytube.jimchen.me">Alternative
+  url</a></li>
 </ul>
 <h3 id="wiki"><strong>Wiki</strong></h3>
 <ul>
@@ -59,7 +61,7 @@ const htmlContent = {
 </ul>
 <h3 id="laptop-purchase"><strong>Laptop Purchase</strong></h3>
 <ul>
-  <li><strong>System76</strong>: Powerful Linux laptops. <a href="https://system76.com/laptops">system76.com/laptops</a></li>
+  <li><strong>System76</strong>: Powerful Linux laptops. <a href="https://system76.com/laptops">System76</a></li>
   <li><strong>Purism</strong>: Privacy and security focused Linux laptops. <a href="https://shop.puri.sm/shop/librem-14/">Librem 14</a></li>
   <li><strong>Framework</strong>: DIY edition build laptop yourself. <a href="https://frame.work/marketplace/laptops">Framework Marketplace</a></li>
   <li><strong>Juno Computers</strong>: Variety of Linux laptops. <a href="https://junocomputers.com/product-category/laptops/">Juno Computers</a></li>
