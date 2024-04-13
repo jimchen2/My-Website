@@ -20,9 +20,11 @@ const htmlContent = {
 <h3 id="wiki"><strong>Wiki</strong></h3>
 <ul>
   <li><strong>ArchLinux Wiki</strong>: <a href="https://wiki.archlinux.org/">wiki.archlinux.org</a></li>
-  <li><strong>Cloudflare Docs</strong>: <a href="https://developers.cloudflare.com/pages">developers.cloudflare.com/pages</a></li>
-  <li><strong>LFS docs</strong>: <a href="https://www.linuxfromscratch.org/lfs/read.html">linuxfromscratch.org/lfs/read.html</a></li>
   <li><strong>Gentoo Wiki</strong>: <a href="https://wiki.gentoo.org/">wiki.gentoo.org</a></li>
+  <li><strong>LFS docs</strong>: <a href="https://www.linuxfromscratch.org/lfs/read.html">linuxfromscratch.org/lfs/read.html</a></li>
+  <li><strong>FreeBSD Wiki</strong>: <a href="https://wiki.freebsd.org/">wiki.freebsd.org</a></li>      
+  <li><strong>Cloudflare Docs</strong>: <a href="https://developers.cloudflare.com/pages">developers.cloudflare.com/pages</a></li>
+  <li><strong>Linode Docs</strong>: <a href="https://www.linode.com/docs/">linode.com/docs</a></li>
   <li><strong>The Hidden Wiki</strong>: <a href="https://thehiddenwiki.org/">thehiddenwiki.org</a></li>
   <li><strong>PostgreSQL</strong>: <a href="https://www.postgresql.org/docs/current/">postgresql.org/docs/current</a></li>
   <li><strong>MongoDB</strong>: <a href="https://www.mongodb.com/docs/">mongodb.com/docs</a></li>
@@ -34,7 +36,9 @@ const htmlContent = {
 </ul>
 <h3 id="computer-networking"><strong>Computer Networking</strong></h3>
 <ul>
-  <li><strong>VPN for mainland China</strong>: <a href="https://guatizi.com/">挂梯子</a>, <a href="https://github.com/hwanz/SSR-V2ray-Trojan-vpn">低价机场合集</a></li>
+  <li><strong>VPN providers</strong>: <a href="https://guatizi.com/">Provider Lists</a>, <a href="https://github.com/hwanz/SSR-V2ray-Trojan-vpn">Cheap VPN</a>
+  </li>
+    <li><strong>Clash</strong>: <a href="https://clash.wiki/">Clash</a></li>
   <li><strong>Cloudflare Warp</strong>: Cloudflare’s performance and
   security-focused VPN. <a href="https://1.1.1.1/">1.1.1.1</a></li>
   <li><strong>Tor Project</strong>: Browsing anonymously and dark web. <a href="https://www.torproject.org/">torproject.org</a></li>
@@ -50,8 +54,10 @@ const htmlContent = {
   <li><strong>PeerTube</strong>: Decentralized video hosting platform. <a href="https://github.com/Chocobozzz/PeerTube">PeerTube on GitHub</a></li>
   <li><strong>Mastodon</strong>: Decentralized social network. <a href="https://github.com/mastodon/mastodon">Mastodon on GitHub</a></li>
   <li><strong>Discourse</strong>: Open-source forum. <a href="https://github.com/discourse/discourse">Discourse on GitHub</a></li>
+    <li><strong>Element</strong>: Secure Messaging. <a href="https://github.com/element-hq/element-web/">Element on GitHub</a></li>
+      <li><strong>Libera Chat</strong>: Community Platform for FOSS projects. <a href="https://github.com/Libera-Chat/libera-chat.github.io">Libera Chat on GitHub</a></li>
 </ul>
-<h3 id="swiss-army-knife-software"><strong>Swiss-Army-Knife Software</strong></h3>
+<h3 id="multipurpose-software"><strong>Multi-purpose software</strong></h3>
 <ul>
   <li><strong>FFmpeg</strong>: Audio/Video processing. <a href="https://github.com/FFmpeg/FFmpeg">FFmpeg on GitHub</a></li>
   <li><strong>yt-dlp</strong>: Multiplatform and m3u8 video downloader. <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp on GitHub</a> <br>Can be used in combination with <a href="https://github.com/puemos/hls-downloader">HLS Downloader on GitHub</a></li>
