@@ -71,7 +71,6 @@ const htmlContent = {
   <li><strong>Purism</strong>: Beautiful, Secure, Privacy-Respecting Devices. <a href="https://shop.puri.sm/shop/">shop.puri.sm/shop</a></li>
   <li><strong>Framework</strong>: Fully Custom Thin, Powerful Notebook. <a href="https://frame.work/marketplace">frame.work/marketplace</a></li>
   <li><strong>Pine64</strong>: High-quality, Low-cost ARM and RISC-V Devices. <a href="https://pine64.org/devices/">pine64.org/devices</a></li>
-/a></li>
 </ul>
 
 <h3 id="mobile-operating-systems"><strong>Pricing</strong></h3>
