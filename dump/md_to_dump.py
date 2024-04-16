@@ -2,7 +2,7 @@ import os
 import yaml
 import json
 import subprocess
-
+from bson import ObjectId
 
 # Directories for your files
 markdown_dir = './markdown_documents'
@@ -41,32 +41,18 @@ for md_filename in os.listdir(markdown_dir):
         blog_entry = metadata  # Start with YAML metadata
         blog_entry['body'] = html_content  # Add HTML content as 'body'
         
-        # Adding id as ObjectId equivalent
-        blog_entry['_id'] = {"$oid": blog_entry['_oid']}
-        del blog_entry['_oid']
+        # Generate a new ObjectId
+        blog_entry['_id'] = str(ObjectId())
         
         # Add the blog entry to the list
         blog_entries.append(blog_entry)
         subprocess.run(["rm", html_file_path])  # This might need adjustment if "tohtml" expects different parameters
 
 
-# Open and read the file in text mode
+# Open and write the file in text mode, with each document on a separate line
 with open(output_json_file, 'w', encoding='utf-8') as outfile:
-    json.dump(blog_entries, outfile, indent=4)
-
-# Open and read the file in text mode
-with open(output_json_file, 'r', encoding='utf-8') as outfile:
-    content = outfile.read()
-    
-# Remove [ and ] from the beginning and end
-content = content.strip("[]")
-
-# Replace `},` with `}`
-content = content.replace("},", "}")
-
-# Write the content back to the file
-with open(output_json_file, 'w', encoding='utf-8') as outfile:
-    outfile.write(content)
+    for entry in blog_entries:
+        json.dump(entry, outfile)
+        outfile.write('\n')
 
 print(f"Converted Markdown and HTML documents to JSON: {output_json_file}")
-
