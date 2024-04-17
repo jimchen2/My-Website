@@ -1,0 +1,10 @@
+[Unit]
+Description=My Website Backend
+After=network.target
+[Service]
+User=builduser
+WorkingDirectory=/var/www/My-Website/backend
+ExecStart=/usr/bin/node server.js
+Restart=always
+[Install]
+WantedBy=multi-user.target
