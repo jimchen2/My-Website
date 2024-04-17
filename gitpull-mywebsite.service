@@ -1,7 +1,0 @@
-[Unit]
-Description=Daily Git Pull for My Website
-
-[Service]
-User=builduser
-Type=oneshot
-ExecStart=/usr/bin/git -C /var/www/My-Website pull
