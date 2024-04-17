@@ -6,12 +6,15 @@ Type=oneshot
 User=builduser
 WorkingDirectory=/var/www/My-Website
 ExecStart=/bin/bash -c ' \
+  cd /var/www/My-Website && \
   git pull && \
   cd frontend && \
   npm install && \
   npm run build && \
-  mongosh --eval "db.blogs.drop()" --db test && \
+  cd /var/www/My-Website && \
   cd backend && \
   npm install && \
-  mongoimport --db test --collection blogs --file ./dump/test/blogs.json && \
-  systemctl restart my-website-backend.service'
+  sudo systemctl restart my-website-backend.service && \
+  cd /var/www/My-Website && \
+  mongosh --eval "db.blogs.drop()" --db test && \
+  mongoimport --db test --collection blogs --file ./dump/test/blogs.json'
