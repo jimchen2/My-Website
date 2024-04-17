@@ -1,0 +1,10 @@
+# /etc/systemd/system/gitpull-mywebsite.timer
+[Unit]
+Description=Timer for Weekly Git Pull, Frontend Build, and Backend Restart for My Website
+
+[Timer]
+OnCalendar=weekly
+Persistent=true
+
+[Install]
+WantedBy=timers.target
