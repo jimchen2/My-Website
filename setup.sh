@@ -21,7 +21,6 @@ certbot certonly --standalone -d jimchen.me -d www.jimchen.me --email jimchen421
 mkdir -p /etc/nginx/{sites-available,sites-enabled} && sudo ln -sf /etc/nginx/sites-available/mywebsite.conf /etc/nginx/sites-enabled/
 sudo cp /var/www/My-Website/mywebsite.conf /etc/nginx/sites-available/mywebsite.conf
 sudo cp /var/www/My-Website/nginx.conf /etc/nginx/nginx.conf
-
 sudo systemctl enable --now nginx
 # Set up Updates
 sudo cp /var/www/My-Website/update-mywebsite.{service,timer} /etc/systemd/system/
