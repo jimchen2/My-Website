@@ -12,14 +12,16 @@ sudo -u builduser bash -c 'cd /var/www/My-Website; mongorestore --dir=./dump; mo
 # Install backend dependencies and set up service
 sudo -u builduser bash -c 'cd /var/www/My-Website/backend; npm install'
 sudo cp /var/www/My-Website/my-website-backend.service /etc/systemd/system/my-website-backend.service
-sudo systemctl daemon-reload && sudo systemctl enable --now my-website-backend
+sudo systemctl daemon-reload && sudo systemctl enable my-website-backend
 # Install frontend dependencies and build
 sudo -u builduser bash -c 'cd /var/www/My-Website/frontend; npm install; npm run build'
 # Set up SSL certificates
 certbot certonly --standalone -d jimchen.me -d www.jimchen.me --email jimchen4214@gmail.com && systemctl enable --now certbot-renew.timer
 # Set up Nginx
 mkdir -p /etc/nginx/{sites-available,sites-enabled} && sudo ln -sf /etc/nginx/sites-available/mywebsite.conf /etc/nginx/sites-enabled/
-sudo cp /var/www/My-Website/{mywebsite.conf,nginx.conf} /etc/nginx/{sites-available/mywebsite.conf,nginx.conf}
+sudo cp /var/www/My-Website/mywebsite.conf /etc/nginx/sites-available/mywebsite.conf
+sudo cp /var/www/My-Website/nginx.conf /etc/nginx/nginx.conf
+
 sudo systemctl enable --now nginx
 # Set up Updates
 sudo cp /var/www/My-Website/update-mywebsite.{service,timer} /etc/systemd/system/
