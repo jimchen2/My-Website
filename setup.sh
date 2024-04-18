@@ -12,7 +12,7 @@ sudo -u builduser bash -c 'cd /var/www/My-Website; mongorestore --dir=./dump; mo
 # Install backend dependencies and set up service
 sudo -u builduser bash -c 'cd /var/www/My-Website/backend; npm install'
 sudo cp /var/www/My-Website/my-website-backend.service /etc/systemd/system/my-website-backend.service
-sudo systemctl daemon-reload && sudo systemctl enable my-website-backend
+sudo systemctl daemon-reload && sudo systemctl enable --now my-website-backend
 # Install frontend dependencies and build
 sudo -u builduser bash -c 'cd /var/www/My-Website/frontend; npm install; npm run build'
 # Set up SSL certificates
