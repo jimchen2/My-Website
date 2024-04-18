@@ -1,20 +1,16 @@
 [Unit]
 Description=Weekly update for My Website: Git, Build, MongoDB Import, and Restart Backend
+After=network.target
 
 [Service]
 Type=oneshot
 User=builduser
 WorkingDirectory=/var/www/My-Website
-ExecStart=/bin/bash -c ' \
-  cd /var/www/My-Website && \
-  git pull && \
-  cd frontend && \
-  npm install && \
-  npm run build && \
-  cd /var/www/My-Website && \
-  cd backend && \
-  npm install && \
-  sudo systemctl restart my-website-backend.service && \
-  cd /var/www/My-Website && \
-  mongosh --eval "db.blogs.drop()" --db test && \
-  mongoimport --db test --collection blogs --file ./dump/test/blogs.json'
+ExecStartPre=/bin/bash -c 'cd /var/www/My-Website && git pull'
+ExecStartPre=/bin/bash -c 'cd /var/www/My-Website/frontend && npm install && npm run build'
+ExecStartPre=/bin/bash -c 'cd /var/www/My-Website/backend && npm install'
+ExecStartPre=/bin/bash -c 'mongosh --eval "db.blogs.drop()" --db test && mongoimport --db test --collection blogs --file ./dump/test/blogs.json'
+ExecStart=/usr/bin/sudo /bin/systemctl restart my-website-backend.service
+
+[Install]
+WantedBy=multi-user.target
