@@ -16,7 +16,7 @@ sudo systemctl daemon-reload && sudo systemctl enable --now my-website-backend
 # Install frontend dependencies and build
 sudo -u builduser bash -c 'cd /var/www/My-Website/frontend; npm install; npm run build'
 # Set up SSL certificates
-certbot certonly --standalone -d jimchen.me -d www.jimchen.me --email jimchen4214@gmail.com && systemctl enable --now certbot-renew.timer
+certbot certonly --standalone -d jimchen.me -d www.jimchen.me --email jimchen4214@gmail.com --non-interactive --agree-tos && systemctl enable --now certbot-renew.timer 
 # Set up Nginx
 mkdir -p /etc/nginx/{sites-available,sites-enabled} && sudo ln -sf /etc/nginx/sites-available/mywebsite.conf /etc/nginx/sites-enabled/
 sudo cp /var/www/My-Website/mywebsite.conf /etc/nginx/sites-available/mywebsite.conf
