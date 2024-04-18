@@ -3,10 +3,10 @@ Description=Start Backend
 After=network.target
 
 [Service]
-Type=oneshot
+Type=simple
 User=builduser
-WorkingDirectory=/var/www/My-Website
-ExecStart=/bin/bash -c 'cd /var/www/My-Website/backend && /usr/bin/node server.js'
+WorkingDirectory=/var/www/My-Website/backend
+ExecStart=/usr/bin/node server.js
 
 [Install]
 WantedBy=multi-user.target
