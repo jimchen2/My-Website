@@ -5,6 +5,11 @@ import subprocess
 import tempfile
 
 
+# Directories for your files
+markdown_dir = './markdown_documents'
+output_json_file = './test/blogs.json'
+
+
 blog_entries = []
 
 lua_filter_code = '''
