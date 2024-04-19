@@ -2,6 +2,7 @@ import os
 import yaml
 import json
 import subprocess
+import tempfile
 
 
 # Directories for your files
@@ -11,10 +12,39 @@ output_json_file = './test/blogs.json'
 # Initialize a list to hold all blog entries
 blog_entries = []
 
+lua_filter_code = '''
+function Math(elem)
+  -- Return the math content wrapped in $$ for display math
+  return pandoc.RawInline('html', '$$' .. elem.text .. '$$')
+end
+
+function InlineMath(elem)
+  -- Return the math content wrapped in $ for inline math
+  return pandoc.RawInline('html', '$' .. elem.text .. '$')
+end
+'''
+
 for md_filename in os.listdir(markdown_dir):
     if md_filename.endswith('.md'):
         md_file_path = os.path.join(markdown_dir, md_filename)
-        subprocess.run(["tohtml", md_file_path])  # This might need adjustment if "tohtml" expects different parameters
+        html_file_path = os.path.splitext(md_file_path)[0] + '.html'
+        
+        with tempfile.NamedTemporaryFile(mode='w', delete=False) as temp_file:
+            temp_file.write(lua_filter_code)
+            temp_file_path = temp_file.name
+        
+        pandoc_command = [
+            "pandoc",
+            f"--lua-filter={temp_file_path}",
+            "--no-highlight",
+            md_file_path,
+            "-o",
+            html_file_path
+        ]
+        
+        subprocess.run(pandoc_command)
+        
+        os.unlink(temp_file_path)
 
 for md_filename in os.listdir(markdown_dir):
     if md_filename.endswith('.md'):
