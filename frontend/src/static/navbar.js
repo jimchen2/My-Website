@@ -122,7 +122,7 @@ function NavBar() {
                 to="https://anonytube.jimchen.me"
                 style={{ color: colors.color_black }}
               >
-                AnonyTube
+                Tube
               </Nav.Link>
               <Nav.Link
                 onClick={toggleTheme}
