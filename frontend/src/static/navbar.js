@@ -91,13 +91,6 @@ function NavBar() {
             <Nav className="me-auto">
               <Nav.Link
                 as={Link}
-                to="/home"
-                style={{ color: colors.color_black }}
-              >
-                Home
-              </Nav.Link>
-              <Nav.Link
-                as={Link}
                 to="/cv"
                 style={{ color: colors.color_black }}
               >
@@ -131,6 +124,14 @@ function NavBar() {
               >
                 Theme
               </Nav.Link>
+              <Nav.Link
+                as={Link}
+                to="/links"
+                style={{ color: colors.color_black }}
+              >
+                Links
+              </Nav.Link>
+
             </Nav>
             <Form className="d-flex" onSubmit={handleSearchSubmit}>
               <FormControl

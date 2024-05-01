@@ -8,24 +8,28 @@ const ICON_SIZE = 35;
 const socialLinks = [
   {
     href: "https://github.com/jimchen2",
-    imgSrc:
-      "/github-icon.png",
+    imgSrc: "/github-icon.png",
   },
+
   {
     href: "https://www.kaggle.com/jc4214",
-    imgSrc:
-      "/kaggle-icon.png",
+    imgSrc: "/kaggle-icon.png",
   },
   {
-    href: "mailto: jimchen4214@gmail.com",
-    imgSrc:
-      "/gmail-icon.png",
+    href: "mailto:info@jimchen.me",
+    imgSrc: "/email-icon.png",
   },
+  {
+    href: "https://anonytube.jimchen.me/profile/jimchen",
+    imgSrc: "/tubeicon.png",
+  },
+
+
   {
     href: "/w.JPG",
-    imgSrc:
-      "/wechat-icon.png",
+    imgSrc: "/wechat-icon.png",
   },
+
 ];
 
 function Footer() {
@@ -44,18 +48,23 @@ function Footer() {
   };
   const CopyrightSection = ({ year, linkStyle }) => (
     <div>
-      <span
-        style={{ color:colors.color_black }}
-      >
-        Copyright © by Jim Chen {year}, 
+      <span style={{ color: colors.color_black }}>
+        Copyright © Jim Chen {year}
       </span>
+      ,<span style={{ margin: "2px" }}></span>
       <a href="https://github.com/jimchen2/My-Website" style={linkStyle}>
-         Source Code 
+        Source
       </a>
-      ,
+      ,<span style={{ margin: "2px" }}></span>
       <a href="/visitinfo" style={linkStyle}>
-         Visitor Info 
+        Visitor
       </a>
+      ,<span style={{ margin: "2px" }}></span>
+      <a href="https://stats.uptimerobot.com/4lTgmUDD0u" style={linkStyle}>
+        Status
+      </a>
+
+      
     </div>
   );
 

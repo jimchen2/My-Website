@@ -2,7 +2,7 @@ import React from "react";
 import htmlContent from "./homecontent";
 import { useGlobalColorScheme } from "../config/global";
 
-function Home() {
+function Link() {
   const { colors } = useGlobalColorScheme();
 
   const containerStyle = {
@@ -39,4 +39,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Link;

@@ -13,7 +13,7 @@ import { PostVisitInfo } from "./static/visitinfo.js";
 // Lazy load route components
 const CV = lazy(() => import("./static/cv"));
 const Projects = lazy(() => import("./static/projects"));
-const Home = lazy(() => import("./static/home"));
+const Links = lazy(() => import("./static/link"));
 const Page404 = lazy(() => import("./static/404"));
 const Msg = lazy(() => import("./commentcontent/leaveamessage"));
 const BlogPreview = lazy(() => import("./blogpreview/blogpreview"));
@@ -24,9 +24,9 @@ const BlogEmbed = lazy(() => import("./blogcontent/BlogEmbed")); // Assuming Blo
 const AppRoutes = () => (
   <Suspense fallback={<div>Loading...</div>}>
     <Routes>
+      <Route path="/" element={<BlogPreview />} />
       <Route path="/cv" element={<CV />} />
-      <Route path="/" element={<Home />} />
-      <Route path="/home" element={<Home />} />
+      <Route path="/links" element={<Links />} />
       <Route path="/projects" element={<Projects />} />
       <Route path="/leaveamessage" element={<Msg />} />
       <Route path="*" element={<Page404 />} />
