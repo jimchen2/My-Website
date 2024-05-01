@@ -117,7 +117,13 @@ function NavBar() {
               >
                 Blog
               </Nav.Link>
-
+     <Nav.Link
+                as={Link}
+                to="https://anonytube.jimchen.me"
+                style={{ color: colors.color_black }}
+              >
+                AnonyTube
+              </Nav.Link>
               <Nav.Link
                 onClick={toggleTheme}
                 style={{ color: colors.color_black }}
