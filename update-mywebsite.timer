@@ -1,8 +1,8 @@
 [Unit]
-Description=Weekly timer for My Website update
+Description=timer for My Website update
 
 [Timer]
-OnCalendar=weekly
+OnCalendar=monthly
 Persistent=true
 
 [Install]
