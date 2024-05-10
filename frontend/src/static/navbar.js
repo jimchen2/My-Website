@@ -98,6 +98,14 @@ function NavBar() {
               </Nav.Link>
               <Nav.Link
                 as={Link}
+                to="/contact"
+                style={{ color: colors.color_black }}
+              >
+                Contact
+              </Nav.Link>
+
+              <Nav.Link
+                as={Link}
                 to="/projects"
                 style={{ color: colors.color_black }}
               >
@@ -117,7 +125,7 @@ function NavBar() {
               >
                 Blog
               </Nav.Link>
-     <Nav.Link
+              <Nav.Link
                 as={Link}
                 to="https://anonytube.jimchen.me"
                 style={{ color: colors.color_black }}
@@ -130,14 +138,6 @@ function NavBar() {
               >
                 Theme
               </Nav.Link>
-              <Nav.Link
-                as={Link}
-                to="/links"
-                style={{ color: colors.color_black }}
-              >
-                Links
-              </Nav.Link>
-
             </Nav>
             <Form className="d-flex" onSubmit={handleSearchSubmit}>
               <FormControl

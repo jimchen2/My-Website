@@ -13,7 +13,7 @@ import { PostVisitInfo } from "./static/visitinfo.js";
 // Lazy load route components
 const CV = lazy(() => import("./static/cv"));
 const Projects = lazy(() => import("./static/projects"));
-const Links = lazy(() => import("./static/link"));
+const Contact = lazy(() => import("./static/contact"));
 const Page404 = lazy(() => import("./static/404"));
 const Msg = lazy(() => import("./commentcontent/leaveamessage"));
 const BlogPreview = lazy(() => import("./blogpreview/blogpreview"));
@@ -26,7 +26,7 @@ const AppRoutes = () => (
     <Routes>
       <Route path="/" element={<BlogPreview />} />
       <Route path="/cv" element={<CV />} />
-      <Route path="/links" element={<Links />} />
+      <Route path="/contact" element={<Contact />} />
       <Route path="/projects" element={<Projects />} />
       <Route path="/leaveamessage" element={<Msg />} />
       <Route path="*" element={<Page404 />} />

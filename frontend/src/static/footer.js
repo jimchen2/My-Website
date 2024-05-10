@@ -20,16 +20,9 @@ const socialLinks = [
     imgSrc: "/email-icon.png",
   },
   {
-    href: "https://anonytube.jimchen.me/profile/jimchen",
-    imgSrc: "/tubeicon.png",
-  },
-
-
-  {
     href: "/w.JPG",
     imgSrc: "/wechat-icon.png",
   },
-
 ];
 
 function Footer() {
@@ -63,8 +56,6 @@ function Footer() {
       <a href="https://stats.uptimerobot.com/4lTgmUDD0u" style={linkStyle}>
         Status
       </a>
-
-      
     </div>
   );
 

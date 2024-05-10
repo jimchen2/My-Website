@@ -1,5 +1,5 @@
 import React from "react";
-import htmlContent from "./homecontent";
+import htmlContent from "./contactcontent";
 import { useGlobalColorScheme } from "../config/global";
 
 function Link() {
