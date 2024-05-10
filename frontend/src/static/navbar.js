@@ -98,10 +98,10 @@ function NavBar() {
               </Nav.Link>
               <Nav.Link
                 as={Link}
-                to="/contact"
+                to="/blog/Thu%20Jan%2001%201970%2000:00:00"
                 style={{ color: colors.color_black }}
               >
-                Contact
+                About
               </Nav.Link>
 
               <Nav.Link
