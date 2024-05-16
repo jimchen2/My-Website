@@ -53,7 +53,7 @@ function Footer() {
         Visitor
       </a>
       ,<span style={{ margin: "2px" }}></span>
-      <a href="https://stats.uptimerobot.com/4lTgmUDD0u" style={linkStyle}>
+      <a href="http://50.116.8.222:3001/status/hello" style={linkStyle}>
         Status
       </a>
     </div>
