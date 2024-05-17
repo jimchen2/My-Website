@@ -53,7 +53,7 @@ function Footer() {
         Visitor
       </a>
       ,<span style={{ margin: "2px" }}></span>
-      <a href="https://status.jimchen.me" style={linkStyle}>
+      <a href="https://status.jimchen.me/status/hello" style={linkStyle}>
         Status
       </a>
     </div>
