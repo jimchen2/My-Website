@@ -53,7 +53,7 @@ function Footer() {
         Visitor
       </a>
       ,<span style={{ margin: "2px" }}></span>
-      <a href="http://50.116.8.222:3001/status/hello" style={linkStyle}>
+      <a href="https://robust-shrew.pikapod.net/status/hello" style={linkStyle}>
         Status
       </a>
     </div>
