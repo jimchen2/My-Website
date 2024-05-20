@@ -1,7 +1,21 @@
 import React from "react";
 import { Container, Card, Row, Col } from "react-bootstrap";
 import { useGlobalColorScheme } from "../config/global";
-import { NavLink } from "react-router-dom"; // Make sure to import NavLink
+import { NavLink } from "react-router-dom";
+import styled from "styled-components";
+
+const StyledNavLink = styled(NavLink)`
+  text-decoration: none;
+  color: ${({ colors }) => colors.color_black};
+
+  h3 {
+    transition: text-decoration 0.3s ease;
+  }
+
+  &:hover h3 {
+    text-decoration: underline;
+  }
+`;
 
 function PreviewCard(props) {
   const { colors } = useGlobalColorScheme();
@@ -9,7 +23,7 @@ function PreviewCard(props) {
 
   const getHighlightedText = (text, highlight) => {
     if (!highlight) {
-      return text; // Return text as is if there's no search term
+      return text;
     }
     const parts = text.split(new RegExp(`(${highlight})`, "gi"));
     return parts.map((part, i) =>
@@ -24,52 +38,59 @@ function PreviewCard(props) {
   };
 
   return (
-    <Container fluid>
+    <Container fluid className="my-4">
       <Row className="justify-content-center">
-        <Col md={8} lg={6}>
+        <Col md={10} lg={8}>
           <Card
-            className="mb-4"
+            className="shadow border-0 rounded"
             style={{
               backgroundColor: colors.color_white,
-              border: "1px solid " + colors.color_black,
             }}
           >
             <Card.Body>
-              <Card.Title>
-                <div className="d-flex justify-content-between">
+              <Card.Title className="mb-3">
+                <div className="d-flex justify-content-between align-items-center mb-2">
                   <span
-                    style={{ fontSize: "0.75rem", color: colors.color_black }}
+                    style={{
+                      fontSize: "0.8rem",
+                      fontWeight: "bold",
+                      color: colors.color_blue_2,
+                    }}
                   >
                     {props.date}
                   </span>
                   <span
                     style={{
-                      fontStyle: "italic",
-                      fontSize: "0.75rem",
-                      color: colors.color_black,
+                      fontSize: "1.1rem",
+                      fontWeight: "bold",
+                      color: colors.color_blue_2,
+                      textTransform: "uppercase",
                     }}
                   >
                     {props.type}
                   </span>
                 </div>
-                <NavLink
-                  to={`/blog/${props.date}`} // Change href to to attribute
-                  style={{ textDecoration: "none", color: colors.color_blue_2 }}
+                <StyledNavLink
+                  to={`/blog/${props.date}`}
+                  colors={colors}
                 >
-                  <h4
+                  <h3
                     className="mt-2"
                     style={{
-                      textDecoration: "underline",
-                      fontFamily: "'Ubuntu', sans-serif",
+                      fontWeight: "bold",
                     }}
                   >
                     {props.title}
-                  </h4>
-                </NavLink>
+                  </h3>
+                </StyledNavLink>
               </Card.Title>
               <Card.Text
-                className="small"
-                style={{ marginTop: "10px", color: colors.color_black }}
+                style={{
+                  fontSize: "0.9rem",
+                  lineHeight: "1.5",
+                  color: colors.color_black,
+                  fontStyle: "italic",
+                }}
               >
                 {getHighlightedText(props.text, searchTerm)}
               </Card.Text>

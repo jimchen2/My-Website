@@ -4,85 +4,95 @@ import ToggleButton from "react-bootstrap/ToggleButton";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import { paddingtop } from "../config/global";
 import { useGlobalColorScheme } from "../config/global.js";
+import styled from "styled-components";
+
+const BlogContainer = styled.div`
+  min-height: 100vh;
+  padding-bottom: 2rem;
+`;
+
+const ToggleButtonGroupContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1rem;
+  padding-right: 20%;
+  padding-left: 20%;
+`;
+
+const StyledToggleButton = styled(ToggleButton)`
+  background-color: ${(props) =>
+    props.isSelected ? props.colors.color_blue_2 : "transparent"};
+  border: none;
+  color: ${(props) =>
+    props.isSelected ? props.colors.color_white : props.colors.color_blue_2};
+  flex-shrink: 0;
+  flex-grow: 0;
+  top: ${(props) => `${props.paddingtop}px`};
+  padding: 0.5rem 1rem;
+  margin: 0.25rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: ${(props) => props.colors.color_blue_2};
+    color: ${(props) => props.colors.color_white};
+  }
+`;
+
+const PreviewCardContainer = styled.div`
+  margin-top: 2rem;
+`;
 
 function Blog({ data, postTypes, selectedTypes, onSelectionChange }) {
-  const containerStyle = {
-    minHeight: "100vh",
-  };
-
   const { colors } = useGlobalColorScheme();
 
   return (
-    <div style={containerStyle}>
-      <div style={{ paddingBottom: "2rem" }}>
+    <BlogContainer>
+      <ToggleButtonGroupContainer>
         <ToggleButtonGroup
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            marginBottom: "1rem",
-            paddingRight: "20%",
-            paddingLeft: "20%",
-          }}
           type="checkbox"
           value={selectedTypes}
           onChange={onSelectionChange}
         >
-          <ToggleButton
+          <StyledToggleButton
             key={"all"}
             id={`tbg-btn-${"all"}`}
             value={"all"}
-            style={{
-              backgroundColor: selectedTypes.includes("all")
-                ? colors.color_blue_2
-                : colors.color_white,
-              borderColor: colors.color_blue_2,
-              color: selectedTypes.includes("all")
-                ? colors.color_white
-                : colors.color_blue_2,
-              top: `${paddingtop}px`,
-            }}
+            isSelected={selectedTypes.includes("all")}
+            colors={colors}
+            paddingtop={paddingtop}
           >
             {`all (${data.length})`}
-          </ToggleButton>
+          </StyledToggleButton>
 
           {postTypes.map(({ type, count }) => (
-            <ToggleButton
+            <StyledToggleButton
               key={type}
               id={`tbg-btn-${type}`}
               value={type}
-              style={{
-                backgroundColor: selectedTypes.includes(type)
-                  ? colors.color_blue_2
-                  : colors.color_white,
-                color: selectedTypes.includes(type)
-                  ? colors.color_white
-                  : colors.color_blue_2,
-                borderColor: colors.color_blue_2,
-                flexShrink: 0,
-                flexGrow: 0,
-                top: `${paddingtop}px`,
-              }}
+              isSelected={selectedTypes.includes(type)}
+              colors={colors}
+              paddingtop={paddingtop}
             >
               {type} ({count})
-            </ToggleButton>
+            </StyledToggleButton>
           ))}
         </ToggleButtonGroup>
-        <br />
-        <br />
-        <div style={{ marginTop: "2rem" }}></div>
+      </ToggleButtonGroupContainer>
+
+      <PreviewCardContainer>
         {data.map((post, index) => (
-          <div key={index}>
-            <PreviewCard
-              title={post.title}
-              text={post.body}
-              date={post.date}
-              type={post.type}
-            />
-          </div>
+          <PreviewCard
+            key={index}
+            title={post.title}
+            text={post.body}
+            date={post.date}
+            type={post.type}
+          />
         ))}
-        <div style={{ marginBottom: "2rem" }}></div>
-      </div>
-    </div>
+      </PreviewCardContainer>
+    </BlogContainer>
   );
 }
 

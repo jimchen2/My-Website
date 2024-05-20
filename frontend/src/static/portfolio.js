@@ -1,8 +1,9 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useGlobalColorScheme } from "../config/global.js";
+import Projects from "./projects.js";
 
-function CV() {
+function Portfolio() {
   const { colors } = useGlobalColorScheme();
 
   const containerStyle = {
@@ -12,22 +13,45 @@ function CV() {
     justifyContent: "center", // Centers content along the main axis (vertically)
   };
 
+  const objectStyle = {
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+    width: "100%", 
+    height: "80vh", 
+    border: "none", 
+  };
+
+  const sectionHeadingStyle = {
+    textAlign: "center",
+    margin: "20px 0",
+    fontSize: "30px",
+    fontWeight: "bold",
+  };
+
   return (
     <Container fluid className="p-3" style={containerStyle}>
-      <Row className="justify-content-center" style={{ filter: colors.grayscale ? "grayscale(100%)" : "none" }}>
-        <Col xs={12} md={6}> {/* Adjust the column size as needed for medium and larger screens */}
-          <iframe
-            title="cv"
-            src="https://drive.google.com/file/d/1qTuJPde4FJmLOh7R9pF22H1SP4Ooj0UP/preview"
-            width="640"
-            height="480"
-            style={{ display: "block", marginLeft: "auto", marginRight: "auto" }} // Center the iframe horizontally
-            allow="autoplay"
-          ></iframe>
+      <br/>
+      <br/>
+      <Row>
+        <Col>
+          <h2 style={sectionHeadingStyle}>Curriculum Vitae</h2>
         </Col>
       </Row>
+      <Row className="justify-content-center" style={{ filter: colors.grayscale ? "grayscale(100%)" : "none" }}>
+        <Col xs={12} md={6}> {/* Adjust the column size as needed for medium and larger screens */}
+          <object
+            type="application/pdf"
+            data="./cv.pdf"
+            style={objectStyle} // Center the object horizontally
+          >
+            <p>It appears you don't have a PDF plugin for this browser. No biggie... you can <a href="./cv.pdf">click here to download the PDF file.</a></p>
+          </object>
+        </Col>
+      </Row>
+      <Projects />
     </Container>
   );
 }
 
-export default CV;
+export default Portfolio;

@@ -6,7 +6,6 @@ import React, {
   useCallback,
 } from "react";
 import Cookies from "js-cookie";
-import { useComments } from "../contexts/CommentsContext"; // Updated import
 
 
 const IPAddressModule = (() => {

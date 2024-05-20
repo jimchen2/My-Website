@@ -72,7 +72,7 @@ function CommentInputBox({ id, blog }) {
   };
 
   return (
-    <div style={{ marginTop: blog === "00000000" ? `${paddingtop}px` : "0" }}>
+    <div style={{ marginTop: "0" }}>
       <style type="text/css">
         {`
           .custom-placeholder::placeholder {

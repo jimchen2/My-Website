@@ -11,10 +11,9 @@ import { GetVisitInfo } from "./static/visitinfo.js";
 import { PostVisitInfo } from "./static/visitinfo.js";
 
 // Lazy load route components
-const CV = lazy(() => import("./static/cv"));
+const Portfolio = lazy(() => import("./static/portfolio.js"));
 const Projects = lazy(() => import("./static/projects"));
 const Page404 = lazy(() => import("./static/404"));
-const Msg = lazy(() => import("./commentcontent/leaveamessage"));
 const BlogPreview = lazy(() => import("./blogpreview/blogpreview"));
 const Search = lazy(() => import("./blogpreview/search"));
 const Blog = lazy(() => import("./blogcontent/Blog.js"));
@@ -24,9 +23,8 @@ const AppRoutes = () => (
   <Suspense fallback={<div>Loading...</div>}>
     <Routes>
       <Route path="/" element={<BlogPreview />} />
-      <Route path="/cv" element={<CV />} />
+      <Route path="/portfolio" element={<Portfolio />} />
       <Route path="/projects" element={<Projects />} />
-      <Route path="/leaveamessage" element={<Msg />} />
       <Route path="*" element={<Page404 />} />
       <Route path="/visitinfo" element={<GetVisitInfo />} />
       <Route path="/blogpreview/" element={<BlogPreview />} />

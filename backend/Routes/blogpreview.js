@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
         .then(blogs => {
             const previews = blogs.map(blog => ({
                 ...blog.toObject(),
-                body: blog.body.substring(0, 150) // Limit body to first 150 characters
+                body: blog.body.substring(0, 200) // Limit body to first 150 characters
             }));
             res.json(previews);
         })

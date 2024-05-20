@@ -26,7 +26,8 @@ function NavBar() {
   };
 
   const toggleTheme = () => {
-    if (colors.dark === false && colors.grayscale === false) {
+    console.log(colors.color_blue_1);
+    if (colors.dark === false && colors.color_blue_1 == "#0000ff") {
       updateColor("color_white", "#000000");
       updateColor("color_black", "#ffffff");
       updateColor("color_blue_1", "#000000");
@@ -36,13 +37,13 @@ function NavBar() {
       updateColor("grayscale", false);
       updateColor("dark", true);
     } else if (colors.dark === true) {
-      updateColor("color_white", "#ffffff");
-      updateColor("color_black", "#000000");
-      updateColor("color_blue_1", "#ffffff");
-      updateColor("color_blue_2", "#000000");
-      updateColor("color_light_gray", "#fffcfc");
-      updateColor("color_gray", "#d0d4dc");
-      updateColor("grayscale", true);
+      updateColor("color_white", "#FFF0F5"); // Lavender Blush (light background)
+      updateColor("color_black", "#4B0082"); // Indigo (text color)
+      updateColor("color_blue_1", "#FFB6C1"); // Light Pink
+      updateColor("color_blue_2", "#FF69B4"); // Hot Pink
+      updateColor("color_light_gray", "#FFD1DC"); // Pastel Pink
+      updateColor("color_gray", "#FFC0CB"); // Pink (lighter gray)
+      updateColor("grayscale", false);
       updateColor("dark", false);
     } else {
       updateColor("color_white", "#ffffff");
@@ -55,6 +56,36 @@ function NavBar() {
       updateColor("dark", false);
     }
   };
+
+  const externalLinkIcon = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="16"
+      height="16"
+      fill="currentColor"
+      aria-hidden="true"
+      style={{ verticalAlign: "middle", marginLeft: "0px" }} // Adjusted margin
+    >
+      <title>External Link</title>
+      <path d="M14 3h7v7h-2V6.41L10.41 15 9 13.59 17.59 5H14V3zM5 5h4v2H5v12h12v-4h2v4c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V7c0-1.1.9-2 2-2z" />
+    </svg>
+  );
+
+  const themeToggleIcon = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      width="16"
+      height="16"
+      fill="currentColor"
+      aria-hidden="true"
+      style={{ verticalAlign: "middle", marginLeft: "0px" }}
+    >
+      <title>Theme Toggle</title>
+      <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8zM12 4a1 1 0 0 0-1 1v6H5a1 1 0 0 0 0 2h6v6a1 1 0 0 0 2 0v-6h6a1 1 0 0 0 0-2h-6V5a1 1 0 0 0-1-1z" />
+    </svg>
+  );
 
   return (
     <>
@@ -73,14 +104,12 @@ function NavBar() {
       <Navbar
         expand="lg"
         fixed="top"
-        style={{ backgroundColor: colors.color_light_gray }}
+        style={{
+          backgroundColor: colors.color_light_gray,
+        }}
       >
         <Container>
-          <Navbar.Brand
-            as={Link}
-            to="/"
-            className="navbar-brand-spacing black-text"
-          >
+          <Navbar.Brand className="navbar-brand-spacing black-text">
             Jim Chen's Website
           </Navbar.Brand>
           <Navbar.Toggle
@@ -91,13 +120,6 @@ function NavBar() {
             <Nav className="me-auto">
               <Nav.Link
                 as={Link}
-                to="/cv"
-                style={{ color: colors.color_black }}
-              >
-                CV
-              </Nav.Link>
-              <Nav.Link
-                as={Link}
                 to="/blog/Thu%20Jan%2001%201970%2000:00:00"
                 style={{ color: colors.color_black }}
               >
@@ -106,18 +128,12 @@ function NavBar() {
 
               <Nav.Link
                 as={Link}
-                to="/projects"
+                to="/portfolio"
                 style={{ color: colors.color_black }}
               >
-                Projects
+                Portfolio
               </Nav.Link>
-              <Nav.Link
-                as={Link}
-                to="/leaveamessage"
-                style={{ color: colors.color_black }}
-              >
-                Message
-              </Nav.Link>
+
               <Nav.Link
                 as={Link}
                 to="/blogpreview"
@@ -130,7 +146,14 @@ function NavBar() {
                 to="https://anonytube.jimchen.me"
                 style={{ color: colors.color_black }}
               >
-                Tube
+                Tube{externalLinkIcon}
+              </Nav.Link>
+              <Nav.Link
+                as={Link}
+                to="https://photoprism.jimchen.me/s/hello/gallery"
+                style={{ color: colors.color_black }}
+              >
+                Gallery{externalLinkIcon}
               </Nav.Link>
               <Nav.Link
                 onClick={toggleTheme}

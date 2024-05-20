@@ -29,11 +29,19 @@ function Projects() {
     display: "block",
   };
 
+  const sectionHeadingStyle = {
+    textAlign: "center",
+    margin: "20px 0",
+    fontSize: "30px",
+    fontWeight: "bold",
+  };
   return (
     <div>
       <br />
       <br />
       <br />
+      <h2 style={sectionHeadingStyle}>Projects</h2>
+
       <CardGroup>
         {projectData.map((project, index) => (
           <Card
