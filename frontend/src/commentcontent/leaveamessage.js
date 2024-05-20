@@ -11,7 +11,7 @@ const Msg = ({ blog, blogcomment = false }) => {
     <CommentsProvider>
       <Container fluid style={{ overflowX: "hidden", overflowY: "hidden" }}>
         <Row className="my-4">
-          (
+          
           <>
             <Col
               md={{ span: 8, offset: 2 }}
@@ -24,7 +24,7 @@ const Msg = ({ blog, blogcomment = false }) => {
             </Col>
             <div style={{ marginBottom: `${paddingtop}px` }}></div>
           </>
-          )
+          
         </Row>
       </Container>
     </CommentsProvider>
