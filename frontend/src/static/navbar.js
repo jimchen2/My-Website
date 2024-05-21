@@ -27,20 +27,20 @@ function NavBar() {
 
   const toggleTheme = () => {
     console.log(colors.color_blue_1);
-    if (colors.dark === false && colors.color_blue_1 == "#0000ff") {
-      updateColor("color_white", "#000000");
+    if (colors.dark === false && colors.color_light_gray == "#fffcfc") {
+      updateColor("color_white", "#1a1a1a");
       updateColor("color_black", "#ffffff");
-      updateColor("color_blue_1", "#000000");
-      updateColor("color_blue_2", "#ffffff");
-      updateColor("color_light_gray", "#000000");
-      updateColor("color_gray", "#000000");
+      updateColor("color_blue_1", "#6aff6a");
+      updateColor("color_blue_2", "#00ff00");
+      updateColor("color_light_gray", "#333333");
+      updateColor("color_gray", "#282828");
       updateColor("grayscale", false);
       updateColor("dark", true);
     } else if (colors.dark === true) {
       updateColor("color_white", "#FFF0F5"); // Lavender Blush (light background)
-      updateColor("color_black", "#4B0082"); // Indigo (text color)
+      updateColor("color_black", "#8A2BE2"); // Indigo (text color)
       updateColor("color_blue_1", "#FFB6C1"); // Light Pink
-      updateColor("color_blue_2", "#FF69B4"); // Hot Pink
+      updateColor("color_blue_2", "#FF1493"); // Hot Pink
       updateColor("color_light_gray", "#FFD1DC"); // Pastel Pink
       updateColor("color_gray", "#FFC0CB"); // Pink (lighter gray)
       updateColor("grayscale", false);
@@ -120,7 +120,7 @@ function NavBar() {
             <Nav className="me-auto">
               <Nav.Link
                 as={Link}
-                to="/blog/Thu%20Jan%2001%201970%2000:00:00"
+                to="/about"
                 style={{ color: colors.color_black }}
               >
                 About

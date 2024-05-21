@@ -1,15 +1,21 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { SideNav } from "../sidebar/sidebar.js";
-import { paddingtop, useGlobalColorScheme } from "../config/global.js";
+import { SideNav } from "../sidebar/sidebar";
+import { paddingtop, useGlobalColorScheme } from "../config/global";
 import { MathJaxContext } from "better-react-mathjax";
 import { NavLink } from "react-router-dom";
-import { calculateBlogPadding } from "./SingleBlogPaddingHelper"; // Make sure the path is correct based on your project structure
-import BlogLikeButtonHelper from "./bloglikebuttonhelper.js";
+import { calculateBlogPadding } from "./SingleBlogPaddingHelper";
+import BlogLikeButtonHelper from "./bloglikebuttonhelper";
+import {
+  generateCommonStyles,
+  generateThemeStyles,
+  generateAdditionalStyles,
+} from "./stylesHelper";
+import CodeBlock from "./CodeBlock";
+import parse from "html-react-parser";
 
 function SingleBlog({ date, text, title, like, id }) {
   const { colors } = useGlobalColorScheme();
-  const contentRef = useRef(null);
   const [paddingStyles, setPaddingStyles] = useState(calculateBlogPadding());
 
   useEffect(() => {
@@ -21,58 +27,42 @@ function SingleBlog({ date, text, title, like, id }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(() => {
-    if (contentRef.current) {
-      const scripts = contentRef.current.getElementsByTagName("script");
-      for (const script of scripts) {
-        eval(script.innerText);
-      }
+  const processedText = text.replace(
+    /<pre><code class="(language-\w+)">(.*?)<\/code><\/pre>|<pre><code>(.*?)<\/code><\/pre>/gs,
+    (match, language, codeWithLang, codeWithoutLang) => {
+      const code = codeWithLang || codeWithoutLang;
+      const langClass = language ? language : "";
+      return `<codeblock language="${langClass}" code="${code.replace(
+        /"/g,
+        "&quot;"
+      )}"></codeblock>`;
     }
-  }, [text]); // Re-run the effect if text changes
+  );
 
-  const commonStyles = `
-  h1, h2, h3, p, code { color: ${colors.color_black}; }
-  h1, h2 { font-size: 28px; font-weight: bold; }
-  h3 { font-size: 20px; font-weight: bold; }
-  p, code { font-size: 16px; }
+  const elements = parse(processedText, {
+    replace: (domNode) => {
+      if (domNode.name === "codeblock") {
+        const language = domNode.attribs.language;
+        const code = domNode.attribs.code.replace(/&quot;/g, '"');
+        return <CodeBlock language={language} code={code} />;
+      }
+    },
+  });
 
-  details {
-    background-color: ${colors.dark ? "#333" : "#f9f9f9"};
-    border: 1px solid ${colors.dark ? "#666" : "#ddd"};
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
+  const commonStyles = generateCommonStyles(colors);
+  const themeStyles = generateThemeStyles(colors);
+  const additionalStyles = generateAdditionalStyles(colors);
 
-  summary {
-    font-weight: bold;
-    cursor: pointer;
-    color: ${colors.dark ? "#fff" : "#000"};
-  }
-
-  details[open] summary::after, details:not([open]) summary::after {
-    float: right;
-    color: ${colors.dark ? "#fff" : "#000"};
-  }
-  `;
-
-  const themeStyles = `
-    code, pre { background-color: ${colors.dark ? "#3C3F41" : "#D3D3D3"}; }
-    code { font-family: monospace; }
-  `;
-
-  const customHtml = `<style>${commonStyles} ${themeStyles}</style>`;
-  text += customHtml;
+  const customHtml = `<style>${commonStyles} ${themeStyles} ${additionalStyles}</style>`;
 
   return (
     <Container fluid style={{ paddingBottom: "1rem" }}>
       <br />
       <br />
       <Row>
-        <Col lg={3} xl={2} className="d-none d-lg-block">
+        <Col className="d-none d-lg-block">
           <SideNav />
         </Col>
-
         <Col
           md={12}
           lg={9}
@@ -110,40 +100,15 @@ function SingleBlog({ date, text, title, like, id }) {
                 </NavLink>
               </div>
               <h2>
-                <NavLink
-                  to={`/blog/${date}`}
-                  className="text"
-                  style={{
-                    textDecoration: "underline",
-                    color: colors.color_blue_2,
-                    fontSize: "28px",
-                  }}
-                >
-                  {title}
-                </NavLink>
+                <div style={{ color: colors.color_blue_2 }}>{title}</div>
               </h2>
-
               <MathJaxContext>
-                <style
-                  dangerouslySetInnerHTML={{
-                    __html: `.blog-content img { max-width: 500px; width: 100%; height: auto; } .blog-content a { color: ${
-                      colors.color_blue_2
-                    }; text-decoration: underline; } .blog-content p { color: ${
-                      colors.color_black
-                    }; } ${
-                      colors.grayscale
-                        ? ".blog-content { filter: grayscale(100%); }"
-                        : ""
-                    }`,
-                  }}
-                />
-                <div
-                  ref={contentRef}
-                  className="blog-content"
-                  dangerouslySetInnerHTML={{ __html: text }}
-                />
+                <div className="blog-content">
+                  {elements}
+                  <div dangerouslySetInnerHTML={{ __html: customHtml }} />
+                </div>
               </MathJaxContext>
-              <BlogLikeButtonHelper blogdate={date}/>
+              <BlogLikeButtonHelper blogdate={date} />
             </div>
           </div>
         </Col>

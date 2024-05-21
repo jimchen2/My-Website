@@ -1,7 +1,7 @@
 export function calculateBlogPadding() {
     const basePaddingTop = 30; // Example paddingTop value, adjust as needed
-    let paddingLeftPercentage = 10;
-    let paddingRightPercentage = 30;
+    let paddingLeftPercentage;
+    let paddingRightPercentage;
   
     const windowWidth = window.innerWidth;
     const minWidth = 600; // Minimum width threshold
@@ -9,8 +9,8 @@ export function calculateBlogPadding() {
 
     // Adjust padding percentages based on window width
     if (windowWidth >= 600) {
-        paddingLeftPercentage = 10;
-        paddingRightPercentage = windowWidth < 1200 ? 10 : 30;
+        paddingLeftPercentage = 5;
+        paddingRightPercentage = windowWidth < 1200 ? 10 : 20;
     } else {
         paddingLeftPercentage = 5;
         paddingRightPercentage = 5;
