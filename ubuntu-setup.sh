@@ -30,7 +30,8 @@ sudo systemctl daemon-reload && sudo systemctl enable --now my-website-backend
 # Install frontend dependencies and build
 sudo -u builduser bash -c 'cd /var/www/My-Website/frontend; npm install; npm run build'
 
-sudo systemctl stop nginx
+sudo systemctl stop nginx 
+sudo systemctl stop ufw
 sudo certbot certonly --standalone -d jimchen.me -d www.jimchen.me --email jimchen4214@gmail.com --non-interactive --agree-tos 
 
 mkdir -p /etc/nginx/{sites-available,sites-enabled} && sudo ln -sf /etc/nginx/sites-available/mywebsite.conf /etc/nginx/sites-enabled/
