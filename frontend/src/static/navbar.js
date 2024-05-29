@@ -149,13 +149,6 @@ function NavBar() {
                 Tube{externalLinkIcon}
               </Nav.Link>
               <Nav.Link
-                as={Link}
-                to="https://photoprism.jimchen.me/s/hello/gallery"
-                style={{ color: colors.color_black }}
-              >
-                Gallery{externalLinkIcon}
-              </Nav.Link>
-              <Nav.Link
                 onClick={toggleTheme}
                 style={{ color: colors.color_black }}
               >
