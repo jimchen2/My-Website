@@ -1,9 +1,0 @@
-[Unit]
-Description=timer for My Website update
-
-[Timer]
-OnCalendar=monthly
-Persistent=true
-
-[Install]
-WantedBy=timers.target

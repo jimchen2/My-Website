@@ -1,8 +1,10 @@
+require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 
-mongoose.connect("mongodb://127.0.0.1:27017/test");
+// Use environment variables
+mongoose.connect(process.env.MONGODB_URI);
 app.use(require("cors")());
 app.use(express.json());
 
@@ -20,4 +22,5 @@ const routes = [
 
 routes.forEach((route) => app.use(route, require(`./Routes${route}`)));
 
-app.listen(2840, () => console.log("Server running on port 2840"));
+const PORT = process.env.PORT || 80;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

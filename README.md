@@ -1,9 +1,24 @@
 # My-Website
 
-1. Point dns to server
-2. Run `setup.sh` on Linode instances
+## ToDO
+
+- [ ] Add YouTube Video Page
+- [ ] Change title to from `?title=...` to `/type/title`
+- [ ] Implement in-memory caching for Preview Page for all blogs
+- [ ] Build a better search function (vector search)
+- [ ] Support multi languages
+- [ ] Add Online Profiles
+- [ ] Write Import Code
+
+## All My Online Profiles
+
+- [GitHub](https://github.com/jimchen2)
+- [YouTube](https://www.youtube.com/@JC-ss5nj)
+- [WeChat](https://cdn.jimchen.me/w.jpg)
+- [QQ](https://cdn.jimchen.me/qq.jpg)
 
 - **Backend Implentation**
+
 ```
 /blog?date="string"&type="string"
 get
@@ -24,4 +39,32 @@ patch
 patch
 /search?query="string"
 get
+```
+
+## Backend
+
+```
+sudo dnf update && sudo dnf install git nodejs 
+git clone https://github.com/jimchen2/My-Website && cd My-Website/backend
+cp .env.example .env
+
+sudo bash -c 'cat > /etc/systemd/system/my-website.service << EOL
+[Unit]
+Description=My Website Backend
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/My-Website/backend
+ExecStart=/usr/bin/npm start
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOL'
+
+npm i
+sudo systemctl daemon-reload
+sudo systemctl enable --now my-website
 ```
