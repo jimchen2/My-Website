@@ -8,6 +8,9 @@ RUN apt update -y && \
 # Set the working directory
 WORKDIR /app
 
+# Copy the backend folder contents
+COPY backend/ /app/backend/
+
 # Change to the backend directory
 WORKDIR /app/backend
 

@@ -14,13 +14,15 @@
 ## Backend
 
 ```
-docker build -t my-website-backend .
-docker run -p 80:80 my-website-backend
+docker build -t jimchen2/my-website-backend .
+docker run  --restart always -p 80:80 --env-file .env jimchen2/my-website-backend
+docker push jimchen2/my-website-backend
 ```
 
 ## Frontend
 
 ```
+npm i && npm run build
 rclone sync build/ s3:bucket
 ```
 
