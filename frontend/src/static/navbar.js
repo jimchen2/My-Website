@@ -143,10 +143,17 @@ function NavBar() {
               </Nav.Link>
               <Nav.Link
                 as={Link}
-                to="https://anonytube.jimchen.me"
+                to="/youtube"
                 style={{ color: colors.color_black }}
               >
-                Tube{externalLinkIcon}
+                YouTube
+              </Nav.Link>
+              <Nav.Link
+                as={Link}
+                to="https://feed.jimchen.me"
+                style={{ color: colors.color_black }}
+              >
+                Miniflux{externalLinkIcon}
               </Nav.Link>
               <Nav.Link
                 onClick={toggleTheme}

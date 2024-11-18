@@ -18,6 +18,7 @@ const BlogPreview = lazy(() => import("./blogpreview/blogpreview"));
 const Search = lazy(() => import("./blogpreview/search"));
 const Blog = lazy(() => import("./blogcontent/Blog.js"));
 const BlogEmbed = lazy(() => import("./blogcontent/BlogEmbed")); // Assuming BlogEmbed is the component that fetches the blog data and uses SingleBlogEmbed
+const YouTube = lazy(() => import("./youtube/youtubePage.js")); 
 
 const AppRoutes = () => (
   <Suspense fallback={<div>Loading...</div>}>
@@ -27,6 +28,7 @@ const AppRoutes = () => (
       <Route path="/about" element={<About />} />
       <Route path="*" element={<Page404 />} />
       <Route path="/visitinfo" element={<GetVisitInfo />} />
+      <Route path="/youtube" element={<YouTube />} />
       <Route path="/blogpreview/" element={<BlogPreview />} />
       <Route path="/search/:term" element={<Search />} />
       <Route path="/blog/:date" element={<Blog />} />
