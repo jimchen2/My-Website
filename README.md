@@ -1,14 +1,28 @@
 # My-Website
 
-## ToDO
+## ToDo
 
 - [ ] Add YouTube Video Page
 - [ ] Change title to from `?title=...` to `/type/title`
 - [ ] Implement in-memory caching for Preview Page for all blogs
 - [ ] Build a better search function (vector search)
-- [ ] Support multi languages
+- [ ] Support multi languages (basically a dropdown menu in blog with different styles for each)
 - [ ] Add Online Profiles
 - [ ] Write Import Code
+- [ ] Update Project
+
+## Backend
+
+```
+docker build -t my-website-backend .
+docker run -p 80:80 my-website-backend
+```
+
+## Frontend
+
+```
+rclone sync build/ s3:bucket
+```
 
 - **Backend Implentation**
 
@@ -32,32 +46,4 @@ patch
 patch
 /search?query="string"
 get
-```
-
-## Backend
-
-```
-sudo dnf update && sudo dnf install git nodejs 
-git clone https://github.com/jimchen2/My-Website && cd My-Website/backend
-cp .env.example .env
-
-sudo bash -c 'cat > /etc/systemd/system/my-website.service << EOL
-[Unit]
-Description=My Website Backend
-After=network.target
-
-[Service]
-Type=simple
-User=root
-WorkingDirectory=/root/My-Website/backend
-ExecStart=/usr/bin/npm start
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-EOL'
-
-npm i
-sudo systemctl daemon-reload
-sudo systemctl enable --now my-website
 ```
