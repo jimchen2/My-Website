@@ -3,7 +3,7 @@ const projectData = [
   {
     image: "graficon (1).jpg",
     title: "My Website",
-    time: "June 2023 - Aug 2023 (Actively Maintained)",
+    time: "June 2023 - Aug 2023",
     description:
       "React-based front end, Express.js and MongoDB backend, featuring a blog, user comments section.<br />" +
       "User-friendly, easy navigation, with backend efficiently handling data storage for posts, comments, and visitor info.",

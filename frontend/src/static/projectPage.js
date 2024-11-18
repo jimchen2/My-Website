@@ -40,7 +40,6 @@ function Projects() {
       <br />
       <br />
       <br />
-      <h2 style={sectionHeadingStyle}>Projects</h2>
 
       <CardGroup>
         {projectData.map((project, index) => (

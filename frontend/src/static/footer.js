@@ -12,12 +12,12 @@ const socialLinks = [
   },
 
   {
-    href: "https://www.kaggle.com/jc4214",
-    imgSrc: "/kaggle-icon.png",
+    href: "https://www.youtube.com/@JC-ss5nj",
+    imgSrc: "/tubeicon.png",
   },
   {
-    href: "mailto:info@jimchen.me",
-    imgSrc: "/email-icon.png",
+    href: "/qq.jpg",
+    imgSrc: "/qq-removebg-preview.png",
   },
   {
     href: "/w.JPG",

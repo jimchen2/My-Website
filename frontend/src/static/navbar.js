@@ -128,10 +128,10 @@ function NavBar() {
 
               <Nav.Link
                 as={Link}
-                to="/portfolio"
+                to="/projects"
                 style={{ color: colors.color_black }}
               >
-                Portfolio
+                Projects
               </Nav.Link>
 
               <Nav.Link

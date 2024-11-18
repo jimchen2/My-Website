@@ -10,13 +10,6 @@
 - [ ] Add Online Profiles
 - [ ] Write Import Code
 
-## All My Online Profiles
-
-- [GitHub](https://github.com/jimchen2)
-- [YouTube](https://www.youtube.com/@JC-ss5nj)
-- [WeChat](https://cdn.jimchen.me/w.jpg)
-- [QQ](https://cdn.jimchen.me/qq.jpg)
-
 - **Backend Implentation**
 
 ```

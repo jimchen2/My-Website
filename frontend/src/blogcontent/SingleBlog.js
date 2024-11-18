@@ -6,11 +6,7 @@ import { MathJaxContext } from "better-react-mathjax";
 import { NavLink } from "react-router-dom";
 import { calculateBlogPadding } from "./SingleBlogPaddingHelper";
 import BlogLikeButtonHelper from "./bloglikebuttonhelper";
-import {
-  generateCommonStyles,
-  generateThemeStyles,
-  generateAdditionalStyles,
-} from "./stylesHelper";
+import { generateCommonStyles, generateThemeStyles, generateAdditionalStyles } from "./stylesHelper";
 import CodeBlock from "./CodeBlock";
 import parse from "html-react-parser";
 
@@ -27,17 +23,11 @@ function SingleBlog({ date, text, title, like, id }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const processedText = text.replace(
-    /<pre><code class="(language-\w+)">(.*?)<\/code><\/pre>|<pre><code>(.*?)<\/code><\/pre>/gs,
-    (match, language, codeWithLang, codeWithoutLang) => {
-      const code = codeWithLang || codeWithoutLang;
-      const langClass = language ? language : "";
-      return `<codeblock language="${langClass}" code="${code.replace(
-        /"/g,
-        "&quot;"
-      )}"></codeblock>`;
-    }
-  );
+  const processedText = text.replace(/<pre><code class="(language-\w+)">(.*?)<\/code><\/pre>|<pre><code>(.*?)<\/code><\/pre>/gs, (match, language, codeWithLang, codeWithoutLang) => {
+    const code = codeWithLang || codeWithoutLang;
+    const langClass = language ? language : "";
+    return `<codeblock language="${langClass}" code="${code.replace(/"/g, "&quot;")}"></codeblock>`;
+  });
 
   const elements = parse(processedText, {
     replace: (domNode) => {

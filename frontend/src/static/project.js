@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useGlobalColorScheme } from "../config/global.js";
-import Projects from "./projects.js";
+import Projects from "./projectPage.js";
 
 function Portfolio() {
   const { colors } = useGlobalColorScheme();
@@ -33,21 +33,7 @@ function Portfolio() {
     <Container fluid className="p-3" style={containerStyle}>
       <br/>
       <br/>
-      <Row>
-        <Col>
-          <h2 style={sectionHeadingStyle}>Curriculum Vitae</h2>
-        </Col>
-      </Row>
       <Row className="justify-content-center" style={{ filter: colors.grayscale ? "grayscale(100%)" : "none" }}>
-        <Col xs={12} md={6}> {/* Adjust the column size as needed for medium and larger screens */}
-          <object
-            type="application/pdf"
-            data="./cv.pdf"
-            style={objectStyle} // Center the object horizontally
-          >
-            <p>It appears you don't have a PDF plugin for this browser. No biggie... you can <a href="./cv.pdf">click here to download the PDF file.</a></p>
-          </object>
-        </Col>
       </Row>
       <Projects />
     </Container>

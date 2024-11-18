@@ -69,12 +69,3 @@ export const useAddItemToNavbar = (setActiveKey) => {
 
   return tocItems;
 };
-
-// // Usage example in a component
-// const MyComponent = () => {
-//   const setActiveKey = ...; // Define or import setActiveKey
-//   const tocItems = useAddItemToNavbar(setActiveKey);
-
-//   // Use tocItems as needed in your component
-//   // ...
-// };
