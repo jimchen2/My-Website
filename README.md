@@ -18,7 +18,7 @@
 docker build -t jimchen2/my-website .
 #docker run -p 80:80 --env-file .env jimchen2/my-website
 docker run -p 80:80 -e MONGODB_URI=your_mongodb_connection_string jimchen2/my-website
-docker run -p 80:80 -e MONGODB_URI=your_mongodb_connection_string -e REACT_APP_BACKEND_URL=https://jimchen.me/api jimchen2/my-website
+docker run -p 80:80 -e MONGODB_URI=your_mongodb_connection_string jimchen2/my-website
 
 docker push jimchen2/my-website
 ```

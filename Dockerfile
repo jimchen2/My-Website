@@ -11,6 +11,8 @@ RUN git clone https://github.com/jimchen2/My-Website .
 WORKDIR /app/backend
 RUN npm install
 
+ENV REACT_APP_BACKEND_URL=localhost:80/api
+
 # Setup frontend
 WORKDIR /app/frontend
 RUN npm install
