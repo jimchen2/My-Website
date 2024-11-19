@@ -15,9 +15,12 @@
 ## Backend
 
 ```
-docker build -t jimchen2/my-website-backend .
-docker run  --restart always -p 80:80 --env-file .env jimchen2/my-website-backend
-docker push jimchen2/my-website-backend
+docker build -t jimchen2/my-website .
+#docker run -p 80:80 --env-file .env jimchen2/my-website
+docker run -p 80:80 -e MONGODB_URI=your_mongodb_connection_string jimchen2/my-website
+docker run -p 80:80 -e MONGODB_URI=your_mongodb_connection_string -e REACT_APP_BACKEND_URL=https://jimchen.me/api jimchen2/my-website
+
+docker push jimchen2/my-website
 ```
 
 ## Frontend
@@ -50,9 +53,3 @@ patch
 /search?query="string"
 get
 ```
-
-
-
-docker build -t my-website .
-docker run -p 80:80 --env-file .env my-website
-docker push jimchen2/my-website
