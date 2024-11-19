@@ -50,3 +50,9 @@ patch
 /search?query="string"
 get
 ```
+
+
+
+docker build -t my-website .
+docker run -p 80:80 --env-file .env my-website
+docker push jimchen2/my-website
