@@ -1,0 +1,12 @@
+[Unit]
+Description=Start Backend
+After=network.target
+
+[Service]
+Type=simple
+User=builduser
+WorkingDirectory=/root/My-Website/backend
+ExecStart=/usr/bin/npm start PORT=2840
+
+[Install]
+WantedBy=multi-user.target
