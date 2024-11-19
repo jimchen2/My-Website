@@ -1,5 +1,13 @@
 # My-Website
 
+
+
+Picking up old website again after 4 months
+
+Dockerize, Change a little Frontend 
+
+20241118
+
 ## ToDo
 
 - [ ] Add YouTube Video Page
