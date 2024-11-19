@@ -48,17 +48,14 @@ function Footer() {
       width="16"
       height="16"
       fill="currentColor"
-      style={{ verticalAlign: 'middle', marginLeft: '0px' }} // Adjusted margin
+      style={{ verticalAlign: "middle", marginLeft: "0px" }} // Adjusted margin
     >
       <path d="M14 3h7v7h-2V6.41L10.41 15 9 13.59 17.59 5H14V3zM5 5h4v2H5v12h12v-4h2v4c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V7c0-1.1.9-2 2-2z" />
     </svg>
   );
   const CopyrightSection = ({ year, linkStyle }) => (
     <div>
-      <span style={{ color: colors.color_black }}>
-        Copyright © Jim Chen {year}
-      </span>
-      ,<span style={{ margin: "2px" }}></span>
+      <span style={{ color: colors.color_black }}>Copyright © Jim Chen {year}</span>,<span style={{ margin: "2px" }}></span>
       <a href="/visitinfo" style={linkStyle}>
         Visitor
       </a>
@@ -66,20 +63,11 @@ function Footer() {
       <a href="https://github.com/jimchen2/My-Website" style={linkStyle}>
         Source{externalLinkIcon}
       </a>
-      ,<span style={{ margin: "2px" }}></span>
-      <a href="https://status.jimchen.me/status/hello" style={linkStyle}>
-        Status{externalLinkIcon}
-      </a>
     </div>
   );
-  
 
   return (
-    <Navbar
-      fixed="bottom"
-      expand="lg"
-      style={{ backgroundColor: colors.color_gray, fontSize: "15px" }}
-    >
+    <Navbar fixed="bottom" expand="lg" style={{ backgroundColor: colors.color_gray, fontSize: "15px" }}>
       <Container style={{ height: "100%" }}>
         <CopyrightSection year={year} linkStyle={linkStyle} />
         <IconLinks imageStyle={imageStyle} linkStyle={linkStyle} />

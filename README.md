@@ -9,7 +9,8 @@
 - [ ] Support multi languages (basically a dropdown menu in blog with different styles for each)
 - [ ] Add Online Profiles
 - [ ] Write Import Code
-- [ ] Update Project
+- [ ] Update Project Page
+- [ ] Adjust Visitor Info Track
 
 ## Backend
 
