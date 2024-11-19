@@ -19,6 +19,10 @@ const blogSchema = new Schema(
       type: String,
       default: "",
     },
+    language: {
+      type: String,
+      default: "en",
+    },
   },
   { versionKey: false }
 );
