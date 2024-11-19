@@ -11,7 +11,7 @@ RUN git clone https://github.com/jimchen2/My-Website .
 WORKDIR /app/backend
 RUN npm install
 
-ENV REACT_APP_BACKEND_URL=localhost:80/api
+ENV REACT_APP_BACKEND_URL=http://localhost/api
 
 # Setup frontend
 WORKDIR /app/frontend
@@ -21,6 +21,7 @@ RUN npm run build
 # Configure nginx
 RUN cp /app/other/nginx.conf /etc/nginx/nginx.conf
 RUN mkdir -p /etc/nginx/sites-enabled /etc/nginx/sites-available/
+RUN rm /etc/nginx/sites-enabled/default
 RUN cp /app/other/mywebsite.conf /etc/nginx/sites-available/mywebsite.conf
 RUN ln -sf /etc/nginx/sites-available/mywebsite.conf /etc/nginx/sites-enabled/
 

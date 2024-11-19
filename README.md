@@ -18,9 +18,11 @@
 docker build -t jimchen2/my-website .
 #docker run -p 80:80 --env-file .env jimchen2/my-website
 docker run -p 80:80 -e MONGODB_URI=your_mongodb_connection_string jimchen2/my-website
-docker run -p 80:80 -e MONGODB_URI=your_mongodb_connection_string jimchen2/my-website
 
 docker push jimchen2/my-website
+
+
+docker system prune -af
 ```
 
 ## Frontend
