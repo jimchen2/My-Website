@@ -1,13 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import {
-  Container,
-  Navbar,
-  Nav,
-  Form,
-  FormControl,
-  Button,
-} from "react-bootstrap";
+import { Container, Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 import NavbarHelper from "./navbarhelper";
 import { useGlobalColorScheme } from "../config/global";
 
@@ -27,7 +20,7 @@ function NavBar() {
 
   const toggleTheme = () => {
     console.log(colors.color_blue_1);
-    if (colors.dark === false && colors.color_light_gray == "#fffcfc") {
+    if (colors.dark === false && colors.color_light_gray === "#fffcfc") {
       updateColor("color_white", "#1a1a1a");
       updateColor("color_black", "#ffffff");
       updateColor("color_blue_1", "#6aff6a");
@@ -72,21 +65,6 @@ function NavBar() {
     </svg>
   );
 
-  const themeToggleIcon = (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      width="16"
-      height="16"
-      fill="currentColor"
-      aria-hidden="true"
-      style={{ verticalAlign: "middle", marginLeft: "0px" }}
-    >
-      <title>Theme Toggle</title>
-      <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8.009 8.009 0 0 1-8 8zM12 4a1 1 0 0 0-1 1v6H5a1 1 0 0 0 0 2h6v6a1 1 0 0 0 2 0v-6h6a1 1 0 0 0 0-2h-6V5a1 1 0 0 0-1-1z" />
-    </svg>
-  );
-
   return (
     <>
       <style type="text/css">
@@ -109,56 +87,28 @@ function NavBar() {
         }}
       >
         <Container>
-          <Navbar.Brand className="navbar-brand-spacing black-text">
-            Jim Chen's Website
-          </Navbar.Brand>
-          <Navbar.Toggle
-            aria-controls="basic-navbar-nav"
-            className="custom-toggler"
-          />
+          <Navbar.Brand className="navbar-brand-spacing black-text">Jim Chen's Website</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" className="custom-toggler" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link
-                as={Link}
-                to="/about"
-                style={{ color: colors.color_black }}
-              >
+              <Nav.Link as={Link} to="/about" style={{ color: colors.color_black }}>
                 About
               </Nav.Link>
 
-              <Nav.Link
-                as={Link}
-                to="/projects"
-                style={{ color: colors.color_black }}
-              >
+              <Nav.Link as={Link} to="/projects" style={{ color: colors.color_black }}>
                 Projects
               </Nav.Link>
 
-              <Nav.Link
-                as={Link}
-                to="/blogpreview"
-                style={{ color: colors.color_black }}
-              >
+              <Nav.Link as={Link} to="/blogpreview" style={{ color: colors.color_black }}>
                 Blog
               </Nav.Link>
-              <Nav.Link
-                as={Link}
-                to="/youtube"
-                style={{ color: colors.color_black }}
-              >
+              <Nav.Link as={Link} to="/youtube" style={{ color: colors.color_black }}>
                 YouTube
               </Nav.Link>
-              <Nav.Link
-                as={Link}
-                to="https://feed.jimchen.me"
-                style={{ color: colors.color_black }}
-              >
-                Miniflux{externalLinkIcon}
+              <Nav.Link as={Link} to="/extlinks" style={{ color: colors.color_black }}>
+                Links{externalLinkIcon}
               </Nav.Link>
-              <Nav.Link
-                onClick={toggleTheme}
-                style={{ color: colors.color_black }}
-              >
+              <Nav.Link onClick={toggleTheme} style={{ color: colors.color_black }}>
                 Theme
               </Nav.Link>
             </Nav>
@@ -176,11 +126,7 @@ function NavBar() {
                   backgroundColor: colors.color_white,
                 }}
               />
-              <Button
-                variant="outline-primary"
-                type="submit"
-                className="custom-search-button"
-              >
+              <Button variant="outline-primary" type="submit" className="custom-search-button">
                 Search
               </Button>
             </Form>

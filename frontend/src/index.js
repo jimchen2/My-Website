@@ -1,11 +1,11 @@
-import React, { useState, useEffect, lazy, Suspense } from "react";
+import React, {  useEffect, lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { ColorSchemeProvider } from "./config/global.js";
 import Footer from "./static/footer";
-import NavBar from "./static/navbar";
+import NavBar from "./navbar/navbar";
 import { useGlobalColorScheme } from "./config/global.js";
 import { GetVisitInfo } from "./static/visitinfo.js";
 import { PostVisitInfo } from "./static/visitinfo.js";
@@ -19,6 +19,7 @@ const Search = lazy(() => import("./blogpreview/search"));
 const Blog = lazy(() => import("./blogcontent/Blog.js"));
 const BlogEmbed = lazy(() => import("./blogcontent/BlogEmbed")); // Assuming BlogEmbed is the component that fetches the blog data and uses SingleBlogEmbed
 const YouTube = lazy(() => import("./youtube/youtubePage.js")); 
+const ExtLinks = lazy(() => import("./extlink/linkPage.js")); 
 
 const AppRoutes = () => (
   <Suspense fallback={<div>Loading...</div>}>
@@ -28,6 +29,7 @@ const AppRoutes = () => (
       <Route path="/about" element={<About />} />
       <Route path="*" element={<Page404 />} />
       <Route path="/visitinfo" element={<GetVisitInfo />} />
+      <Route path="/extlinks" element={<ExtLinks />} />
       <Route path="/youtube" element={<YouTube />} />
       <Route path="/blogpreview/" element={<BlogPreview />} />
       <Route path="/search/:term" element={<Search />} />
