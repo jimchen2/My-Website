@@ -7,7 +7,6 @@ const SideNav = () => {
   const [activeKey, setActiveKey] = React.useState(null);
   const { colors } = useGlobalColorScheme();
 
-  // Use the custom hook here and pass setActiveKey
   const tocItems = useAddItemToNavbar(setActiveKey);
 
   const cardHeaderStyle = {
@@ -28,21 +27,34 @@ const SideNav = () => {
         overflowY: "auto",
         padding: "10px",
         boxSizing: "border-box",
-        paddingBottom: "150px", // Add bottom padding here
+        paddingBottom: "150px",
       }}
     >
       <Accordion activeKey={activeKey}>
         {tocItems.map((item, index) => (
-          <Card key={item.key} style={{backgroundColor:colors.color_white}}>
+          <Card 
+            key={`card-${item.key}-${index}`} 
+            style={{backgroundColor: colors.color_white}}
+          >
             {React.cloneElement(item.content, {
+              key: `content-${item.key}-${index}`,
               hasChildren: item.hasChildren,
               setActiveKey: setActiveKey,
               isActive: activeKey === item.key,
-              style: cardHeaderStyle, // Apply custom styles here
+              style: cardHeaderStyle,
             })}
             {item.hasChildren && (
-              <Accordion.Collapse eventKey={item.key}>
-                <Card.Body>{item.children}</Card.Body>
+              <Accordion.Collapse 
+                eventKey={item.key} 
+                key={`collapse-${item.key}-${index}`}
+              >
+                <Card.Body key={`body-${item.key}-${index}`}>
+                  {React.Children.map(item.children, (child, childIndex) =>
+                    React.cloneElement(child, {
+                      key: `child-${item.key}-${childIndex}`
+                    })
+                  )}
+                </Card.Body>
               </Accordion.Collapse>
             )}
           </Card>

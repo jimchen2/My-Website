@@ -2,18 +2,14 @@ const express = require("express");
 const router = express.Router();
 const Blog = require("../models/blog.model");
 
-// Helper function to create a regex to escape special characters
 function escapeRegex(text) {
-  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+  return text.replace(/[-[$${}()*+?.,\\^$|#\s]/g, "\\$&");
 }
 
-// Helper function to get the relevant snippet from the body
 function getRelevantSnippet(body, searchTerm, isTitleMatch) {
   if (isTitleMatch) {
-    // Title matches, so return the first 150 characters of the body
     return body.substring(0, 150);
   } else {
-    // Body matches, so find the search term and return 150 characters around it
     const index = body.toLowerCase().indexOf(searchTerm.toLowerCase());
     const start = Math.max(index - 75, 0);
     const end = Math.min(start + 150, body.length);
@@ -21,7 +17,6 @@ function getRelevantSnippet(body, searchTerm, isTitleMatch) {
   }
 }
 
-// GET request to search blog entries by query string
 router.get("/", (req, res) => {
   let { query } = req.query;
   if (!query) {
@@ -29,7 +24,7 @@ router.get("/", (req, res) => {
   }
 
   query = escapeRegex(query);
-  const regex = new RegExp(query, "i"); // 'i' for case-insensitive search
+  const regex = new RegExp(query, "i");
 
   Blog.find()
     .then((blogs) => {
@@ -37,8 +32,6 @@ router.get("/", (req, res) => {
         .map((blog) => {
           const isTitleMatch = regex.test(blog.title);
           const isBodyMatch = regex.test(blog.body);
-
-          // Decide whether to get the snippet from the title or body
           const snippet = getRelevantSnippet(blog.body, query, isTitleMatch);
 
           return {
@@ -46,9 +39,19 @@ router.get("/", (req, res) => {
             body: snippet,
             isTitleMatch,
             isBodyMatch,
+            // Add a random value for tie-breaking
+            randomTieBreaker: Math.random()
           };
         })
-        .filter((blog) => blog.isTitleMatch || blog.isBodyMatch);
+        .filter((blog) => blog.isTitleMatch || blog.isBodyMatch)
+        // Sort by date (descending) and use randomTieBreaker for same dates
+        .sort((a, b) => {
+          if (a.date !== b.date) {
+            return b.date - a.date; // Sort by date descending
+          }
+          // If dates are equal, use the random tiebreaker
+          return b.randomTieBreaker - a.randomTieBreaker;
+        });
 
       res.json(matches);
     })

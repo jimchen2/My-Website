@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import CommentLikeButton from "../button/commentlikebutton.js";
-import CommentReplyButton from "../button/commentreplybutton.js";
+import CommentLikeButton from "../commentcontent/commentlikebutton.js";
+import CommentReplyButton from "../commentcontent/commentreplybutton.js";
 import Commentinputbox from "../commentsubmit/commentinputbox.js";
 import { useGlobalColorScheme } from "../config/global.js";
 import Card from "react-bootstrap/Card";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function CommentBox({ embed = 0, user, date, comment, like, id, blog }) {
+function CommentBox({ embed = 0, user, date, blogname, comment, like, commentuuid, bloguuid, showName }) {
   const { colors } = useGlobalColorScheme();
   const [showReply, setShowReply] = useState(false);
 
-  const MAX_EMBED = 4;
+  const MAX_EMBED = 2;
   const ADJUST_FACTOR = 40;
   const BASE_FONT_SIZE = 16;
   const TITLE_FONT_SIZE = 14; // 75% of the base font size for title
@@ -63,6 +63,8 @@ function CommentBox({ embed = 0, user, date, comment, like, id, blog }) {
     <Card className="mb-3" style={cardStyle}>
       <Card.Header style={headerStyle}>
         <Card.Title style={titleStyle}>{user}</Card.Title>
+        {showName && blogname!==' ' && <span>{blogname.split("-").join(" ")}</span>}
+
         <Card.Subtitle style={subtitleStyle}>
           <span>{date}</span>
         </Card.Subtitle>
@@ -70,10 +72,10 @@ function CommentBox({ embed = 0, user, date, comment, like, id, blog }) {
       <Card.Body>
         <Card.Text style={cardTextStyle}>{comment}</Card.Text>
         <div style={buttonContainerStyle}>
-          <CommentLikeButton like={like} id={id} />
+          <CommentLikeButton like={like} commentuuid={commentuuid} />
           <CommentReplyButton onReplyClick={toggleReply} />
         </div>
-        {showReply && <Commentinputbox id={id} blog={blog} />}
+        {showReply && <Commentinputbox commentuuid={commentuuid} bloguuid={bloguuid} />}
       </Card.Body>
     </Card>
   );

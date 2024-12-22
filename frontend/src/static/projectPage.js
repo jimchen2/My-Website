@@ -29,12 +29,8 @@ function Projects() {
     display: "block",
   };
 
-  const sectionHeadingStyle = {
-    textAlign: "center",
-    margin: "20px 0",
-    fontSize: "30px",
-    fontWeight: "bold",
-  };
+  console.log(projectData)
+
   return (
     <div>
       <br />
@@ -53,16 +49,20 @@ function Projects() {
             }}
           >
             <div style={imageWrapperStyle}>
-              <Card.Img src={project.image} style={imageStyle} />
+            <Card.Img src={`${project.image}`} style={imageStyle} />
             </div>
             <Card.Body style={{ backgroundColor: colors.color_white }}>
-              <Card.Title style={{ color: colors.color_blue_2 }}>
-                {project.title}
-              </Card.Title>
+              <Card.Title style={{ color: colors.color_blue_2 }}>{project.title}</Card.Title>
 
               <Card.Text style={{ color: colors.color_black }}>
                 <div>{project.time}</div>
 
+
+                {project.language && (
+                  <div style={linkStyle}>
+                    Language: {project.language}
+                  </div>
+                )}
                 {project.sourceCode && (
                   <a href={project.sourceCode} style={linkStyle}>
                     Source Code
@@ -81,20 +81,11 @@ function Projects() {
                   </a>
                 )}
 
-                {[
-                  ...Array(
-                    3 -
-                      [project.sourceCode, project.docs, project.demo].filter(
-                        Boolean
-                      ).length
-                  ),
-                ].map((_, i) => (
+                {[...Array(4 - [project.language, project.sourceCode, project.docs, project.demo].filter(Boolean).length)].map((_, i) => (
                   <br key={i} />
                 ))}
 
-                <div
-                  dangerouslySetInnerHTML={{ __html: project.description }}
-                />
+                <div dangerouslySetInnerHTML={{ __html: project.description }} />
               </Card.Text>
             </Card.Body>
           </Card>

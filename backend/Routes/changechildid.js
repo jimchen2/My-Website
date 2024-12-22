@@ -4,7 +4,7 @@ const Comment = require("../models/comment.model");
 // PATCH route for updating comments by adding a childID to its pointer list
 router.route("/").patch(async (req, res) => {
   try {
-    const foundComment = await Comment.findById(req.body.parentid);
+    const foundComment = await Comment.findOne({uuid:req.body.parentid});
 
     if (!foundComment) {
       return res.status(404).json({ message: "Comment not found" });

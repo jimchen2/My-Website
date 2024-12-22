@@ -4,8 +4,8 @@ import Blog from "./BlogPreviewPage"; // Import the presentational component
 import backendurl from "../config/config";
 
 function BlogPreview() {
-  const [data, setData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
+  const [data, setData] = useState([]); // Initialize with empty array
+  const [filteredData, setFilteredData] = useState([]); // Initialize with empty array
   const [postTypes, setPostTypes] = useState([]);
   const [selectedTypes, setSelectedTypes] = useState([]);
 
@@ -13,22 +13,18 @@ function BlogPreview() {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${backendurl}/blogpreview`);
-        setData(response.data);
-        setFilteredData(response.data);
-
-        const typeCounts = response.data.reduce((acc, post) => {
-          acc[post.type] = (acc[post.type] || 0) + 1;
-          return acc;
-        }, {});
-
-        const typesWithCount = Object.entries(typeCounts)
-          .sort((a, b) => b[1] - a[1])
-          .map(([type, count]) => ({ type, count }));
-
-        setPostTypes(typesWithCount);
+        if (response.data && response.data.previews) {
+          setData(response.data.previews);
+          setFilteredData(response.data.previews);
+        }
+        if (response.data && response.data.postTypes) {
+          setPostTypes(response.data.postTypes);
+        }
         setSelectedTypes([]);
       } catch (err) {
-      } finally {
+        setData([]);
+        setFilteredData([]);
+        setPostTypes([]);
       }
     };
 
@@ -39,9 +35,7 @@ function BlogPreview() {
     setSelectedTypes(selected);
     filterPostsByTypes(selected);
 
-    const newlySelected = selected.filter(
-      (type) => !selectedTypes.includes(type)
-    );
+    const newlySelected = selected.filter((type) => !selectedTypes.includes(type));
     const deselected = selectedTypes.filter((type) => !selected.includes(type));
     const allButtonsSelected = selectedTypes.length === postTypes.length + 1;
 
@@ -56,9 +50,7 @@ function BlogPreview() {
     }
 
     if (allButtonsSelected) {
-      const typesToSet = postTypes
-        .map((t) => t.type)
-        .filter((type) => type !== "all" && !deselected.includes(type));
+      const typesToSet = postTypes.map((t) => t.type).filter((type) => type !== "all" && !deselected.includes(type));
       setSelectedAndFilter(typesToSet);
     }
   };

@@ -21,6 +21,7 @@ function PreviewCard(props) {
   const { colors } = useGlobalColorScheme();
   const { searchTerm } = props;
 
+
   const getHighlightedText = (text, highlight) => {
     if (!highlight) {
       return text;
@@ -70,17 +71,14 @@ function PreviewCard(props) {
                     {props.type}
                   </span>
                 </div>
-                <StyledNavLink
-                  to={`/blog/${props.date}`}
-                  colors={colors}
-                >
+                <StyledNavLink to={`/${props.language}/${props.type}/${props.title}`} colors={colors}>
                   <h3
                     className="mt-2"
                     style={{
                       fontWeight: "bold",
                     }}
                   >
-                    {props.title}
+                    {props.title.split("-").join(" ")}
                   </h3>
                 </StyledNavLink>
               </Card.Title>

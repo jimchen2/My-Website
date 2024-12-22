@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const likeSchema = new Schema({
-  blog: {
+  parent: {
     type: String,
     default: ""
   },
   like: {
-    type: [String], // Assuming likes are user identifiers or IPs; empty array as default
+    type: [String], 
     default: []
   }
 }, { versionKey: false });

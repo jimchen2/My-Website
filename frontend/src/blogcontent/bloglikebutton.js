@@ -5,7 +5,7 @@ import backendurl from "../config/config.js";
 import { getIpAddress } from "../config/global.js";
 import { useGlobalColorScheme } from "../config/global.js";
 
-function BlogLikeButton({ id, like }) {
+function BlogLikeButton({ bloguuid, like }) {
   const { colors } = useGlobalColorScheme();
   const [likes, setLikes] = useState(like ? like.length : 0);
   const [liked, setLiked] = useState(false);
@@ -50,8 +50,8 @@ function BlogLikeButton({ id, like }) {
 
     const isLiked = liked; // If already liked, this will be true, indicating we want to remove the like
     const newLikes = isLiked ? likes - 1 : likes + 1; // Adjust the likes count accordingly
-    const patchUrl = `${backendurl}/addliketoblog?blogdate=${encodeURIComponent(
-      id
+    const patchUrl = `${backendurl}/blogtogglelike?uuid=${encodeURIComponent(
+      bloguuid
     )}`;
 
     try {

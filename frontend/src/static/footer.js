@@ -8,20 +8,15 @@ const ICON_SIZE = 35;
 const socialLinks = [
   {
     href: "https://github.com/jimchen2",
-    imgSrc: "/github-icon.png",
-  },
-
-  {
-    href: "https://www.youtube.com/@JC-ss5nj",
-    imgSrc: "/tubeicon.png",
+    imgSrc: "https://cdn.jimchen.me/6f2d8d52ecdda9ced05a68586c04067e/icons/github-icon.png",
   },
   {
-    href: "/qq.jpg",
-    imgSrc: "/qq-removebg-preview.png",
+    href: "https://cdn.jimchen.me/6f2d8d52ecdda9ced05a68586c04067e/profiles/qq.jpg",
+    imgSrc: "https://cdn.jimchen.me/6f2d8d52ecdda9ced05a68586c04067e/icons/qq-removebg-preview.png",
   },
   {
-    href: "/w.JPG",
-    imgSrc: "/wechat-icon.png",
+    href: "https://cdn.jimchen.me/6f2d8d52ecdda9ced05a68586c04067e/profiles/wechat.jpg",
+    imgSrc: "https://cdn.jimchen.me/6f2d8d52ecdda9ced05a68586c04067e/icons/wechat-icon.png",
   },
 ];
 
@@ -57,11 +52,15 @@ function Footer() {
     <div>
       <span style={{ color: colors.color_black }}>Copyright © Jim Chen {year}</span>,<span style={{ margin: "2px" }}></span>
       <a href="/visitinfo" style={linkStyle}>
-        Visitor
+        Visitors
       </a>
       ,<span style={{ margin: "2px" }}></span>
       <a href="https://github.com/jimchen2/My-Website" style={linkStyle}>
         Source{externalLinkIcon}
+      </a>
+      ,<span style={{ margin: "2px" }}></span>
+      <a href="https://jimchen.me/api/rss" style={linkStyle}>
+        RSS{externalLinkIcon}
       </a>
     </div>
   );

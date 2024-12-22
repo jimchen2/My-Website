@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { SideNav } from "../sidebar/sidebar";
-import { paddingtop, useGlobalColorScheme } from "../config/global";
+import {  useGlobalColorScheme } from "../config/global";
 import { MathJaxContext } from "better-react-mathjax";
 import { NavLink } from "react-router-dom";
 import { calculateBlogPadding } from "./SingleBlogPaddingHelper";
@@ -10,7 +10,7 @@ import { generateCommonStyles, generateThemeStyles, generateAdditionalStyles } f
 import CodeBlock from "./CodeBlock";
 import parse from "html-react-parser";
 
-function SingleBlog({ date, text, title, like, id }) {
+function SingleBlog({ date, text, title, language, type, bloguuid }) {
   const { colors } = useGlobalColorScheme();
   const [paddingStyles, setPaddingStyles] = useState(calculateBlogPadding());
 
@@ -77,7 +77,7 @@ function SingleBlog({ date, text, title, like, id }) {
                   {date}
                 </small>
                 <NavLink
-                  to={`/embed/blog/${date}`}
+                  to={`/embed/${language}/${type}/${title}`}
                   className="small"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -90,7 +90,7 @@ function SingleBlog({ date, text, title, like, id }) {
                 </NavLink>
               </div>
               <h2>
-                <div style={{ color: colors.color_blue_2 }}>{title}</div>
+                <div style={{ color: colors.color_blue_2 }}>{title.split("-").join(" ")}</div>
               </h2>
               <MathJaxContext>
                 <div className="blog-content">
@@ -98,7 +98,7 @@ function SingleBlog({ date, text, title, like, id }) {
                   <div dangerouslySetInnerHTML={{ __html: customHtml }} />
                 </div>
               </MathJaxContext>
-              <BlogLikeButtonHelper blogdate={date} />
+              <BlogLikeButtonHelper bloguuid={bloguuid} />
             </div>
           </div>
         </Col>

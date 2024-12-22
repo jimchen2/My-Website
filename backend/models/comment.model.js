@@ -3,6 +3,10 @@ const { Schema } = mongoose;
 const moment = require('moment-timezone');
 
 const commentSchema = new Schema({
+  uuid: {
+    type: String,
+    default: "",
+  },
   user: {
     type: String,
     default: ""
@@ -20,6 +24,10 @@ const commentSchema = new Schema({
     default: []
   },
   blog: {
+    type: String,
+    default: " "
+  },
+  blogname: {
     type: String,
     default: " "
   },

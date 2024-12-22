@@ -55,14 +55,6 @@ export const JimChenBio = () => {
                 Operating System
               </h5>
               <p>Fedora enthusiast and Red Hat family advocate 🐧</p>
-
-              <h5 style={{ color: colors.color_blue_2 }} className="mt-4">
-                Development Setup
-              </h5>
-              <ul className="list-unstyled">
-                <li>💻 ThinkPad P16s</li>
-                <li>📱 Pixel 8 Pro</li>
-              </ul>
             </Col>
 
             <Col md={6}>

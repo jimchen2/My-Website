@@ -50,6 +50,8 @@ function Search() {
           text={post.body}
           date={post.date}
           type={post.type}
+          bloguuid={post.uuid}
+          language={post.language}
           searchTerm={term}
         />
       ))}

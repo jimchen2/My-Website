@@ -14,7 +14,7 @@
     "context": "^3.0.27",
     "crypto-js": "^4.2.0",
     "dompurify": "^3.0.6",
-    "html-react-parser": "^4.0.0",
+    "html-react-parser": "^5.1.18",
     "js-cookie": "^3.0.5",
     "marked": "^15.0.1",
     "nodemon": "^3.0.2",
@@ -26,10 +26,9 @@
     "webpack": "^5.89.0"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "PORT=80 NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
-    "build": "NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
+    "dev": "react-scripts start",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

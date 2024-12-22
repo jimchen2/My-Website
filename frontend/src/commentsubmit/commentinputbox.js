@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Button, Form, Card } from "react-bootstrap";
 import SubmitComment from "./submitcomment";
-import { paddingtop } from "../config/global";
 import { useGlobalColorScheme } from "../config/global.js";
 import { useComments } from "../contexts/CommentsContext";
 
-function CommentInputBox({ id, blog }) {
+function CommentInputBox({  commentuuid, bloguuid, blogname }) {
   const { triggerUpdate } = useComments();
 
   const { colors } = useGlobalColorScheme();
@@ -37,10 +36,11 @@ function CommentInputBox({ id, blog }) {
     e.preventDefault();
     try {
       await SubmitComment({
-        parentid: id,
+        parentid: commentuuid,
         username: username,
         message: message,
-        blog: blog,
+        bloguuid: bloguuid,
+        blogname: blogname,
       });
       // Reset the values after submit
       setUsername("");
@@ -116,7 +116,7 @@ function CommentInputBox({ id, blog }) {
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Input your message here"
                   required
-                  autoFocus={blog === "00000000"}
+                  autoFocus={bloguuid === "00000000"}
                   onFocus={() => handleFocus(setFocusStyleMessage)}
                   onBlur={() => handleBlur(setFocusStyleMessage)}
                 />

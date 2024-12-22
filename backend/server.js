@@ -9,18 +9,19 @@ app.use(require("cors")());
 app.use(express.json());
 
 const routes = [
-  "/addliketoblog",
+  "/blogtogglelike",
   "/comment",
-  "/addliketocomment",
+  "/commenttogglelike",
   "/visitinfo",
   "/blog",
   "/blogpreview",
   "/changechildid",
-  "/getbloglikes",
+  "/bloggetlikes",
   "/search",
+  "/rss",
 ];
 
 routes.forEach((route) => app.use(route, require(`./Routes${route}`)));
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 2840;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

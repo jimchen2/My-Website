@@ -3,24 +3,20 @@ const router = express.Router();
 const Blog = require('../models/blog.model');
 
 // GET request to search for blog entries with optional 'date' and 'type' query parameters
-router.get('/', (req, res) => {
-  const { date, type } = req.query;
+router.get('/:language/:type/:title', (req, res) => {
+  const { language, type, title } = req.params;
 
-  let query = {};
-
-  if (date) {
-    query.date = date; // Keeping the date as a string
-  }
-
-  if (type) {
-    query.type = type;
-  }
-
-  Blog.find(query)
-    .then(blogs => res.json(blogs))
+  Blog.find({ language, type, title })
+    .then(blogs => {
+      if (!blogs || blogs.length === 0) {
+        return res.status(404).json({ message: 'Blog not found' });
+      }
+      res.json(blogs);
+    })
     .catch(err =>
-      res.status(500).json({ message: 'Error fetching blogs', error: err })
+      res.status(500).json({ message: 'Error fetching blog', error: err })
     );
 });
+
 
 module.exports = router;

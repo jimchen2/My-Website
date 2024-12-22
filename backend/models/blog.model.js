@@ -3,6 +3,10 @@ const { Schema } = mongoose;
 
 const blogSchema = new Schema(
   {
+    uuid: {
+      type: String,
+      default: "",
+    },
     title: {
       type: String,
       default: "",

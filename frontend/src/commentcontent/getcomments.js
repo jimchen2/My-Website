@@ -1,21 +1,21 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CommentBox from "./commentbox";
 import backendurl from "../config/config";
-import { useComments } from "../contexts/CommentsContext"; // Updated import
+import { useComments } from "../contexts/CommentsContext";
 
-const GetComments = ({ blog, paddl = 30, paddr = 30 }) => {
+const GetComments = ({ showName, bloguuid, paddl = 30, paddr = 30 }) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { updateTrigger } = useComments(); // Use the custom hook instead
+  const { updateTrigger } = useComments();
 
   useEffect(() => {
     const getComments = async () => {
       setIsLoading(true);
       try {
         const response = await axios.get(
-          `${backendurl}/comment/?blogdate=${blog}`
+          `${backendurl}/comment/?bloguuid=${bloguuid}`
         );
         setData(response.data);
       } catch (err) {
@@ -25,32 +25,40 @@ const GetComments = ({ blog, paddl = 30, paddr = 30 }) => {
       }
     };
     getComments();
-  }, [blog, updateTrigger]);
+  }, [bloguuid, updateTrigger]);
+
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
-  const renderComments = (comments, parentId, depth) => {
+  const renderComments = (comments, parentId, depth, parentUser = null) => {
     let result = [];
     const currentComments = comments.filter(
-      (comment) => comment._id === parentId
+      (comment) => comment.uuid === parentId
     );
 
     for (let comment of currentComments) {
+      // Modify the comment text if it's a reply
+      const modifiedText = parentUser
+        ? `Replying to @${parentUser}\n${comment.text}`
+        : comment.text;
+
       result.push(
-        <div className="GroupCommentBox" key={comment._id}>
+        <div className="GroupCommentBox" key={comment.uuid}>
           <CommentBox
             user={comment.user}
-            comment={comment.text}
+            comment={modifiedText} // Use the modified text
             date={comment.date}
             like={comment.like}
-            id={comment._id}
-            blog={blog}
+            blogname={comment.blogname}
+            commentuuid={comment.uuid}
+            bloguuid={comment.blog}
+            showName={showName}
             embed={depth}
           />
-          {/* Recurse into replies of the current comment */}
+          {/* Pass the current comment's user to child comments */}
           {comment.pointer.map((childId) =>
-            renderComments(comments, childId, depth + 1)
+            renderComments(comments, childId, depth + 1, comment.user)
           )}
         </div>
       );
@@ -62,10 +70,10 @@ const GetComments = ({ blog, paddl = 30, paddr = 30 }) => {
   // Identify root comments and initiate recursive rendering
   const allPointers = data.flatMap((comment) => comment.pointer);
   const rootComments = data.filter(
-    (comment) => !allPointers.includes(comment._id)
+    (comment) => !allPointers.includes(comment.uuid)
   );
   const renderedComments = rootComments.flatMap((comment) =>
-    renderComments(data, comment._id, 1)
+    renderComments(data, comment.uuid, 1, null) // Pass null as parentUser for root comments
   );
 
   return (

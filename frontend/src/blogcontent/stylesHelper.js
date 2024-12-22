@@ -64,6 +64,7 @@ export const generateThemeStyles = (colors) => `
 export function generateAdditionalStyles(colors) {
   return `
     .blog-content img { max-width: 100%; height: auto; border-radius: 8px; }
+    .blog-content iframe { width: 80%; border: none; }
     .blog-content a { color: ${
       colors.color_blue_2
     }; text-decoration: none; border-bottom: 2px solid ${

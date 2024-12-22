@@ -4,28 +4,22 @@ import React, { useState, useEffect } from "react";
 import { setIpAddress } from "../config/global";
 
 export const PostVisitInfo = async () => {
-  let userData = null;
-  let visitedData = null;
-
   try {
+    // Get IP info from ipapi.co
     const userResponse = await axios.get("https://ipapi.co/json");
-    userData = userResponse.data;
+    const userData = userResponse.data;
     setIpAddress(userData.ip);
-    const visitedResponse = await axios.get(`${backendurl}/visitinfo?num=10`);
 
-    visitedData = visitedResponse.data;
-    const foundVisitor = visitedData.find((item) => item.ip === userData.ip);
-    if (!foundVisitor || Date.now() - foundVisitor.now >= 3600000) {
-      await axios.post(`${backendurl}/visitinfo`, {
-        ip: userData.ip,
-        country: userData.country,
-        region: userData.region,
-        city: userData.city,
-        browser: navigator.userAgent,
-        date: new Date().toString(),
-        now: Date.now(),
-      });
-    }
+    // Send data to backend for processing
+    await axios.post(`${backendurl}/visitinfo`, {
+      ip: userData.ip,
+      country: userData.country,
+      region: userData.region,
+      city: userData.city,
+      browser: navigator.userAgent,
+      date: new Date().toString(),
+      now: Date.now(),
+    });
   } catch (err) {
     console.error("Error posting visit info:", err);
   }

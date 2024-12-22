@@ -1,35 +1,35 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom"; // Import useParams
+import { useParams } from "react-router-dom";
 import Axios from "axios";
 import SingleBlog from "./SingleBlog";
 import backendurl from "../config/config";
 import Msg from "../commentcontent/leaveamessage";
+
 function Blog() {
   const [blogs, setBlogs] = useState([]);
-  const { date } = useParams(); // Use useParams to extract the date from the URL
+  const { language, type, title } = useParams();
 
   useEffect(() => {
-    const encodedDate = encodeURIComponent(date); // Encode the date
+    // Encode all parameters
+    const encodedLanguage = encodeURIComponent(language);
+    const encodedType = encodeURIComponent(type);
+    const encodedTitle = encodeURIComponent(title);
 
-    Axios.get(`${backendurl}/blog?date=${encodedDate}`)
+    Axios.get(`${backendurl}/blog/${encodedLanguage}/${encodedType}/${encodedTitle}`)
       .then((response) => {
         setBlogs(response.data);
       })
       .catch((error) => console.error("Error fetching data:", error));
-  }, [date]); // Depend on the `date` to refetch when it changes
+  }, [language, type, title]);
+
+  if (blogs.length === 0) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
-      {blogs.length > 0 && (
-        <SingleBlog
-          title={blogs[0].title}
-          text={blogs[0].body}
-          date={date}
-          type={blogs[0].type}
-          id={blogs[0]._id}
-        />
-      )}
-      <Msg blog={date} blogcomment="true" />
+      <SingleBlog title={blogs[0].title} text={blogs[0].body} language={language} type={type} bloguuid={blogs[0].uuid} />
+      <Msg bloguuid={blogs[0].uuid} blogname={blogs[0].title} />
     </div>
   );
 }

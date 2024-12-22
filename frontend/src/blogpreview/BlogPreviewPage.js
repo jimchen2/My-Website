@@ -17,9 +17,6 @@ function BlogPreviewPage({
 
   const { colors } = useGlobalColorScheme();
 
-  // Sort the data based on the date, converting date strings to date objects
-  const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
-
   return (
     <div style={containerStyle}>
       <div style={{ paddingBottom: "2rem" }}>
@@ -34,13 +31,14 @@ function BlogPreviewPage({
         <br />
         <br />
         <div style={{ marginTop: "2rem" }}></div>
-        {sortedData.map((post, index) => (
+        {data.map((post, index) => (
           <div key={index}>
             <PreviewCard
               title={post.title}
               text={post.body}
               date={post.date}
               type={post.type}
+              language={post.language}
             />
           </div>
         ))}

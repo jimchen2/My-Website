@@ -8,33 +8,37 @@ router.route("/").get((req, res) => {
     if (!isNaN(num) && num >= 0) {
       query = query.limit(num);
     } else {
-      return res
-        .status(400)
-        .json("Error: num must be a positive integer when provided");
+      return res.status(400).json("Error: num must be a positive integer when provided");
     }
   }
-  query
-    .then((visits) => res.json(visits))
-    .catch((err) => res.status(400).json("Error: " + err));
+  query.then((visits) => res.json(visits)).catch((err) => res.status(400).json("Error: " + err));
 });
+router.route("/").post(async (req, res) => {
+  try {
+    const { ip, country, city, region, browser, date, now } = req.body;
 
-router.route("/").post((req, res) => {
-  const { country, city, region, browser, date, now, ip } = req.body;
+    const existingVisitor = await visitinfo.findOne({ ip: ip });
 
-  const newVisit = new visitinfo({
-    date,
-    country,
-    city,
-    region,
-    ip,
-    browser,
-    now,
-  });
+    // Check if visitor exists and if enough time has passed
+    if (!existingVisitor || Date.now() - existingVisitor.now >= 86400000) {
+      const newVisit = new visitinfo({
+        date,
+        country,
+        city,
+        region,
+        ip,
+        browser,
+        now,
+      });
 
-  newVisit
-    .save()
-    .then(() => res.json("Added!"))
-    .catch((err) => res.status(400).json("Error: " + err));
+      await newVisit.save();
+      res.json("Added!");
+    } else {
+      res.json("Recent visit exists");
+    }
+  } catch (err) {
+    res.status(400).json("Error: " + err);
+  }
 });
 
 module.exports = router;
