@@ -4,7 +4,7 @@ const Blog = require('../models/blog.model');
 
 router.get('/', async (req, res) => {
     try {
-        const blogs = await Blog.find({})
+        const blogs = await Blog.find({isPrivate: false})
             .sort({ date: -1 })
             .collation({ locale: 'en_US', numericOrdering: true });
 

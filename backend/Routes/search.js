@@ -26,7 +26,7 @@ router.get("/", (req, res) => {
   query = escapeRegex(query);
   const regex = new RegExp(query, "i");
 
-  Blog.find()
+  Blog.find({isPrivate: false})
     .then((blogs) => {
       const matches = blogs
         .map((blog) => {

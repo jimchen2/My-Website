@@ -1,24 +1,55 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { SideNav } from "../sidebar/sidebar";
-import {  useGlobalColorScheme } from "../config/global";
-import { MathJaxContext } from "better-react-mathjax";
 import { NavLink } from "react-router-dom";
-import { calculateBlogPadding } from "./SingleBlogPaddingHelper";
-import BlogLikeButtonHelper from "./bloglikebuttonhelper";
-import { generateCommonStyles, generateThemeStyles, generateAdditionalStyles } from "./stylesHelper";
-import CodeBlock from "./CodeBlock";
+import { MathJaxContext } from "better-react-mathjax";
 import parse from "html-react-parser";
 
-function SingleBlog({ date, text, title, language, type, bloguuid }) {
+import { SideNav } from "../sidebar/sidebar";
+import { useGlobalColorScheme } from "../config/global";
+import { calculateBlogPadding } from "./SingleBlogPaddingHelper";
+import BlogLikeButtonHelper from "./bloglikebuttonhelper";
+import CodeBlock from "./CodeBlock";
+import { generateCommonStyles, generateThemeStyles, generateAdditionalStyles } from "./stylesHelper";
+
+const BlogHeader = ({ date, isPrivate, language, type, title, colors }) => (
+  <div className="blog-header mb-3">
+    <div className="d-flex justify-content-between align-items-center">
+      <small className="text" style={{ color: colors.color_black }}>
+        {date}
+      </small>
+      <NavLink
+        to={`/embed/${language}/${type}/${title}`}
+        className="small"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          textDecoration: "underline",
+          color: colors.color_blue_2,
+        }}
+      >
+        Save as PDF
+      </NavLink>
+    </div>
+    <div>
+      <div className="text" style={{ color: colors.color_black }}>
+        {isPrivate === 0 ? "" : "Unlisted Blog"}
+      </div>
+    </div>
+  </div>
+);
+
+const BlogTitle = ({ title, colors }) => (
+  <h2 className="mb-4">
+    <div style={{ color: colors.color_blue_2 }}>{title.split("-").join(" ")}</div>
+  </h2>
+);
+
+function SingleBlog({ date, text, title, language, type, bloguuid, isPrivate }) {
   const { colors } = useGlobalColorScheme();
   const [paddingStyles, setPaddingStyles] = useState(calculateBlogPadding());
 
   useEffect(() => {
-    const handleResize = () => {
-      setPaddingStyles(calculateBlogPadding());
-    };
-
+    const handleResize = () => setPaddingStyles(calculateBlogPadding());
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -32,23 +63,17 @@ function SingleBlog({ date, text, title, language, type, bloguuid }) {
   const elements = parse(processedText, {
     replace: (domNode) => {
       if (domNode.name === "codeblock") {
-        const language = domNode.attribs.language;
-        const code = domNode.attribs.code.replace(/&quot;/g, '"');
-        return <CodeBlock language={language} code={code} />;
+        const { language, code } = domNode.attribs;
+        return <CodeBlock language={language} code={code.replace(/&quot;/g, '"')} />;
       }
     },
   });
 
-  const commonStyles = generateCommonStyles(colors);
-  const themeStyles = generateThemeStyles(colors);
-  const additionalStyles = generateAdditionalStyles(colors);
-
-  const customHtml = `<style>${commonStyles} ${themeStyles} ${additionalStyles}</style>`;
+  const styles = [generateCommonStyles(colors), generateThemeStyles(colors), generateAdditionalStyles(colors)].join(" ");
 
   return (
-    <Container fluid style={{ paddingBottom: "1rem" }}>
-      <br />
-      <br />
+    <Container fluid className="pb-3">
+      <div className="my-4" />
       <Row>
         <Col className="d-none d-lg-block">
           <SideNav />
@@ -64,42 +89,16 @@ function SingleBlog({ date, text, title, language, type, bloguuid }) {
           }}
         >
           <div className="mb-4">
-            <div>
-              <div
-                className="blog-header"
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <small className="text" style={{ color: colors.color_black }}>
-                  {date}
-                </small>
-                <NavLink
-                  to={`/embed/${language}/${type}/${title}`}
-                  className="small"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    textDecoration: "underline",
-                    color: colors.color_blue_2,
-                  }}
-                >
-                  Save as PDF
-                </NavLink>
+            <BlogHeader date={date} isPrivate={isPrivate} language={language} type={type} title={title} colors={colors} />
+            <BlogTitle title={title} colors={colors} />
+            <MathJaxContext>
+              <div className="blog-content">
+                {elements}
+                <style>{styles}</style>
               </div>
-              <h2>
-                <div style={{ color: colors.color_blue_2 }}>{title.split("-").join(" ")}</div>
-              </h2>
-              <MathJaxContext>
-                <div className="blog-content">
-                  {elements}
-                  <div dangerouslySetInnerHTML={{ __html: customHtml }} />
-                </div>
-              </MathJaxContext>
-              <BlogLikeButtonHelper bloguuid={bloguuid} />
-            </div>
+            </MathJaxContext>
+            <BlogLikeButtonHelper bloguuid={bloguuid} />
+            <br />
           </div>
         </Col>
       </Row>

@@ -28,8 +28,8 @@ function Blog() {
 
   return (
     <div>
-      <SingleBlog title={blogs[0].title} text={blogs[0].body} language={language} type={type} bloguuid={blogs[0].uuid} />
-      <Msg bloguuid={blogs[0].uuid} blogname={blogs[0].title} />
+      <SingleBlog title={blogs[0].title} text={blogs[0].body} language={language} type={type} bloguuid={blogs[0].uuid} isPrivate={blogs[0].isPrivate} date={blogs[0].date} />
+      {!blogs[0].isPrivate ? <Msg bloguuid={blogs[0].uuid} blogname={blogs[0].title} /> : <br/>}
     </div>
   );
 }

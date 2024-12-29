@@ -27,6 +27,10 @@ const blogSchema = new Schema(
       type: String,
       default: "en",
     },
+    isPrivate: {
+      type: Number,
+      default: 0,
+    },
   },
   { versionKey: false }
 );

@@ -12,7 +12,7 @@ router
     try {
       let query = {};
       if (bloguuid && bloguuid !== "0") {
-        query.blog = bloguuid; // or
+        query.blog = bloguuid;
       }
 
       let comments = await Comment.find(query)
