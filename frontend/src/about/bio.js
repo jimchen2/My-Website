@@ -60,8 +60,7 @@ export const JimChenBio = () => {
             <Col md={6}>
               <h5 style={{ color: colors.color_blue_2 }}>Languages</h5>
               <ul className="list-unstyled">
-                <li>🔸 Native Chinese speaker</li>
-                <li>🔸 Proficient English user (primary working language)</li>
+                <li>🔸 English</li>
               </ul>
 
               <h5 style={{ color: colors.color_blue_2 }} className="mt-4">
