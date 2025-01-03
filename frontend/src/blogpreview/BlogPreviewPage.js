@@ -15,11 +15,17 @@ function BlogPreviewPage({
     minHeight: "100vh",
   };
 
+  const contentStyle = {
+    maxWidth: "1150px", 
+    margin: "0 auto",  
+    padding: "0 20px", 
+  };
+
   const { colors } = useGlobalColorScheme();
 
   return (
     <div style={containerStyle}>
-      <div style={{ paddingBottom: "2rem" }}>
+      <div style={{ ...contentStyle, paddingBottom: "2rem" }}>
         <ToggleButtonGroupComponent
           selectedTypes={selectedTypes}
           onSelectionChange={onSelectionChange}
@@ -42,7 +48,7 @@ function BlogPreviewPage({
             />
           </div>
         ))}
-        <div style={{ marginBottom: "2rem" }}></div>
+        <div style={{ marginBottom: "5rem" }}></div>
       </div>
     </div>
   );

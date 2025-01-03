@@ -32,7 +32,7 @@ const ToggleButtonGroupComponent = ({
       style={{
         display: "flex",
         flexWrap: "wrap",
-        marginBottom: "1rem",
+        marginBottom: "2rem",
         paddingRight: "15%",
         paddingLeft: "15%",
       }}
