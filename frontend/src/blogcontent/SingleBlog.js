@@ -11,7 +11,7 @@ import BlogLikeButtonHelper from "./bloglikebuttonhelper";
 import CodeBlock from "./CodeBlock";
 import { generateCommonStyles, generateThemeStyles, generateAdditionalStyles } from "./stylesHelper";
 
-const BlogHeader = ({ date, isPrivate, language, type, title, colors }) => (
+const BlogHeader = ({ date, language, type, title, colors }) => (
   <div className="blog-header mb-3">
     <div className="d-flex justify-content-between align-items-center">
       <small className="text" style={{ color: colors.color_black }}>
@@ -30,11 +30,6 @@ const BlogHeader = ({ date, isPrivate, language, type, title, colors }) => (
         Save as PDF
       </NavLink>
     </div>
-    <div>
-      <div className="text" style={{ color: colors.color_black }}>
-        {isPrivate === 0 ? "" : "Unlisted Blog"}
-      </div>
-    </div>
   </div>
 );
 
@@ -44,7 +39,7 @@ const BlogTitle = ({ title, colors }) => (
   </h2>
 );
 
-function SingleBlog({ date, text, title, language, type, bloguuid, isPrivate }) {
+function SingleBlog({ date, text, title, language, type, bloguuid }) {
   const { colors } = useGlobalColorScheme();
   const [paddingStyles, setPaddingStyles] = useState(calculateBlogPadding());
 
@@ -89,7 +84,7 @@ function SingleBlog({ date, text, title, language, type, bloguuid, isPrivate }) 
           }}
         >
           <div className="mb-4">
-            <BlogHeader date={date} isPrivate={isPrivate} language={language} type={type} title={title} colors={colors} />
+            <BlogHeader date={date} language={language} type={type} title={title} colors={colors} />
             <BlogTitle title={title} colors={colors} />
             <MathJaxContext>
               <div className="blog-content">
