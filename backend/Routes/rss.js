@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
     image_url: 'https://cdn.jimchen.me/87b658f1670b156212b695df197cce92/jimchen.me.png', 
   });
   
-  Blog.find({isPrivate: false})
+  Blog.find()
     .sort({ date: -1 })
     .collation({ locale: "en_US", numericOrdering: true })
     .then((blogs) => {
