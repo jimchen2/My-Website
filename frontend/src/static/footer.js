@@ -11,10 +11,6 @@ const socialLinks = [
     imgSrc: "https://cdn.jimchen.me/6f2d8d52ecdda9ced05a68586c04067e/icons/github-icon.png",
   },
   {
-    href: "https://www.strava.com/athletes/112178391",
-    imgSrc: "https://cdn.jimchen.me/6a7e2ce30b38adaf52d5962c07515c32/strava_128.webp",
-  },
-  {
     href: "https://cdn.jimchen.me/6f2d8d52ecdda9ced05a68586c04067e/profiles/qq.jpg",
     imgSrc: "https://cdn.jimchen.me/6f2d8d52ecdda9ced05a68586c04067e/icons/qq-removebg-preview.png",
   },
