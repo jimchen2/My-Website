@@ -8,15 +8,15 @@ const ICON_SIZE = 35;
 const socialLinks = [
   {
     href: "https://github.com/jimchen2",
-    imgSrc: "https://cdn.jimchen.me/6f2d8d52ecdda9ced05a68586c04067e/icons/github-icon.png",
+    imgSrc: "https://jimchen.me/github-icon.png",
   },
   {
-    href: "https://cdn.jimchen.me/6f2d8d52ecdda9ced05a68586c04067e/profiles/qq.jpg",
-    imgSrc: "https://cdn.jimchen.me/6f2d8d52ecdda9ced05a68586c04067e/icons/qq-removebg-preview.png",
+    href: "https://jimchen.me/qq.jpg",
+    imgSrc: "https://jimchen.me/qq-removebg-preview.png",
   },
   {
-    href: "https://cdn.jimchen.me/6f2d8d52ecdda9ced05a68586c04067e/profiles/wechat.jpg",
-    imgSrc: "https://cdn.jimchen.me/6f2d8d52ecdda9ced05a68586c04067e/icons/sdofijddf/wechat.png",
+    href: "https://jimchen.me/W.JPG",
+    imgSrc: "https://jimchen.me/wechat-icon.png",
   },
 ];
 

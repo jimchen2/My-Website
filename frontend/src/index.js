@@ -12,7 +12,6 @@ import { PostVisitInfo } from "./static/visitinfo.js";
 import Msg from "./commentcontent/leaveamessage";
 
 // Lazy load route components
-const Project = lazy(() => import("./static/projectPage.js"));
 const About = lazy(() => import("./about/bio.js"));
 const Page404 = lazy(() => import("./static/404"));
 const BlogPreview = lazy(() => import("./blogpreview/blogpreview"));
@@ -24,7 +23,6 @@ const AppRoutes = () => (
   <Suspense fallback={<div>Loading...</div>}>
     <Routes>
       <Route path="/" element={<BlogPreview />} />
-      <Route path="/projects" element={<Project />} />
       <Route path="/about" element={<About />} />
       <Route path="/visitinfo" element={<GetVisitInfo />} />
       <Route path="/comments" element={<Msg bloguuid="0" />} />
