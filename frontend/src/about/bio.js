@@ -32,13 +32,6 @@ export const JimChenBio = () => {
                   Experienced with Cloudflare CDN and Digital Ocean cloud infrastructure
                 </small>
               </div>
-
-              <h5 style={{ color: colors.color_blue_2 }} className="mt-4">
-                Mathematics
-              </h5>
-              <p>
-                Enthusiastic about mathematical concepts and their practical applications in computing and problem-solving
-              </p>
             </Col>
 
             <Col md={6}>
@@ -65,17 +58,13 @@ export const JimChenBio = () => {
                 <h5 style={{ color: colors.color_blue_2 }}>About Me</h5>
                 <p>
                   A technology enthusiast specializing in Cloudflare and Digital Ocean infrastructure, 
-                  with interests in mathematics and language learning. I focus on building efficient, 
+                  with interests in language learning. I focus on building efficient, 
                   secure, and scalable systems using modern cloud technologies.
                 </p>
               </div>
             </Col>
           </Row>
         </Card.Body>
-
-        <Card.Footer className="text-center" style={{ backgroundColor: colors.color_white, color: colors.color_black }}>
-          <small>Cloudflare | Digital Ocean | Mathematics | Language Learning</small>
-        </Card.Footer>
       </Card>
     </Container>
   );
