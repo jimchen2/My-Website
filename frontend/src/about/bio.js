@@ -12,79 +12,61 @@ export const JimChenBio = () => {
       <Card className="shadow" style={{ backgroundColor: colors.color_light_gray }}>
         <Card.Header style={{ backgroundColor: colors.color_gray, color: colors.color_black }}>
           <h2 className="mb-0">Jim Chen</h2>
-          <small>Cloud & Web Enthusiast</small>
         </Card.Header>
 
         <Card.Body style={{ color: colors.color_black }}>
           <Row>
             <Col md={6}>
-              <h5 style={{ color: colors.color_blue_2 }}>AWS Experience</h5>
+              <h5 style={{ color: colors.color_blue_2 }}>Cloud Computing</h5>
               <div className="mb-3">
                 <Badge bg="info" className="me-2 mb-2" style={{ backgroundColor: colors.color_blue_2 }}>
-                  S3
+                  Cloudflare
                 </Badge>
                 <Badge bg="info" className="me-2 mb-2" style={{ backgroundColor: colors.color_blue_2 }}>
-                  Route 53
+                  Digital Ocean
                 </Badge>
                 <Badge bg="info" className="me-2 mb-2" style={{ backgroundColor: colors.color_blue_2 }}>
-                  EC2
-                </Badge>
-                <Badge bg="info" className="me-2 mb-2" style={{ backgroundColor: colors.color_blue_2 }}>
-                  CloudFront
-                </Badge>
-                <Badge bg="info" className="me-2 mb-2" style={{ backgroundColor: colors.color_blue_2 }}>
-                  VPC
+                  React-Bootstrap
                 </Badge>
                 <small className="d-block mt-2" style={{ color: colors.color_black }}>
-                  Prefers external certificate management without nginx
+                  Experienced with Cloudflare CDN and Digital Ocean cloud infrastructure
                 </small>
               </div>
 
               <h5 style={{ color: colors.color_blue_2 }} className="mt-4">
-                Frontend Development
+                Mathematics
               </h5>
               <p>
-                Using{" "}
-                <a href="https://github.com/react-bootstrap/react-bootstrap" style={{ color: colors.color_blue_2 }}>
-                  React Bootstrap{" "}
-                </a>{" "}
-                for its simplicity and functionality. Previous experience with Next.js.
+                Enthusiastic about mathematical concepts and their practical applications in computing and problem-solving
               </p>
-
-              <h5 style={{ color: colors.color_blue_2 }} className="mt-4">
-                Operating System
-              </h5>
-              <p>Fedora enthusiast and Red Hat family advocate 🐧</p>
             </Col>
 
             <Col md={6}>
-              <h5 style={{ color: colors.color_blue_2 }}>Languages</h5>
-              <ul className="list-unstyled">
-                <li>🔸 English</li>
-              </ul>
-
-              <h5 style={{ color: colors.color_blue_2 }} className="mt-4">
-                Personal Interests
-              </h5>
-              <p>YouTube Content:</p>
+              <h5 style={{ color: colors.color_blue_2 }}>Language Learning</h5>
+              <p>Active language learner through:</p>
               <ul>
-                <li>Technical channels</li>
-                <li>Interview content</li>
-                <li>Music</li>
+                <li>Video content in different languages</li>
+                <li>Engaging with different softwares and websites</li>
+                <li>International media consumption</li>
               </ul>
 
               <h5 style={{ color: colors.color_blue_2 }} className="mt-4">
-                Lifestyle
+                Technical Skills
               </h5>
-              <p>Practicing minimalist focusing on reducing physical possessions for a simpler life</p>
+              <ul className="list-unstyled">
+                <li>🔸 Cloud Infrastructure (Cloudflare & Digital Ocean)</li>
+                <li>🔸 Operating Systems</li>
+                <li>🔸 Python Programming</li>
+              </ul>
             </Col>
 
             <Col xs={12}>
               <div className="border-top mt-4 pt-4" style={{ borderColor: colors.color_gray }}>
                 <h5 style={{ color: colors.color_blue_2 }}>About Me</h5>
                 <p>
-                  A self-driven cloud and frontend enthusiast who enjoys exploring AWS services and modern web development technologies. Passionate about Linux systems and continuous learning in the
-                  tech space.
+                  A technology enthusiast specializing in Cloudflare and Digital Ocean infrastructure, 
+                  with interests in mathematics and language learning. I focus on building efficient, 
+                  secure, and scalable systems using modern cloud technologies.
                 </p>
               </div>
             </Col>
@@ -92,7 +74,7 @@ export const JimChenBio = () => {
         </Card.Body>
 
         <Card.Footer className="text-center" style={{ backgroundColor: colors.color_white, color: colors.color_black }}>
-          <small>Cloud Computing | Frontend Development | Linux Enthusiast</small>
+          <small>Cloudflare | Digital Ocean | Mathematics | Language Learning</small>
         </Card.Footer>
       </Card>
     </Container>

@@ -11,6 +11,10 @@ const socialLinks = [
     imgSrc: "https://jimchen.me/github-icon.png",
   },
   {
+    href: "https://archive.org/details/@jimchen4214",
+    imgSrc: "https://jimchen.me/internetarchive.png",
+  },
+  {
     href: "https://jimchen.me/qq.jpg",
     imgSrc: "https://jimchen.me/qq-removebg-preview.png",
   },

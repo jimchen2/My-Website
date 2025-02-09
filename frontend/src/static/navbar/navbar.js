@@ -84,10 +84,6 @@ function NavBar() {
                 About
               </Nav.Link>
 
-              <Nav.Link as={Link} to="/projects" style={{ color: colors.color_black }}>
-                Projects
-              </Nav.Link>
-
               <Nav.Link as={Link} to="/" style={{ color: colors.color_black }}>
                 Blog
               </Nav.Link>
