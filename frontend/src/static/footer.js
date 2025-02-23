@@ -19,7 +19,7 @@ const socialLinks = [
     imgSrc: "https://jimchen.me/qq-removebg-preview.png",
   },
   {
-    href: "https://jimchen.me/W.JPG",
+    href: "https://jimchen.me/w.JPG",
     imgSrc: "https://jimchen.me/wechat-icon.png",
   },
 ];
