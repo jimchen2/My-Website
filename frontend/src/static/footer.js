@@ -55,10 +55,6 @@ function Footer() {
   const CopyrightSection = ({ year, linkStyle }) => (
     <div>
       <span style={{ color: colors.color_black }}>Copyright © Jim Chen {year}</span>,<span style={{ margin: "2px" }}></span>
-      <a href="/visitinfo" style={linkStyle}>
-        Visitors
-      </a>
-      ,<span style={{ margin: "2px" }}></span>
       <a href="https://github.com/jimchen2/My-Website" style={linkStyle}>
         Source{externalLinkIcon}
       </a>

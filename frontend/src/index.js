@@ -7,7 +7,6 @@ import { ColorSchemeProvider } from "./config/global.js";
 import Footer from "./static/footer";
 import NavBar from "./static/navbar/navbar";
 import { useGlobalColorScheme } from "./config/global.js";
-import { GetVisitInfo } from "./static/visitinfo.js";
 import { PostVisitInfo } from "./static/visitinfo.js";
 import Msg from "./commentcontent/leaveamessage";
 
@@ -24,7 +23,6 @@ const AppRoutes = () => (
     <Routes>
       <Route path="/" element={<BlogPreview />} />
       <Route path="/about" element={<About />} />
-      <Route path="/visitinfo" element={<GetVisitInfo />} />
       <Route path="/comments" element={<Msg bloguuid="0" />} />
       <Route path="/search/:term" element={<Search />} />
       <Route path="/embed/:language/:type/:title" element={<BlogEmbed />} />
