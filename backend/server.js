@@ -12,7 +12,6 @@ const routes = [
   "/blogtogglelike",
   "/comment",
   "/commenttogglelike",
-  "/visitinfo",
   "/blog",
   "/blogpreview",
   "/changechildid",
